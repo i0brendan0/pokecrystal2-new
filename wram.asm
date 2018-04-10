@@ -88,8 +88,6 @@ wMusicFade:: ; c2a7
 wMusicFadeCount:: db ; c2a8
 wMusicFadeID:: dw ; c2a9
 
-	ds 5
-
 wCryPitch:: dw ; c2b0
 wCryLength:: dw ; c2b2
 
@@ -99,8 +97,6 @@ wc2b5:: db ; c2b5
 wSFXPriority:: ; c2b6
 ; if nonzero, turn off music when playing sfx
 	db
-
-	ds 1
 
 wChannel1JumpCondition:: db
 wChannel2JumpCondition:: db
@@ -204,9 +200,7 @@ wTilePermissions:: ; c2fe
 ; bit 0: right
 	db
 
-	ds 1
-
-
+    
 SECTION "wSpriteAnims", WRAM0
 
 UNION ; c300
@@ -853,12 +847,8 @@ wDexListingCursorBackup:: db
 wBackupDexListingCursor:: db
 wBackupDexListingPage:: db
 wDexCurrentLocation:: db
-if DEF(_CRYSTAL11)
 wPokedexStatus:: db
 wPokedexDataEnd::
-else
-wPokedexDataEnd:: ds 1
-endc
 	ds 2
 
 NEXTU ; c6d0
@@ -1081,7 +1071,6 @@ wcb6e:: ds 22
 wcb84:: ds 100
 wcbe8:: dw
 wLinkOTPartyMonTypes:: ds 2 * PARTY_LENGTH
-	ds 84
 
 wcc4a:: ds 22
 wcc60:: ds 1
@@ -1330,12 +1319,7 @@ wCreditsLYOverride:: db
 NEXTU ; cf64
 ; pokedex
 wPrevDexEntryJumptableIndex:: db
-if DEF(_CRYSTAL11)
 wPrevDexEntryBackup:: db
-else
-wPrevDexEntryBackup::
-wPokedexStatus:: db
-endc
 
 NEXTU ; cf64
 ; pokegear
@@ -2582,8 +2566,6 @@ wMountMoonSquareSceneID::                         db ; d9be
 wMobileTradeRoomSceneID::                         db ; d9bf
 wMobileBattleRoomSceneID::                        db ; d9c0
 
-	ds 49
-
 ; fight counts
 wJackFightCount::    db ; d9f2
 wBeverlyFightCount:: db ; unused
@@ -2615,7 +2597,6 @@ wParryFightCount::   db
 wErinFightCount::    db
 ; da0e
 
-	ds 100
 
 wEventFlags:: flag_array NUM_EVENTS ; da72
 ; db6c
@@ -2769,17 +2750,17 @@ SECTION "Party", WRAMX
 
 wPokemonData::
 
-wPartyCount::   db ; dcd7 ; number of Pokémon in party
-wPartySpecies:: ds PARTY_LENGTH ; dcd8 ; species of each Pokémon in party
-wPartyEnd::     db ; dcde ; older code doesn't check wPartyCount
+wPartyCount::   db ; DC88 ; number of Pokémon in party
+wPartySpecies:: ds PARTY_LENGTH ; DC89 ; species of each Pokémon in party
+wPartyEnd::     db ; DC8F ; older code doesn't check wPartyCount
 
 wPartyMons::
-wPartyMon1:: party_struct wPartyMon1 ; dcdf
-wPartyMon2:: party_struct wPartyMon2 ; dd0f
-wPartyMon3:: party_struct wPartyMon3 ; dd3f
-wPartyMon4:: party_struct wPartyMon4 ; dd6f
-wPartyMon5:: party_struct wPartyMon5 ; dd9f
-wPartyMon6:: party_struct wPartyMon6 ; ddcf
+wPartyMon1:: party_struct wPartyMon1 ; DC90
+wPartyMon2:: party_struct wPartyMon2 ; DCC0
+wPartyMon3:: party_struct wPartyMon3 ; DCF0
+wPartyMon4:: party_struct wPartyMon4 ; DD20
+wPartyMon5:: party_struct wPartyMon5 ; DD50
+wPartyMon6:: party_struct wPartyMon6 ; DD80
 
 wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH ; ddff
 

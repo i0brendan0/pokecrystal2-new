@@ -300,10 +300,7 @@ TohjoFallsSign:
 	jumptext TohjoFallsSignText
 
 Route27TMSolarbeam:
-	itemball TM_SOLARBEAM
-
-Route27RareCandy:
-	itemball RARE_CANDY
+	itemball TM_SOLARBEAM, 10
 
 MovementData_0x1a0a66:
 	step LEFT

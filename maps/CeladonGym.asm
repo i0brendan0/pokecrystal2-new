@@ -38,7 +38,7 @@ ErikaScript_0x72a6a:
 	iftrue UnknownScript_0x72aae
 	writetext UnknownText_0x72cb0
 	buttonsound
-	verbosegiveitem TM_GIGA_DRAIN
+	verbosegiveitem TM_GIGA_DRAIN, 10
 	iffalse UnknownScript_0x72aae
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
 UnknownScript_0x72aae:

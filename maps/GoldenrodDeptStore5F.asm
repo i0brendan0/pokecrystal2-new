@@ -73,7 +73,7 @@ ReceptionistScript_0x560ce:
 .VeryHappy:
 	writetext UnknownText_0x5615a
 	buttonsound
-	verbosegiveitem TM_RETURN
+	verbosegiveitem TM_RETURN, 10
 	iffalse .Done
 	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
 	closetext
@@ -88,7 +88,7 @@ ReceptionistScript_0x560ce:
 .NotVeryHappy:
 	writetext UnknownText_0x561d8
 	buttonsound
-	verbosegiveitem TM_FRUSTRATION
+	verbosegiveitem TM_FRUSTRATION, 10
 	iffalse .Done
 	setflag ENGINE_GOLDENROD_DEPT_STORE_TM27_RETURN
 	closetext

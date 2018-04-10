@@ -42,7 +42,7 @@ PryceScript_0x199a9e:
 	setevent EVENT_BEAT_BOARDER_DOUGLAS
 	writetext PryceText_GlacierBadgeSpeech
 	buttonsound
-	verbosegiveitem TM_ICY_WIND
+	verbosegiveitem TM_ICY_WIND, 10
 	iffalse MahoganyGym_NoRoomForIcyWind
 	setevent EVENT_GOT_TM16_ICY_WIND
 	writetext PryceText_IcyWindSpeech
@@ -201,6 +201,11 @@ PryceText_GlacierBadgeSpeech:
 	text "That BADGE will"
 	line "raise the SPECIAL"
 	cont "stats of #MON."
+    
+    para "All #MON you"
+	line "have up to L80"
+	cont "won't disobey."
+
 
 	para "It also lets your"
 	line "#MON use WHIRL-"

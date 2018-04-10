@@ -124,7 +124,9 @@ TreeMonSet_Forest: ; b83b8
 	db -1
 
 TreeMonSet_Rock: ; b83de
-	db 90, KRABBY,     15
+	db 80, KRABBY,     15
 	db 10, SHUCKLE,    15
+    db  5, KABUTO,     15
+    db  5, OMANYTE,    15
 	db -1
 ; b83e5

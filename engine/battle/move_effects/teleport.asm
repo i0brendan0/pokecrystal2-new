@@ -70,7 +70,7 @@ BattleCommand_Teleport: ; 36778
 	; probably intended was jr c, .failed
 	; The way this is made makes enemy use
 	; of Teleport always succeed if able
-	jr nc, .run_away
+	jr c, .failed
 .run_away
 	call UpdateBattleMonInParty
 	xor a

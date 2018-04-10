@@ -45,11 +45,13 @@ TeacherScript_0x62d63:
 	opentext
 	checkevent EVENT_FOREST_IS_RESTLESS
 	iftrue .ForestIsRestless
+    checkevent EVENT_BEAT_RED
+    iftrue GetSweetHoney
 	checkevent EVENT_GOT_TM12_SWEET_SCENT
 	iftrue .GotSweetScent
 	writetext UnknownText_0x62d9d
 	buttonsound
-	verbosegiveitem TM_SWEET_SCENT
+	verbosegiveitem TM_SWEET_SCENT, 10
 	iffalse .NoRoom
 	setevent EVENT_GOT_TM12_SWEET_SCENT
 .GotSweetScent:
@@ -62,6 +64,25 @@ TeacherScript_0x62d63:
 .ForestIsRestless:
 	writetext UnknownText_0x62e41
 	buttonsound
+	closetext
+	end
+    
+GetSweetHoney:
+	checkevent EVENT_GOT_HONEY
+	iftrue UnknownScript_0x62d7e
+	writetext SweetHoneyText
+	buttonsound
+	verbosegiveitem SWEET_HONEY
+	iffalse CantGiveSweetHoney
+	setevent EVENT_GOT_HONEY
+	writetext SweetHoneyGiveText
+	waitbutton
+	closetext
+	end
+
+CantGiveSweetHoney:
+	writetext SweetHoneyBagFullText
+	waitbutton
 	closetext
 	end
 
@@ -85,6 +106,35 @@ MovementData_0x62d9a:
 	step DOWN
 	step RIGHT
 	step_end
+    
+SweetHoneyText:
+	text "My #MON is an"
+	line "expert at collect-"
+	cont "ing SWEET HONEY."
+
+	para "I'll share some"
+	line "with you."
+	done
+	
+SweetHoneyBagFullText: ; 0x557d6
+	text "I want to give you"
+	line "some SWEET HONEY,"
+
+	para "but you have no"
+	line "room for it."
+	done
+	
+SweetHoneyGiveText: ; 0x55819
+	text "Here you go! Have"
+	line "some SWEET HONEY!"
+	
+	para "Have a #MON"
+	line "hold it to make a"
+	cont "wild #MON"
+	cont "easier to catch."
+	done
+
+
 
 UnknownText_0x62d9d:
 	text "Oh, honey. You're"

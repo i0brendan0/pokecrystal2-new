@@ -5,16 +5,50 @@
 	const CERULEANCITY_COOLTRAINER_F
 	const CERULEANCITY_FISHER
 	const CERULEANCITY_YOUNGSTER
+	const LEGENDARY_MEWTWO
 
 CeruleanCity_MapScripts:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
+	db 2 ; callbacks
 	callback MAPCALLBACK_NEWMAP, .FlyPoint
+	callback MAPCALLBACK_OBJECTS, .Mewtwo
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_CERULEAN
 	return
+	
+.Mewtwo:
+	checkevent EVENT_FOUGHT_MEWTWO
+	iftrue .NoAppear
+	checkevent EVENT_BEAT_RED
+	iftrue .Appear
+	jump .NoAppear
+
+.Appear:
+	appear LEGENDARY_MEWTWO
+	return
+
+.NoAppear:
+	disappear LEGENDARY_MEWTWO
+	return
+
+Mewtwo:
+	opentext
+	writetext MewtwoText
+	cry Mewtwo
+	pause 15
+	closetext
+	setevent EVENT_FOUGHT_MEWTWO
+	loadwildmon MEWTWO, 50
+	startbattle
+	disappear LEGENDARY_MEWTWO
+	reloadmapafterbattle
+	end
+
+MewtwoText:
+	text "Gyaoo!"
+	done
 
 CeruleanCityCooltrainerMScript:
 	faceplayer
@@ -297,10 +331,11 @@ CeruleanCity_MapEvents:
 	bg_event 26, 29, BGEVENT_READ, CeruleanCityMartSign
 	bg_event  2, 12, BGEVENT_ITEM, CeruleanCityHiddenBerserkGene
 
-	db 6 ; object events
+	db 7 ; object events
 	object_event 15, 23, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerMScript, -1
 	object_event 23, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCitySuperNerdScript, -1
 	object_event 20, 24, SPRITE_SLOWPOKE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanCitySlowbro, -1
 	object_event 21, 24, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerFScript, -1
 	object_event 30, 26, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
+	object_event 12,  2, SPRITE_CHARMANDER, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PINK, PERSONTYPE_SCRIPT, 0, Mewtwo, EVENT_LEGENDARY_MEWTWO

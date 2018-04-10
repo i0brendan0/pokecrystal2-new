@@ -7,7 +7,7 @@ HappinessChanges:
 	db  +3,  +2,  +1 ; Battled a Gym Leader
 	db  +1,  +1,  +0 ; Learned a move
 	db  -1,  -1,  -1 ; Lost to an enemy
-	db  -5,  -5, -10 ; Fainted due to poison
+	db  -2,  -3,  -5 ; Fainted due to poison
 	db  -5,  -5, -10 ; Lost to a much stronger enemy
 	db  +1,  +1,  +1 ; Haircut (Y1)
 	db  +3,  +3,  +1 ; Haircut (Y2)

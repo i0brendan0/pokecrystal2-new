@@ -20,7 +20,7 @@ SandstormHouseWoman:
 .Loyal:
 	writetext SandstormHouseWomanLoyalText
 	buttonsound
-	verbosegiveitem TM_SANDSTORM
+	verbosegiveitem TM_SANDSTORM, 10
 	iffalse .Done
 	setevent EVENT_GOT_TM37_SANDSTORM
 .AlreadyGotItem:

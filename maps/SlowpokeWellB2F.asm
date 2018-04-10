@@ -28,7 +28,7 @@ GymGuyScript_0x5ad0b:
 	end
 
 SlowpokeWellB2FTMRainDance:
-	itemball TM_RAIN_DANCE
+	itemball TM_RAIN_DANCE, 10
 
 UnknownText_0x5ad2a:
 	text "I'm waiting to see"

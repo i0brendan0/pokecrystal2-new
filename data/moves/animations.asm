@@ -252,7 +252,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
-	dw BattleAnim_252
+	dw BattleAnim_MagnetBomb
 	dw BattleAnim_253
 	dw BattleAnim_254
 	dw BattleAnim_SweetScent2
@@ -282,7 +282,6 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-BattleAnim_252: ; c929b
 BattleAnim_253: ; c929b
 BattleAnim_254: ; c929b
 BattleAnim_MirrorMove: ; c929b
@@ -1389,7 +1388,7 @@ BattleAnim_RazorWind: ; c9bbd
 	anim_ret
 ; c9c00
 
-BattleAnim_Sonicboom_JP: ; c9c00
+BattleAnim_Sonicboom: ; c9c00
 	anim_2gfx ANIM_GFX_WHIP, ANIM_GFX_HIT
 .loop
 	anim_sound 3, 0, SFX_RAZOR_WIND
@@ -1415,7 +1414,7 @@ BattleAnim_Sonicboom_JP: ; c9c00
 ; c9c36
 
 BattleAnim_Gust: ; c9c36
-BattleAnim_Sonicboom: ; c9c36
+BattleAnim_Sonicboom_JP: ; c9c36
 	anim_2gfx ANIM_GFX_WIND, ANIM_GFX_HIT
 .loop
 	anim_sound 0, 1, SFX_RAZOR_WIND
@@ -2523,6 +2522,7 @@ BattleAnim_PetalDance: ; ca564
 	anim_ret
 ; ca580
 
+BattleAnim_MagnetBomb:
 BattleAnim_Barrage: ; ca580
 	anim_2gfx ANIM_GFX_EGG, ANIM_GFX_EXPLOSION
 	anim_sound 6, 2, SFX_THROW_BALL

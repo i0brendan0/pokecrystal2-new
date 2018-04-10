@@ -171,7 +171,7 @@ UnknownScript_0x188eac:
 	iftrue UnknownScript_0x188ec5
 	writetext UnknownText_0x1893c4
 	buttonsound
-	verbosegiveitem TM_ZAP_CANNON
+	verbosegiveitem TM_ZAP_CANNON, 10
 	iffalse UnknownScript_0x188ec3
 	setevent EVENT_GOT_TM07_ZAP_CANNON
 	writetext UnknownText_0x1893f4

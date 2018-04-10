@@ -11,13 +11,13 @@ TrainerClassDVs: ; 270d6
 	db $98, $88 ; chuck
 	db $7C, $DD ; clair
 	db $DD, $DD ; rival1
-	db $98, $88 ; pokemon prof
+	db $FA, $AA ; pokemon prof
 	db $DC, $DD ; will
-	db $DC, $DD ; cal
+	db $FF, $FF ; cal
 	db $DC, $DD ; bruno
 	db $7F, $DF ; karen
 	db $DC, $DD ; koga
-	db $DC, $DD ; champion
+	db $FA, $AA ; champion
 	db $98, $88 ; brock
 	db $78, $88 ; misty
 	db $98, $88 ; lt surge
@@ -28,8 +28,8 @@ TrainerClassDVs: ; 270d6
 	db $98, $88 ; bird keeper
 	db $58, $88 ; lass
 	db $98, $88 ; janine
-	db $D8, $C8 ; cooltrainerm
-	db $7C, $C8 ; cooltrainerf
+	db $AA, $AA ; cooltrainerm
+	db $AA, $AA ; cooltrainerf
 	db $69, $C8 ; beauty
 	db $98, $88 ; pokemaniac
 	db $D8, $A8 ; gruntm
@@ -52,11 +52,11 @@ TrainerClassDVs: ; 270d6
 	db $98, $88 ; firebreather
 	db $98, $88 ; juggler
 	db $98, $88 ; blackbelt
-	db $D8, $A8 ; executivem
+	db $2A, $AA ; executivem
 	db $98, $88 ; psychic
 	db $6A, $A8 ; picnicker
 	db $98, $88 ; camper
-	db $7E, $A8 ; executivef
+	db $2A, $AA ; executivef
 	db $98, $88 ; sage
 	db $78, $88 ; medium
 	db $98, $88 ; boarder
@@ -64,9 +64,9 @@ TrainerClassDVs: ; 270d6
 	db $68, $8A ; kimono girl
 	db $68, $A8 ; twins
 	db $6D, $88 ; pokefanf
-	db $FD, $DE ; red
-	db $9D, $DD ; blue
+	db $FA, $AA ; red
+	db $FA, $AA ; blue
 	db $98, $88 ; officer
 	db $7E, $A8 ; gruntf
-	db $98, $88 ; mysticalman
+	db $AA, $AA ; mysticalman
 ; 2715c

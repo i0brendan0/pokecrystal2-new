@@ -64,7 +64,7 @@ WhitneyScript_0x5400c:
 UnknownScript_0x54064:
 	writetext UnknownText_0x5428b
 	buttonsound
-	verbosegiveitem TM_ATTRACT
+	verbosegiveitem TM_ATTRACT, 10
 	iffalse UnknownScript_0x5407b
 	setevent EVENT_GOT_TM45_ATTRACT
 	writetext UnknownText_0x54302
@@ -239,6 +239,9 @@ UnknownText_0x5428b:
 
 	para "STRENGTH outside"
 	line "of battle."
+    
+	para "Now #MON up to"
+	line "L40 will obey."
 
 	para "It also boosts"
 	line "your #MON's"

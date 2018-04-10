@@ -65,7 +65,7 @@ CooltrainerFScript_0x5e56a:
 .NoRockets:
 	writetext UnknownText_0x5e7e2
 	buttonsound
-	verbosegiveitem TM_SUNNY_DAY
+	verbosegiveitem TM_SUNNY_DAY, 10
 	iffalse .NoRoom
 	writetext UnknownText_0x5e821
 	waitbutton

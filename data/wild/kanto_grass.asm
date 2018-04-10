@@ -342,7 +342,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 18, SNUBBULL
 	db 18, RATICATE
 	db 18, JIGGLYPUFF
-	db 16, ABRA
+	db 16, VULPIX
 	db 16, ABRA
 	; nite
 	db 17, MEOWTH
@@ -369,7 +369,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 16, ABRA
 	db 17, GROWLITHE
 	db 16, JIGGLYPUFF
-	db 18, KADABRA
+	db 18, VULPIX
 	db 18, KADABRA
 	; nite
 	db 17, MEOWTH
@@ -387,17 +387,17 @@ KantoGrassWildMons: ; 0x2b274
 	db 15, SPEAROW
 	db 15, RATICATE
 	db 15, FEAROW
-	db 15, FEAROW
+	db 15, MANKEY
 	db 18, MAROWAK
-	db 18, MAROWAK
+	db 18, PRIMEAPE
 	; day
 	db 15, RATTATA
 	db 15, SPEAROW
 	db 15, RATICATE
 	db 15, FEAROW
-	db 15, FEAROW
+	db 15, MANKEY
 	db 18, MAROWAK
-	db 18, MAROWAK
+	db 18, PRIMEAPE
 	; nite
 	db 15, RATTATA
 	db 15, VENONAT

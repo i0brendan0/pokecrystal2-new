@@ -1151,7 +1151,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 2, ZUBAT
 	db 2, GEODUDE
 	db 4, GEODUDE
-	db 2, ZUBAT
+	db 2, TEDDIURSA
 	db 4, ZUBAT
 	db 4, DUNSPARCE
 	; nite
@@ -1159,7 +1159,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 2, ZUBAT
 	db 2, GEODUDE
 	db 4, GEODUDE
-	db 2, ZUBAT
+	db 2, TEDDIURSA
 	db 4, ZUBAT
 	db 4, DUNSPARCE
 
@@ -1279,7 +1279,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 7, BELLSPROUT
 	db 6, HOPPIP
 	db 7, PIDGEY
-	db 7, HOPPIP
+	db 7, MAREEP
 	db 7, HOPPIP
 	; day
 	db 4, EKANS
@@ -1287,7 +1287,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 7, BELLSPROUT
 	db 6, HOPPIP
 	db 7, PIDGEY
-	db 7, HOPPIP
+	db 7, MAREEP
 	db 7, HOPPIP
 	; nite
 	db 4, WOOPER
@@ -1386,7 +1386,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 4, PIDGEY
 	db 5, BELLSPROUT
 	db 5, GROWLITHE
-	db 5, PIDGEY
+	db 5, VULPIX
 	db 6, PIDGEY
 	db 6, PIDGEY
 	; day
@@ -1394,7 +1394,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 4, PIDGEY
 	db 5, BELLSPROUT
 	db 5, GROWLITHE
-	db 5, PIDGEY
+	db 5, VULPIX
 	db 6, PIDGEY
 	db 6, PIDGEY
 	; nite
@@ -1414,7 +1414,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 15, PIDGEY
 	db 16, GROWLITHE
 	db 15, PIDGEOTTO
-	db 15, LEDIAN
+	db 15, VULPIX
 	db 15, LEDIAN
 	; day
 	db 13, PIDGEY
@@ -1422,7 +1422,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 15, PIDGEY
 	db 16, GROWLITHE
 	db 15, PIDGEOTTO
-	db 15, PIDGEY
+	db 15, VULPIX
 	db 15, PIDGEY
 	; nite
 	db 13, SPINARAK
@@ -1495,7 +1495,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 15, RATTATA
 	db 16, RATICATE
 	db 15, ARBOK
-	db 16, FEAROW
+	db 16, MANKEY
 	db 16, FEAROW
 	; day
 	db 13, EKANS
@@ -1503,7 +1503,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 15, RATTATA
 	db 16, RATICATE
 	db 15, ARBOK
-	db 16, FEAROW
+	db 16, MANKEY
 	db 16, FEAROW
 	; nite
 	db 13, RATTATA
@@ -1511,7 +1511,7 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 15, RATICATE
 	db 16, GOLBAT
 	db 15, MARILL
-	db 16, GOLBAT
+	db 16, MANKEY
 	db 16, GOLBAT
 
 	map_id ROUTE_43
@@ -1521,23 +1521,23 @@ JohtoGrassWildMons: ; 0x2a5e9
 	db 16, PIDGEOTTO
 	db 16, FARFETCH_D
 	db 15, FURRET
-	db 17, RATICATE
-	db 17, FURRET
-	db 17, FURRET
+	db 17, GIRAFARIG
+	db 17, MAREEP
+	db 17, FLAAFFY
 	; day
 	db 15, SENTRET
 	db 16, PIDGEOTTO
 	db 16, FARFETCH_D
 	db 15, FURRET
-	db 17, RATICATE
-	db 17, FURRET
-	db 17, FURRET
+	db 17, GIRAFARIG
+	db 17, MAREEP
+	db 17, FLAAFFY
 	; nite
 	db 15, VENONAT
 	db 16, NOCTOWL
 	db 16, RATICATE
 	db 17, VENONAT
-	db 17, RATICATE
+	db 17, GIRAFARIG
 	db 17, VENOMOTH
 	db 17, VENOMOTH
 

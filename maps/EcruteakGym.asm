@@ -53,7 +53,7 @@ MortyScript_0x99d58:
 	setevent EVENT_BEAT_MEDIUM_GRACE
 	writetext MortyText_FogBadgeSpeech
 	buttonsound
-	verbosegiveitem TM_SHADOW_BALL
+	verbosegiveitem TM_SHADOW_BALL, 10
 	iffalse .NoRoomForShadowBall
 	setevent EVENT_GOT_TM30_SHADOW_BALL
 	writetext MortyText_ShadowBallSpeech

@@ -31,6 +31,7 @@ Red:
 	pause 30
 	special HealParty
 	refreshscreen
+    setevent EVENT_BEAT_RED
 	credits
 	end
 

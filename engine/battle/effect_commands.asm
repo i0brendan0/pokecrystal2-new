@@ -735,19 +735,38 @@ BattleCommand_CheckObedience: ; 343db
 	ld a, MAX_LEVEL + 1
 	jr nz, .getlevel
 
+	; glacierbadge
+	bit GLACIERBADGE, [hl]
+	ld a, 80
+	jr nz, .getlevel
+	
+	; mineralbadge
+	bit MINERALBADGE, [hl]
+	ld a, 70
+	jr nz, .getlevel
+	
 	; stormbadge
 	bit STORMBADGE, [hl]
-	ld a, 70
+	ld a, 60
 	jr nz, .getlevel
 
 	; fogbadge
 	bit FOGBADGE, [hl]
 	ld a, 50
 	jr nz, .getlevel
+	; plainbadge
+	bit PLAINBADGE, [hl]
+	ld a, 40
+	jr nz, .getlevel
 
 	; hivebadge
 	bit HIVEBADGE, [hl]
 	ld a, 30
+	jr nz, .getlevel
+    
+	; zephyrbadge
+	bit ZEPHYRBADGE, [hl]
+	ld a, 20
 	jr nz, .getlevel
 
 	; no badges
@@ -1668,7 +1687,7 @@ BattleCommand_CheckHit: ; 34d32
 	jp z, .Miss
 
 	call .Protect
-	jp nz, .Miss
+	jp nz, .Failed
 
 	call .DrainSub
 	jp z, .Miss
@@ -1728,8 +1747,12 @@ BattleCommand_CheckHit: ; 34d32
 
 .Hit:
 	ret
-
-
+	
+.Failed:
+	ld a, 1
+	ld [wEffectFailed], a
+	ret
+	
 .Miss:
 ; Keep the damage value intact if we're using (Hi) Jump Kick.
 	ld a, BATTLE_VARS_MOVE_EFFECT

@@ -95,7 +95,7 @@ VictoryRoadRivalNext:
 	end
 
 VictoryRoadTMEarthquake:
-	itemball TM_EARTHQUAKE
+	itemball TM_EARTHQUAKE, 10
 
 VictoryRoadMaxRevive:
 	itemball MAX_REVIVE

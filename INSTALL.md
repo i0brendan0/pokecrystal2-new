@@ -1,10 +1,7 @@
 # Instructions
 
-The source files are assembled into a ROM using [**rgbds**](https://github.com/rednex/rgbds).
+The game is build using [**rgbds**](https://github.com/rednex/rgbds).
 These instructions explain how to set up the tools required to build.
-
-If you run into trouble, ask for help on IRC or Discord (see [README.md](README.md)).
-
 
 ## Linux
 
@@ -16,13 +13,8 @@ cd rgbds
 sudo make install
 cd ..
 
-git clone https://github.com/pret/pokecrystal
-cd pokecrystal
-```
-
-To build **pokecrystal.gbc**:
-
-```bash
+git clone https://github.com/i0brendan0/pokecrystal2-new
+cd pokecrystal2-new
 make
 ```
 
@@ -39,13 +31,8 @@ cd rgbds
 sudo make install
 cd ..
 
-git clone https://github.com/pret/pokecrystal
-cd pokecrystal
-```
-
-To build **pokecrystal.gbc**:
-
-```bash
+git clone https://github.com/i0brendan0/pokecrystal2-new
+cd pokecrystal2-new
 make
 ```
 
@@ -60,6 +47,8 @@ Run setup and leave the default settings. At "Select Packages", choose to instal
 - `git`
 - `gcc-core`
 
+You may need to search for them as the installer has many packages. The ones you need are exactly as written.
+
 Then download [**rgbds**](https://github.com/rednex/rgbds/releases/): the latest **win64.tar.gz** or **win32.tar.gz** release. Extract it and put all the `exe` and `dll` files individually in **C:\Cygwin64\usr\local\bin**.
 
 **Note: If you have an older rgbds, you will need to update to 0.3.3 or newer.** Ignore this if you have never installed rgbds before.
@@ -67,18 +56,7 @@ Then download [**rgbds**](https://github.com/rednex/rgbds/releases/): the latest
 In the **Cygwin terminal**, enter these commands:
 
 ```bash
-git clone https://github.com/pret/pokecrystal
-cd pokecrystal
-```
-
-To build **pokecrystal.gbc**:
-
-```bash
+git clone https://github.com/i0brendan0/pokecrystal2-new
+cd pokecrystal2-new
 make
-```
-
-To build **pokecrystal11.gbc**:
-
-```bash
-make crystal11
 ```

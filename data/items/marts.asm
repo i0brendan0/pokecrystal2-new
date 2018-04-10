@@ -109,7 +109,7 @@ MartGoldenrod2F1: ; 16118
 ; 16121
 
 MartGoldenrod2F2: ; 16121
-	db 8 ; # items
+	db 9 ; # items
 	db POKE_BALL
 	db GREAT_BALL
 	db ESCAPE_ROPE
@@ -118,6 +118,7 @@ MartGoldenrod2F2: ; 16121
 	db FULL_HEAL
 	db POKE_DOLL
 	db FLOWER_MAIL
+    db LINK_CABLE
 	db -1 ; end
 ; 1612b
 
@@ -134,12 +135,13 @@ MartGoldenrod3F: ; 1612b
 ; 16134
 
 MartGoldenrod4F: ; 16134
-	db 5 ; # items
+	db 6 ; # items
 	db PROTEIN
 	db IRON
 	db CARBOS
 	db CALCIUM
 	db HP_UP
+    db PP_UP
 	db -1 ; end
 ; 1613b
 
@@ -349,20 +351,28 @@ MartCeladon3F: ; 161ce
 ; 161d5
 
 MartCeladon4F: ; 161d5
-	db 3 ; # items
+	db 10 ; # items
 	db POKE_DOLL
 	db LOVELY_MAIL
 	db SURF_MAIL
+	db FIRE_STONE
+	db WATER_STONE
+	db THUNDERSTONE
+	db LEAF_STONE
+	db MOON_STONE
+	db SUN_STONE
+	db LINK_CABLE
 	db -1 ; end
 ; 161da
 
 MartCeladon5F1: ; 161da
-	db 5 ; # items
+	db 6 ; # items
 	db HP_UP
 	db PROTEIN
 	db IRON
 	db CARBOS
 	db CALCIUM
+    db PP_UP
 	db -1 ; end
 ; 161e1
 

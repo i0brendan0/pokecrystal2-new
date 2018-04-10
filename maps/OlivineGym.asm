@@ -32,7 +32,7 @@ JasmineScript_0x9c12f:
 	iftrue .GotIronTail
 	writetext Jasmine_BadgeSpeech
 	buttonsound
-	verbosegiveitem TM_IRON_TAIL
+	verbosegiveitem TM_IRON_TAIL, 10
 	iffalse .NoRoomForIronTail
 	setevent EVENT_GOT_TM23_IRON_TAIL
 	writetext Jasmine_IronTailSpeech
@@ -140,6 +140,10 @@ Jasmine_BadgeSpeech:
 	text "MINERALBADGE"
 	line "raises #MON's"
 	cont "DEFENSE."
+    
+	para "Since it's yours,"
+	line "#MON up to L70"
+	cont "will listen."
 
 	para "…Um… Please take"
 	line "this too…"
