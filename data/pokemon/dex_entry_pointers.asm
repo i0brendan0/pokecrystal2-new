@@ -251,4 +251,5 @@ PokedexDataPointerTable: ; 0x44378
 	dw LugiaPokedexEntry
 	dw HoOhPokedexEntry
 	dw CelebiPokedexEntry
+	dw MissingNoPokedexEntry
 ; 0x4456e

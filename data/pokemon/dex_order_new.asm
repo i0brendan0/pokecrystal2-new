@@ -252,4 +252,5 @@ NewPokedexOrder: ; 0x40d60
 	db MEWTWO
 	db MEW
 	db CELEBI
+	db MISSINGNO
 ; 0x40e5b

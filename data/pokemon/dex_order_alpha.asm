@@ -252,4 +252,5 @@ AlphabeticalPokedexOrder: ; 0x40c65
 	db YANMA
 	db ZAPDOS
 	db ZUBAT
+	db MISSINGNO
 ; 0x40d60
