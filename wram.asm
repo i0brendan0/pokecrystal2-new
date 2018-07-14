@@ -397,7 +397,7 @@ wBattleMonNick:: ds MON_NAME_LENGTH ; c621
 
 wBattleMon:: battle_struct wBattleMon ; c62c
 
-	ds 2
+	ds 1
 
 wWildMon:: db ; c64e
 	ds 1
@@ -2767,7 +2767,7 @@ wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH ; ddff
 wPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH ; de41
 wPartyMonNicknamesEnd::
 
-	ds 22
+	ds 16
 
 wPokedexCaught:: flag_array NUM_POKEMON ; de99
 wEndPokedexCaught::

@@ -163,6 +163,10 @@ DoBadgeTypeBoosts: ; fbe24
 
 	push de
 	push bc
+	
+	ld a, [wd265]
+	cp DARK
+	jr z, .CheckBeatKaren
 
 	ld hl, BadgeTypeBoosts
 
@@ -187,6 +191,11 @@ DoBadgeTypeBoosts: ; fbe24
 .NextBadge:
 	inc hl
 	jr .CheckBadge
+	
+.CheckBeatKaren:
+	ld, wEventFlags + (EVENT_KAREN_DARK_BOOST >> 3)
+	bit (EVENT_KAREN_DARK_BOOST & %00001111), [hl]
+	jr nz, .done
 
 .ApplyBoost:
 	ld a, [wCurDamage]

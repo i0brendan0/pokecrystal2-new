@@ -271,8 +271,8 @@ JOHTO_POKEMON EQU const_value
 	const LUGIA      ; f9
 	const HO_OH      ; fa
 	const CELEBI     ; fb
+	const MISSINGNO  ; fc
 NUM_POKEMON EQU const_value + -1
-	const MON_FC     ; fc
 	const EGG        ; fd
 	const MON_FE     ; fe
 
