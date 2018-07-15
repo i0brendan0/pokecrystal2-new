@@ -53,6 +53,7 @@ KarenScript_Battle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_KAREN
+	setevent EVENT_KAREN_DARK_BOOST
 	opentext
 	writetext KarenScript_KarenDefeatText
 	waitbutton

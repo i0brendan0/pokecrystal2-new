@@ -34,6 +34,7 @@ Landmarks: ; 0x1ca8c3
 	landmark  60,  60, Route38Name
 	landmark  44,  64, Route39Name
 	landmark  44,  76, OlivineCityName
+	landmark  36, 140, FarawayIslandName
 	landmark  46,  78, LighthouseName
 	landmark  36,  72, BattleTowerName
 	landmark  36,  80, Route40Name
@@ -62,6 +63,7 @@ Landmarks: ; 0x1ca8c3
 	landmark  84,  68, MtMoonName
 	landmark  96,  68, Route4Name
 	landmark 108,  68, CeruleanCityName
+	landmark 100,  60, CeruleanCaveName 
 	landmark 108,  60, Route24Name
 	landmark 116,  52, Route25Name
 	landmark 108,  76, Route5Name
@@ -206,3 +208,4 @@ TohjoFallsName:      db "TOHJO FALLS@"
 UndergroundName:     db "UNDERGROUND@"
 BattleTowerName:     db "BATTLE¯TOWER@"
 SpecialMapName:      db "SPECIAL@"
+FarawayIslandName:   db "FARAWAY MAP@"

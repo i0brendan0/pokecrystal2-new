@@ -328,11 +328,10 @@ ChooseWildEncounter: ; 2a14f
 	ld a, b
 	ld [wCurPartyLevel], a
 	ld b, [hl]
-	; ld a, b
+	ld a, b
 	call ValidateTempWildMonSpecies
 	jr c, .nowildbattle
 
-	ld a, b ; This is in the wrong place.
 	cp UNOWN
 	jr nz, .done
 

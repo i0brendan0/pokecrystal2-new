@@ -194,7 +194,7 @@ DoBadgeTypeBoosts: ; fbe24
 	
 .CheckBeatKaren:
 	ld, wEventFlags + (EVENT_KAREN_DARK_BOOST >> 3)
-	bit (EVENT_KAREN_DARK_BOOST & %00001111), [hl]
+	bit (EVENT_KAREN_DARK_BOOST & 7), [hl]
 	jr nz, .done
 
 .ApplyBoost:

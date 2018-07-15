@@ -145,5 +145,11 @@ KantoWaterWildMons: ; 0x2b7f7
 	db 35, TENTACOOL
 	db 30, TENTACOOL
 	db 35, TENTACRUEL
+	
+	map SEAFOAM_ISLAND_B1_F
+	db 10 percent
+	db 25, GOLDEEN
+	db 25, TENTACOOL
+	db 25, POLIWHIRL
 
 	db -1 ; end

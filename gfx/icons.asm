@@ -38,3 +38,4 @@ GyaradosIcon:     INCBIN "gfx/icons/gyarados.2bpp" ; 0x8fd0d
 SlowpokeIcon:     INCBIN "gfx/icons/slowpoke.2bpp" ; 0x8fd8d
 SudowoodoIcon:    INCBIN "gfx/icons/sudowoodo.2bpp" ; 0x8fe0d
 BigmonIcon:       INCBIN "gfx/icons/bigmon.2bpp" ; 0x8fe8d
+MissingNoIcon:    INCBIN "gfx/icons/missingno.2bpp"

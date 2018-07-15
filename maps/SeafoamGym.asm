@@ -1,51 +1,16 @@
 	const_def 2 ; object constants
 	const SEAFOAMGYM_BLAINE
 	const SEAFOAMGYM_GYM_GUY
-	const LEGENDARYBIRD_ARTICUNO
 
 SeafoamGym_MapScripts:
 	db 1 ; scene scripts
 	scene_script .DummyScene
 
-	db 1 ; callbacks
-
-	dbw MAPCALLBACK_OBJECTS, .Articuno
+	db 0 ; callbacks
 
 .DummyScene:
 	end
 	
-.Articuno:
-	checkevent EVENT_FOUGHT_ARTICUNO
-	iftrue .NoAppear
-	checkevent EVENT_BEAT_RED
-	iftrue .Appear
-	jump .NoAppear
-
-.Appear:
-	appear LEGENDARYBIRD_ARTICUNO
-	return
-
-.NoAppear:
-	disappear LEGENDARYBIRD_ARTICUNO
-	return
-
-Articuno:
-	opentext
-	writetext ArticunoText
-	cry Articuno
-	pause 15
-	closetext
-	setevent EVENT_FOUGHT_ARTICUNO
-	loadwildmon ARTICUNO, 50
-	startbattle
-	disappear LEGENDARYBIRD_ARTICUNO
-	reloadmapafterbattle
-	end
-
-ArticunoText:
-	text "Gyaoo!"
-	done
-
 BlaineScript_0x1ab4fb:
 	faceplayer
 	opentext
@@ -193,14 +158,16 @@ SeafoamGymGuyWinText2:
 SeafoamGym_MapEvents:
 	db 0, 0 ; filler
 
-	db 1 ; warp events
+	db 4 ; warp events
 	warp_event  5,  5, ROUTE_20, 1
+	warp_def 17, 3, 3, SEAFOAM_GYM
+	warp_def 5, 3, 2, SEAFOAM_GYM
+	warp_def 15, 7, 1, SEAFOAM_ISLAND_B1_F
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
-	db 3 ; object events
+	db 2 ; object events
 	object_event  5,  2, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
 	object_event  6,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
-	object_event  3,  3, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Articuno, EVENT_LEGENDARY_BIRD_ARTICUNO

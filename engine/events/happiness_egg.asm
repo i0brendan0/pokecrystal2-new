@@ -79,6 +79,28 @@ ChangeHappiness: ; 71c2
 	ld a, [de]
 	jr nc, .negative
 	add [hl]
+	
+	push af
+	push hl
+	ld hl, wPartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	ld b, [hl]
+	call GetItemHeldEffect
+	pop hl
+	ld a, b
+	cp HELD_FRIENDSHIP_INCREASE
+	jr z, .increase
+	pop af
+	jr .done
+	
+.increase
+	pop af
+	ld b, [hl]
+	srl b
+	adc b
+	
 	jr nc, .done
 	ld a, -1
 	jr .done
@@ -114,7 +136,7 @@ StepHappiness:: ; 725a
 	inc a
 	and 1
 	ld [hl], a
-	ret nz
+	jr nz, .soothe_bell
 
 	ld de, wPartyCount
 	ld a, [de]
@@ -140,7 +162,39 @@ StepHappiness:: ; 725a
 	dec c
 	jr nz, .loop
 	ret
-
+	
+.soothe_bell
+	ld a, [wPartyCount]
+	and a
+	ret z
+	ld c, a
+	ld hl, wPartyMon1Item
+	ld de, wPartyMon1Happiness
+.bell_loop
+	push bc
+	ld b, [hl]
+	call GetItemHeldEffect
+	ld a, b
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	pop bc
+	cp HELD_FRIENDSHIP_BOOST
+	ld a, [de]
+	jr nz, .no_change
+	inc a
+	jr nz, .no_change
+	dec a
+.no_change
+	ld [de], a
+	ld a, e
+	add PARTYMON_STRUCT_LENGTH
+	ld e, a
+	jr nc, .no_carry
+	inc d
+.no_carry
+	dec c
+	jr nz, .bell_loop
+	ret
 
 DayCareStep:: ; 7282
 ; Raise the experience of Day-Care Pokémon every step cycle.

@@ -6,13 +6,15 @@
 	const OLIVINEPORT_FISHING_GURU2
 	const OLIVINEPORT_YOUNGSTER
 	const OLIVINEPORT_COOLTRAINER_F
+	const OLIVINEPORT_MAP_SAILOR
 
 OlivinePort_MapScripts:
 	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .LeaveFastShip ; SCENE_OLIVINEPORT_LEAVE_SHIP
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	dbw MAPCALLBACK_OBJECT, .ShowMapSailor
 
 .DummyScene0:
 	end
@@ -27,6 +29,19 @@ OlivinePort_MapScripts:
 	setscene SCENE_DEFAULT
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	blackoutmod OLIVINE_CITY
+	end
+	
+.ShowMapSailor:
+	checkevent EVENT_TOLD_ABOUT_FARAWAY_ISLAND
+	iftrue .Appear
+	disappear OLIVINEPORT_MAP_SAILOR
+	changeblock $7, $8, $06
+	changeblock $7, $9, $0A
+	changeblock $7, $A, $0A
+	end
+	
+.Appear:
+	appear OLIVINEPORT_MAP_SAILOR
 	end
 
 SailorScript_0x748c0:
@@ -382,6 +397,96 @@ OlivinePortSailorText:
 	line "allowed in."
 	done
 
+MapSailor:
+	faceplayer
+	opentext
+	checkitem FARAWAY_MAP
+	iffalse .NoMap
+	checkevent EVENT_FOUGHT_MEW
+	iftrue .FoughtMew
+	writetext HasMapText
+	yesorno
+	iffalse .DidNotLeave
+	writetext LeavingText
+	special FadeOutPalettes
+	pause 15
+	warpfacing UP, FARAWAY_ISLAND_OUTSIDE, 24, 14
+	end
+	
+.NoMap:
+	writetext DoesNotHaveMapText
+	waitbutton
+	closetext
+	end
+	
+.FoughtMew:
+	writetext AlreadyWentText
+	waitbutton
+	closetext
+	end
+	
+.DidNotLeave
+	writetext DidNotLeaveText
+	waitbutton
+	closetext
+	end
+	
+HasMapText:
+	text "I see you are in"
+	line "possession of a"
+	cont "rare MAP."
+	
+	para "May I take a"
+	line "look at it?"
+	
+	para "Ah! This is some-"
+	line "thing I would be"
+	cont "very interested in."
+	
+	para "I can take you to"
+	line "this place shown"
+	
+	para "on the MAP here"
+	line "for free."
+	
+	para "Would you like to"
+	line "embark on a journey"
+	cont "to a new location?"
+	done
+
+LeavingText:
+	text "Alrighty. Let's get"
+	line "a move on, shall we?"
+	done
+
+DoesNotHaveMapText:
+	text "I am a collector"
+	line "of special items"
+	
+	para "related to the"
+	line "sea."
+	
+	para "If you find any-"
+	line "thing like that,"
+	cont "bring it to me."
+	done
+
+AlreadyWentText:
+	text "Looks like the trip"
+	line "was a bust."
+	
+	para "I hope you found"
+	line "something worthwhile."
+	done
+
+DidNotLeaveText:
+	text "Oh, OK..."
+	
+	para "If you change your"
+	line "mind I will be"
+	cont "waiting here."
+	done
+	
 OlivinePort_MapEvents:
 	db 0, 0 ; filler
 
@@ -395,7 +500,7 @@ OlivinePort_MapEvents:
 	db 1 ; bg events
 	bg_event  1, 22, BGEVENT_ITEM, OlivinePortHiddenProtein
 
-	db 7 ; object events
+	db 8 ; object events
 	object_event  7, 23, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SailorScript_0x748c0, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 	object_event  7, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorScript, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	object_event  6, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SailorScript_0x7499c, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
@@ -403,3 +508,4 @@ OlivinePort_MapEvents:
 	object_event 13, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FishingGuruScript_0x74a0c, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	object_event  4, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x74a17, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	object_event 11, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CooltrainerFScript_0x74a22, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	person_event SPRITE_SAILOR, 16, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Map_Sailor, EVENT_MAP_SAILOR

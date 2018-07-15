@@ -142,6 +142,10 @@ ENDM
 	map_const SAFARI_ZONE_FUCHSIA_GATE_BETA,                5,  4 ; 89
 	map_const SAFARI_ZONE_BETA,                            10, 18 ; 90
 	map_const VICTORY_ROAD,                                10, 36 ; 91
+	mapgroup VICTORY_ROAD,                               36, 10 ; 91
+	mapgroup SILVER_CAVE_MOLTRES_ROOM,                   15,  8
+	mapgroup SAFARI_ZONE_2,                              10, 10
+	mapgroup SAFARI_ZONE_3,                              10, 10
 
 	newgroup                                                      ;  4
 
@@ -173,11 +177,12 @@ ENDM
 	map_const CINNABAR_POKECENTER_1F,                       5,  4 ;  1
 	map_const CINNABAR_POKECENTER_2F_BETA,                  8,  4 ;  2
 	map_const ROUTE_19_FUCHSIA_GATE,                        5,  4 ;  3
-	map_const SEAFOAM_GYM,                                  5,  4 ;  4
+	map_const SEAFOAM_GYM,                                 10,  5 ;  4
 	map_const ROUTE_19,                                    10, 18 ;  5
 	map_const ROUTE_20,                                    30,  9 ;  6
 	map_const ROUTE_21,                                    10, 18 ;  7
 	map_const CINNABAR_ISLAND,                             10,  9 ;  8
+	mapgroup SEAFOAM_ISLAND_B1_F,                        20, 20
 
 	newgroup                                                      ;  7
 
@@ -198,6 +203,7 @@ ENDM
 	map_const ROUTE_24,                                    10,  9 ; 15
 	map_const ROUTE_25,                                    30,  9 ; 16
 	map_const CERULEAN_CITY,                               20, 18 ; 17
+	mapgroup CERULEAN_CAVE,                              20, 20
 
 	newgroup                                                      ;  8
 
@@ -315,6 +321,8 @@ ENDM
 	map_const MOUNT_MOON_SQUARE,                           15,  9 ; 10
 	map_const MOUNT_MOON_GIFT_SHOP,                         4,  4 ; 11
 	map_const TIN_TOWER_ROOF,                              10,  9 ; 12
+	mapgroup FARAWAY_ISLAND_OUTSIDE,                     16, 14
+	mapgroup FARAWAY_ISLAND_CAVE,                         8,  8
 
 	newgroup                                                      ; 16
 
