@@ -51,3 +51,14 @@ if !DEF(\1)
 \1 EQUS \2
 endc
 ENDM
+
+assert: MACRO
+	if !(\1)
+		if _NARG > 1
+			fail \2
+		else
+			fail "Assertion failed: \1"
+		endc
+	endc
+ENDM
+

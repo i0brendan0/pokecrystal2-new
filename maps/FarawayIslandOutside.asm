@@ -1,15 +1,16 @@
-	const_def 2 ; object constants
+const_value set 2
 	const FARAWAY_ISLAND_SAILOR
 
 FarawayIslandOutside_MapScriptHeader::
-	db 0 ; scene scripts
 
-	db 0 ; callbacks
+.Triggers: db 0
+
+.Callbacks: db 0
 
 Check_Home:
 	spriteface PLAYER, LEFT
 	spriteface FARAWAY_ISLAND_SAILOR, RIGHT
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	setevent EVENT_GAVE_KURT_APRICORNS
 	jump DoHomeScript
 
 MapSailorFWI:
@@ -31,7 +32,7 @@ DoHomeScript:
 	writetext FightMewText
 	waitbutton
 	closetext
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	checkevent EVENT_GAVE_KURT_APRICORNS
 	iftrue .GoBack
 	end
 
@@ -39,14 +40,13 @@ DoHomeScript:
 	writetext NoLeaveText
 	waitbutton
 	closetext
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	checkevent EVENT_GAVE_KURT_APRICORNS
 	iftrue .GoBack
 	end
 	
 .GoBack:
 	applymovement PLAYER, GoBackMovement
 	spriteface FARAWAY_ISLAND_SAILOR, UP
-	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	end
 	
 GoBackMovement:
@@ -78,16 +78,16 @@ NoLeaveText:
 	line "waiting then."
 	done
 
-FarawayIslandOutside_MapEvents:
-	db 0, 0 ; filler
+FarawayIslandOutside_MapEventHeader:: db 0, 0
 
-	db 1 ; warp events
+.Warps: db 1
 	warp_def 17, 14, 1, FARAWAY_ISLAND_CAVE
 
-	db 1 ; coord events
+.CoordEvents: db 1
 	xy_trigger 0, 23, 14, 0, Check_Home, 0, 0
 
-	db 0 ; bg events
+.BGEvents: db 0
 
-	db 1 ; object events
+.ObjectEvents: db 1
 	person_event SPRITE_SAILOR, 23, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MapSailorFWI, EVENT_FARAWAY_ISLAND_MAP_SAILOR
+

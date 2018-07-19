@@ -30,7 +30,7 @@ ENDM
 	map_const OLIVINE_HOUSE_BETA,                           4,  4 ;  4
 	map_const OLIVINE_PUNISHMENT_SPEECH_HOUSE,              4,  4 ;  5
 	map_const OLIVINE_GOOD_ROD_HOUSE,                       4,  4 ;  6
-	map_const OLIVINE_CAFE,                                 4,  4 ;  7
+	map_const OLIVINE_CAFE,                                 7,  4 ;  7
 	map_const OLIVINE_MART,                                 6,  4 ;  8
 	map_const ROUTE_38_ECRUTEAK_GATE,                       5,  4 ;  9
 	map_const ROUTE_39_BARN,                                4,  4 ; 10
@@ -407,7 +407,7 @@ ENDM
 	map_const CELADON_GAME_CORNER,                         10,  7 ; 19
 	map_const CELADON_GAME_CORNER_PRIZE_ROOM,               3,  3 ; 20
 	map_const CELADON_GYM,                                  5,  9 ; 21
-	map_const CELADON_CAFE,                                 6,  4 ; 22
+	map_const CELADON_CAFE,                                 8,  4 ; 22
 	map_const ROUTE_16_FUCHSIA_SPEECH_HOUSE,                4,  4 ; 23
 	map_const ROUTE_16_GATE,                                5,  4 ; 24
 	map_const ROUTE_7_SAFFRON_GATE,                         5,  4 ; 25

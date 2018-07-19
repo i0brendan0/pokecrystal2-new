@@ -47,7 +47,6 @@ ROMX $07
 ROMX $08
 	"Clock Reset"
 	"Tileset Data 3"
-	"Egg Moves"
 ROMX $09
 	"bank9"
 ROMX $0a
@@ -289,12 +288,19 @@ ROMX $73
 	"Pokedex Entries 129-192"
 ROMX $74
 	"Pokedex Entries 193-251"
+ROMX $75
+	"Text 4"
+;ROMX $76
 ROMX $77
 	"bank77"
 	"Tileset Data 7"
 	"bank77_2"
 ROMX $78
 	"Tileset Data 8"
+ROMX $79
+	"Egg Moves"
+ROMX $7a
+	"Move Relearner"
 ROMX $7b
 	"Battle Tower Text"
 ROMX $7c

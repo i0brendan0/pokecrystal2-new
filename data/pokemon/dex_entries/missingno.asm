@@ -1,5 +1,5 @@
 	db "UNKNOWN@" ; species name
-	dw 100, 100 ; height, weight
+	dw 1000, 35072 ; height, weight
 
 	db   "Nothing is"
 	next "known about this"

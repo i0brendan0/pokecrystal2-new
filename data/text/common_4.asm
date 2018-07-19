@@ -86,3 +86,12 @@ PasswordCheckerIncorrectText::
     line "you gave me is"
     line "incorrect."
     done
+	
+SomeonesPCText::
+	text "SOMEONE's PC"
+	line "accessed."
+
+	para "#MON Storage"
+	line "System opened."
+	prompt
+

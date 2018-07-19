@@ -2077,8 +2077,20 @@ AI_Smart_Foresight: ; 38f1d
 	ld a, [wBattleMonType1]
 	cp GHOST
 	jr z, .asm_38f41
+    cp PSYCHIC
+	jr z, .asm_38f41
+    cp MYSTERY_T
+	jr z, .asm_38f41
+    cp LIGHT_T
+	jr z, .asm_38f41
 	ld a, [wBattleMonType2]
 	cp GHOST
+	jr z, .asm_38f41
+    cp PSYCHIC
+	jr z, .asm_38f41
+    cp MYSTERY_T
+	jr z, .asm_38f41
+    cp LIGHT_T
 	jr z, .asm_38f41
 
 	call Random

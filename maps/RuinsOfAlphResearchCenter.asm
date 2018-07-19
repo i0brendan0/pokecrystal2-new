@@ -62,7 +62,25 @@ ScientistScript_0x591d1:
 	opentext
 	checkcode VAR_UNOWNCOUNT
 	ifequal NUM_UNOWN, .PrinterAvailable
+	if_less_than NUM_OLD_UNOWN, .Not_More_Unlocked
+	
+.Unlock_More_Unown:
+	checkflag ENGINE_UNLOCKED_UNOWNS_EX_TO_IN
+	if_true .Already_Unlocked_More_Unown
+	writetext UnlockedMoreUnownText
+	waitbutton
+	closetext
+	setflag ENGINE_UNLOCKED_UNOWNS_EX_TO_IN
+	end
+	
+.Not_More_Unlocked:
 	writetext UnknownText_0x59311
+	waitbutton
+	closetext
+	end
+	
+.Already_Unlocked_More_Unown:
+	writetext AlreadyUnlockedMoreUnownText
 	waitbutton
 	closetext
 	end
@@ -135,7 +153,9 @@ MapRuinsOfAlphResearchCenterSignpost1Script:
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 	iftrue .SkipChecking
 	checkcode VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, .GotAllUnown
+	ifequal NUM_UNOWN_, .GiveMoreUnown
+	ifequal NUM_OLD_UNOWN, .GotAllUnown
+	if_greater_than NUM_OLD_UNOWN, .GotAllUnown
 .SkipChecking:
 	writetext UnknownText_0x597b6
 	waitbutton
@@ -144,6 +164,12 @@ MapRuinsOfAlphResearchCenterSignpost1Script:
 
 .GotAllUnown:
 	writetext UnknownText_0x597d9
+	waitbutton
+	closetext
+	end
+	
+.GiveMoreUnown:
+	writetext MoreUnownText
 	waitbutton
 	closetext
 	end
@@ -361,6 +387,18 @@ UnknownText_0x597d9:
 	para "A total of 26"
 	line "kinds found."
 	done
+	
+MoreUnownText:
+	text "Mystery #MON"
+	line "Name: UNOWN"
+	
+	para "6 new kinds of"
+	line "UNOWN have been"
+	
+	para "found, bringing"
+	line "the total to 32."
+	done
+	
 
 UnknownText_0x5980e:
 	text "This doesn't seem"
@@ -390,6 +428,28 @@ UnknownText_0x59886:
 	cont "Ancients…"
 	done
 
+UnlockedMoreUnownText:
+	text "It seems you have"
+	line "all of the UNOWN,"
+	
+	para "but I believe that"
+	line "some new ones have"
+	cont "just appeared."
+	
+	para "You should try to"
+	line "catch the rest."
+	done
+
+AlreadyUnlockedMoreUnownText:
+	text "Have you caught all"
+	line "of the other new"
+	cont "UNOWNs yet?"
+	
+	para "You should get"
+	line "back there right"
+	cont "away."
+	done
+	
 RuinsOfAlphResearchCenter_MapEvents:
 	db 0, 0 ; filler
 

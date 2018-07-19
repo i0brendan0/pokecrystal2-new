@@ -892,5 +892,85 @@ KantoGrassWildMons: ; 0x2b274
 	db 5, TOTODILE
 	db 5, TOTODILE
 	db 5, TOTODILE
+	
+	map CERULEAN_CAVE
+	db 10 percent, 10 percent, 10 percent
+;	morn
+	db 50, GOLBAT
+	db 50, MACHOKE
+	db 50, KADABRA
+	db 50, GOLBAT
+	db 50, RHYDON
+	db 50, RAICHU
+	db 50, DITTO
+;	day
+	db 50, GOLBAT
+	db 50, MACHOKE
+	db 50, ARBOK
+	db 50, GOLBAT
+	db 50, RHYDON
+	db 50, MAGNETON
+	db 50, CHANSEY
+;	night
+	db 50, GOLBAT
+	db 50, PRIMEAPE
+	db 50, KADABRA
+	db 50, GOLBAT
+	db 50, RHYDON
+	db 50, MAGNETON
+	db 50, DITTO
+	
+	map SEAFOAM_ISLAND_B1_F
+	db 10 percent, 10 percent, 10 percent
+;	morn
+	db 37, GOLBAT
+	db 32, SEEL
+	db 37, GOLDUCK
+	db 36, DEWGONG
+	db 39, GOLBAT
+	db 36, JYNX
+	db 38, JYNX
+;	day
+	db 37, GOLBAT
+	db 32, SEEL
+	db 37, SLOWBRO
+	db 36, DEWGONG
+	db 39, GOLBAT
+	db 36, JYNX
+	db 38, JYNX
+;	night
+	db 37, GOLBAT
+	db 32, SEEL
+	db 37, GOLDUCK
+	db 36, DEWGONG
+	db 39, GOLBAT
+	db 36, SNEASEL
+	db 38, SNEASEL
 
+	map CELADON_CITY
+	db 2 percent, 2 percent, 2 percent
+;	morn
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+;	day
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+;	night
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
+	db 5, EEVEE
 	db -1 ; end

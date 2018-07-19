@@ -8,12 +8,10 @@ TypeNames: ; 5097b
 	dw Rock
 	dw Bird
 	dw Bug
-	dw Ghost
 	dw Steel
-	dw Normal
-	dw Normal
-	dw Normal
-	dw Normal
+	dw Dark
+	dw Chaos
+	dw Mystery
 	dw Normal
 	dw Normal
 	dw Normal
@@ -27,7 +25,9 @@ TypeNames: ; 5097b
 	dw Psychic
 	dw Ice
 	dw Dragon
-	dw Dark
+	dw Ghost
+	dw Fairy
+	dw Light
 
 Normal:    db "NORMAL@"
 Fighting:  db "FIGHTING@"
@@ -48,5 +48,9 @@ Ghost:     db "GHOST@"
 Steel:     db "STEEL@"
 Dragon:    db "DRAGON@"
 Dark:      db "DARK@"
+Fairy:     db "FAIRY@"
+Light:     db "LIGHT@"
+Chaos:     db "CHAOS@"
+Mystery:   db "MYSTERY@"
 
 ; 50a28

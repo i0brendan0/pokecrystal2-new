@@ -148,8 +148,8 @@ KantoWaterWildMons: ; 0x2b7f7
 	
 	map SEAFOAM_ISLAND_B1_F
 	db 10 percent
-	db 25, GOLDEEN
-	db 25, TENTACOOL
-	db 25, POLIWHIRL
+	db 35, DEWGONG
+	db 40, GOLDUCK
+	db 40, SLOWBRO
 
 	db -1 ; end
