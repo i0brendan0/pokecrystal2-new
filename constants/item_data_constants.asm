@@ -64,8 +64,7 @@ MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const HELD_RESTORE_PP
 	const HELD_7
 	const HELD_CLEANSE_TAG
-
-	const_def 10
+	const HELD_9
 	const HELD_HEAL_POISON
 	const HELD_HEAL_FREEZE
 	const HELD_HEAL_BURN
@@ -73,16 +72,19 @@ MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const HELD_HEAL_PARALYZE
 	const HELD_HEAL_STATUS
 	const HELD_HEAL_CONFUSION
-
-	const_def 20
+	const HELD_17
+	const HELD_18
+	const HELD_19
 	const HELD_PREVENT_POISON
 	const HELD_PREVENT_BURN
 	const HELD_PREVENT_FREEZE
 	const HELD_PREVENT_SLEEP
 	const HELD_PREVENT_PARALYZE
 	const HELD_PREVENT_CONFUSE
-
-	const_def 30
+	const HELD_26
+	const HELD_27
+	const HELD_28
+	const HELD_29
 	const HELD_30
 	const HELD_ATTACK_UP
 	const HELD_DEFENSE_UP
@@ -92,13 +94,15 @@ MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const HELD_ACCURACY_UP
 	const HELD_EVASION_UP
 	const HELD_38
-
-	const_def 40
+	const HELD_39
 	const HELD_40
 	const HELD_41
 	const HELD_METAL_POWDER
-
-	const_def 50
+	const HELD_43
+	const HELD_44
+	const HELD_45
+	const HELD_46
+	const HELD_47
 	const HELD_NORMAL_BOOST
 	const HELD_FIGHTING_BOOST
 	const HELD_FLYING_BOOST
@@ -116,8 +120,11 @@ MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const HELD_DRAGON_BOOST
 	const HELD_DARK_BOOST
 	const HELD_STEEL_BOOST
-
-	const_def 70
+	const HELD_BIRD_BOOST
+	const HELD_FAIRY_BOOST
+	const HELD_LIGHT_BOOST
+	const HELD_CHAOS_BOOST
+	const HELD_MYSTERY_BOOST
 	const HELD_CATCH_CHANCE
 	const HELD_71
 	const HELD_ESCAPE

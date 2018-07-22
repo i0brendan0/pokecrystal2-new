@@ -65,33 +65,19 @@ HiddenPowerDamage: ; fbced
 
 ; Type:
 
-	; Def & 3
+	; Attack/Defense/Speed/Defense DVs % 21
+	ld a, [hli]
+	ld [hDividend], a
 	ld a, [hl]
-	and %0011
-	ld b, a
+	ld [hDividend+1], a
+	ld a, NUM_TYPES+1
+	ld [hDivisor], a
+	ld b, 2
+	call Divide
+	ld a, [hRemainder]
 
-	; + (Atk & 3) << 2
-	ld a, [hl]
-	and %0011 << 4
-	swap a
-	add a
-	add a
-	or b
-
-; Skip Normal
-	inc a
-
-; Skip Bird
-	cp BIRD
-	jr c, .done
-	inc a
-
-; Skip unused types
-	cp UNUSED_TYPES
-	jr c, .done
-	add SPECIAL - UNUSED_TYPES
-
-.done
+; Skip Unused types
+	add SPECIAL - UNUSED_TYPES + 2
 
 ; Overwrite the current move type.
 	push af

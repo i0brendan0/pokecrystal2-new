@@ -167,6 +167,14 @@ DoBadgeTypeBoosts: ; fbe24
 	ld a, [wd265]
 	cp DARK
 	jr z, .CheckBeatKaren
+    cp FAIRY_T
+    jp z, .done
+    cp LIGHT_T
+    jp z, .done
+    cp CHAOS_T
+    jp z, .done
+    cp MYSTERY_T
+    jp z, .done
 
 	ld hl, BadgeTypeBoosts
 
@@ -193,8 +201,9 @@ DoBadgeTypeBoosts: ; fbe24
 	jr .CheckBadge
 	
 .CheckBeatKaren:
-	ld, wEventFlags + (EVENT_KAREN_DARK_BOOST >> 3)
-	bit (EVENT_KAREN_DARK_BOOST & %00001111), [hl]
+    ld de, EVENT_KAREN_DARK_BOOST
+    ld b, CHECK_FLAG
+    call EventFlagAction
 	jr nz, .done
 
 .ApplyBoost:

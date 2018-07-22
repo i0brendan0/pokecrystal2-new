@@ -18,4 +18,9 @@ PokedexTypeSearchStrings: ; 40fe4
 	db " DRAGON @"
 	db "  DARK  @"
 	db " STEEL  @"
+    db " FAIRY  @"
+    db "  BIRD  @"
+    db " LIGHT  @"
+    db " CHAOS  @"
+    db "MYSTERY @"
 ; 41086

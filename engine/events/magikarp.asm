@@ -286,8 +286,6 @@ CalcMagikarpLength: ; fbbfc
 ; fbc9a
 
 .BCLessThanDE: ; fbc9a
-; Intention: Return bc < de.
-; Reality: Return b < d.
 	ld a, b
 	cp d
 	ret c

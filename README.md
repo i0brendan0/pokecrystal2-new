@@ -74,5 +74,5 @@ List of current bugs
 
 **If you find a bug with a change that I've added or something that isn't known about, please open an issue and provide as much information as possible.**
 
-[travis]: https://travis-ci.org/i0brendan0/pokecrystal2
-[travis-badge]: https://travis-ci.org/i0brendan0/pokecrystal2.svg?branch=master
+[travis]: https://travis-ci.org/i0brendan0/pokecrystal2-new
+[travis-badge]: https://travis-ci.org/i0brendan0/pokecrystal2-new.svg?branch=master

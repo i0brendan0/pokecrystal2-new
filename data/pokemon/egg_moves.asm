@@ -3,870 +3,2685 @@ INCLUDE "constants.asm"
 
 SECTION "Egg Moves", ROMX
 
-; All instances of Charm, Steel Wing, Sweet Scent, and Lovely Kiss were
-; removed from egg move lists in Crystal.
-; Sweet Scent and Steel Wing were redundant since they're TMs, and
-; Charm and Lovely Kiss were unobtainable.
-
-; Staryu's egg moves were removed in Crystal, because Staryu is genderless
-; and can only breed with Ditto.
-
 
 INCLUDE "data/pokemon/egg_move_pointers.asm"
 
+; If the Pokemon, or an evolution of the Pokemon, learns the move through breeding
+; at any time, give it the move.
+; If the Pokemon, or an evolution of the Pokemon, learns the move through a
+; move tutor at any time, give it the move.
+; If the Pokemon, or an evolution of the Pokemon, has the move in an event
+; at any time, give it the move.
+; If the Pokemon learns the move through a TM NOT in Gen 2, give it the move.
+; If the Pokemon learns the move through a TM in Gen 2, DO NOT give it the move
+; and take it away if it would learn it from breeding or move tutor,
+; unless the unevolved Pokemon cannot learn the same TM.
+; If the Pokemon learns a move through TM, that also has a TM in Gen 2,
+; but does not learn it in Gen 2, give it the move. You will remove it later
+; under certain circumstances.
+; If the Pokemon would have learned a move through breeding, but learns it through 
+; level up, leave the move. You will remove it later.
+
+;                              123456789ABCD;XXX
+EggMoves:: ; CURRENT MOVE -	db THIEF        ;168
 
 EggMoves::
 
 BulbasaurEggMoves:
-	db LIGHT_SCREEN
-	db SKULL_BASH
-	db SAFEGUARD
-if !_CRYSTAL
-	db CHARM
-endc
-	db RAZOR_WIND
-	db PETAL_DANCE
+	db RAZOR_WIND	;013
+	db SWORDS_DANCE	;014
+	db BIND         ;020
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db STRENGTH     ;070
+	db MEGA_DRAIN   ;072
+	db PETAL_DANCE  ;080
+	db STRING_SHOT  ;081
+	db EARTHQUAKE   ;089
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SLUDGE       ;124
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db SUBSTITUTE   ;164
+	db CHARM        ;204
+	db SAFEGUARD    ;219
 	db -1 ; end
 
 CharmanderEggMoves:
-	db BELLY_DRUM
-	db ANCIENTPOWER
-	db ROCK_SLIDE
-	db BITE
-	db OUTRAGE
-	db BEAT_UP
+	db MEGA_PUNCH   ;005
+	db THUNDERPUNCH ;009
+	db SWORDS_DANCE	;014
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db BITE         ;044
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db SOLARBEAM    ;076
+	db DRAGON_RAGE  ;082
+	db FIRE_SPIN    ;083
+	db EARTHQUAKE   ;089
+	db FISSURE      ;090
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db BELLY_DRUM   ;187
+	db OUTRAGE      ;200
+	db ANCIENTPOWER ;246
+	db BEAT_UP      ;251
 	db -1 ; end
 
 SquirtleEggMoves:
-	db MIRROR_COAT
-	db HAZE
-	db MIST
-	db CONFUSION
-	db FORESIGHT
-	db FLAIL
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db MIST         ;054
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db EARTHQUAKE   ;089
+	db FISSURE      ;090
+	db CONFUSION    ;093
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db FORESIGHT    ;193
+	db MIRROR_COAT  ;243
 	db -1 ; end
 
+CaterpieEggMoves:
+	db RAZOR_WIND	;013
+	db WHIRLWIND    ;018
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db SOLARBEAM    ;076
+	db STRING_SHOT  ;081
+	db TOXIC        ;092
+	db PSYCHIC_M    ;094
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db BIDE         ;117
+	db SWIFT        ;129
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
+	db -1
+	
+WeedleEggMoves:
+	db SWORDS_DANCE	;014
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db SOLARBEAM    ;076
+	db STRING_SHOT  ;081
+	db TOXIC        ;092
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db BIDE         ;117
+	db SWIFT        ;129
+	db SKULL_BASH   ;130
+	db SUBSTITUTE   ;164
+	db -1
+	
 PidgeyEggMoves:
-	db PURSUIT
-	db FAINT_ATTACK
-	db FORESIGHT
-if !_CRYSTAL
-	db STEEL_WING
-endc
+	db RAZOR_WIND	;013
+	db WHIRLWIND    ;018
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKY_ATTACK   ;143
+	db SUBSTITUTE   ;164
+	db FAINT_ATTACK ;185
+	db FORESIGHT    ;193
+	db STEEL_WING   ;221
+	db PURSUIT      ;228
 	db -1 ; end
 
 RattataEggMoves:
-	db SCREECH
-	db FLAME_WHEEL
-	db FURY_SWIPES
-	db BITE
-	db COUNTER
-	db REVERSAL
+	db SWORDS_DANCE	;014
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db BITE         ;044
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db STRENGTH     ;070
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db FURY_SWIPES  ;154
+	db SUPER_FANG   ;162
+	db SUBSTITUTE   ;164
+	db FLAME_WHEEL  ;172
+	db REVERSAL     ;179
 	db -1 ; end
 
 SpearowEggMoves:
-	db FAINT_ATTACK
-	db FALSE_SWIPE
-	db SCARY_FACE
-	db QUICK_ATTACK
-	db TRI_ATTACK
+	db PAY_DAY      ;006
+	db RAZOR_WIND	;013
+	db WHIRLWIND    ;018
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db SONICBOOM    ;049
+	db HYPER_BEAM   ;063
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKY_ATTACK   ;143
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db SCARY_FACE   ;184
+	db FAINT_ATTACK ;185
+	db FALSE_SWIPE  ;206
 	db -1 ; end
 
 EkansEggMoves:
-	db PURSUIT
-	db SLAM
-	db SPITE
-	db BEAT_UP
-if _CRYSTAL
-	db CRUNCH
-endc
+	db BIND			;020
+	db SLAM         ;021
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db DISABLE      ;050
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db SPITE        ;180
+	db PURSUIT      ;228
+	db CRUNCH       ;242
+	db BEAT_UP      ;251
 	db -1 ; end
 
 SandshrewEggMoves:
-	db FLAIL
-	db SAFEGUARD
-	db COUNTER
-	db RAPID_SPIN
-if _CRYSTAL
-	db METAL_CLAW
-endc
+	db SWORDS_DANCE	;014
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db LEECH_LIFE   ;141
+	db ROCK_SLIDE   ;157
+	db SUPER_FANG   ;162
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db SAFEGUARD    ;219
+	db RAPID_SPIN   ;229
+	db METAL_CLAW   ;232
 	db -1 ; end
 
 NidoranFEggMoves:
-	db SUPERSONIC
-	db DISABLE
-	db TAKE_DOWN
-	db FOCUS_ENERGY
-	db CHARM
-	db COUNTER
-	db BEAT_UP
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db FIRE_PUNCH   ;007
+	db ICE_PUNCH    ;008
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db SUPERSONIC   ;048
+	db DISABLE      ;050
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db STRENGTH     ;070
+	db THUNDERBOLT  ;085
+	db EARTHQUAKE   ;089
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db FOCUS_ENERGY ;116
+	db FIRE_BLAST   ;126
+	db SKULL_BASH   ;130
+	db LOVELY_KISS  ;142
+	db ROCK_SLIDE   ;157
+	db SUPER_FANG   ;162
+	db SUBSTITUTE   ;164
+	db CHARM        ;204
+	db BEAT_UP      ;251
 	db -1 ; end
 
 NidoranMEggMoves:
-	db SUPERSONIC
-	db DISABLE
-	db TAKE_DOWN
-	db CONFUSION
-	db AMNESIA
-	db COUNTER
-	db BEAT_UP
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db FIRE_PUNCH   ;007
+	db ICE_PUNCH    ;008
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db SUPERSONIC   ;048
+	db DISABLE      ;050
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db STRENGTH     ;070
+	db THUNDERBOLT  ;085
+	db EARTHQUAKE   ;089
+	db FISSURE      ;090
+	db CONFUSION    ;093
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db FIRE_BLAST   ;126
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db LOVELY_KISS  ;142
+	db ROCK_SLIDE   ;157
+	db SUPER_FANG   ;162
+	db SUBSTITUTE   ;164
+	db BEAT_UP      ;251
 	db -1 ; end
 
 VulpixEggMoves:
-	db FAINT_ATTACK
-	db HYPNOSIS
-	db FLAIL
-	db SPITE
-	db DISABLE
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db DISABLE      ;050
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db SOLARBEAM    ;076
+	db HYPNOSIS     ;095
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db SPITE        ;180
+	db FAINT_ATTACK ;185
 	db -1 ; end
 
 ZubatEggMoves:
-	db QUICK_ATTACK
-	db PURSUIT
-	db FAINT_ATTACK
-	db GUST
-	db WHIRLWIND
+	db RAZOR_WIND	;013
+	db GUST         ;016
+	db WHIRLWIND    ;018
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db HYPNOSIS     ;095
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LEECH_LIFE   ;141
+	db SKY_ATTACK   ;143
+	db SUPER_FANG   ;162
+	db SUBSTITUTE   ;164
+	db FAINT_ATTACK ;185
+	db PURSUIT      ;228
 	db -1 ; end
 
 OddishEggMoves:
-	db SWORDS_DANCE
-	db RAZOR_LEAF
-	db FLAIL
-	db SYNTHESIS
-if !_CRYSTAL
-	db CHARM
-endc
+	db SWORDS_DANCE	;014
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db LEECH_SEED   ;073
+	db RAZOR_LEAF   ;075
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db CHARM        ;204
+	db SYNTHESIS    ;235
 	db -1 ; end
 
 ParasEggMoves:
-	db FALSE_SWIPE
-	db SCREECH
-	db COUNTER
-	db PSYBEAM
-	db FLAIL
-if !_CRYSTAL
-	db SWEET_SCENT
-endc
-	db LIGHT_SCREEN
-	db PURSUIT
+	db SWORDS_DANCE	;014
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db PSYBEAM      ;060
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db MEGA_DRAIN   ;072
+	db LEECH_SEED   ;073
+	db STRING_SHOT  ;081
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db LEECH_LIFE   ;141
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db FALSE_SWIPE  ;206
+	db PURSUIT      ;228
+	db SWEET_SCENT  ;230
 	db -1 ; end
 
 VenonatEggMoves:
-	db BATON_PASS
-	db SCREECH
-	db GIGA_DRAIN
+	db RAZOR_WIND	;013
+	db WHIRLWIND    ;018
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db STRING_SHOT  ;081
+	db AGILITY      ;097
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db REFLECT      ;115
+	db LEECH_LIFE   ;141
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
+	db GIGA_DRAIN   ;202
+	db BATON_PASS   ;226
 	db -1 ; end
 
 DiglettEggMoves:
-	db FAINT_ATTACK
-	db SCREECH
-	db ANCIENTPOWER
-	db PURSUIT
-	db BEAT_UP
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FAINT_ATTACK ;185
+	db PURSUIT      ;228
+	db ANCIENTPOWER ;246
+	db BEAT_UP      ;251
 	db -1 ; end
 
 MeowthEggMoves:
-	db SPITE
-	db CHARM
-	db HYPNOSIS
-	db AMNESIA
+	db PAY_DAY      ;006
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db TAIL_WHIP    ;039
+	db ROAR         ;046
+	db SING         ;047
+	db WATER_GUN    ;055
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db PETAL_DANCE  ;080
+	db THUNDERBOLT  ;085
+	db HYPNOSIS     ;095
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db SPITE        ;180
+	db CHARM        ;204
 	db -1 ; end
 
 PsyduckEggMoves:
-	db ICE_BEAM
-	db HYPNOSIS
-	db PSYBEAM
-	db FORESIGHT
-	db LIGHT_SCREEN
-	db FUTURE_SIGHT
-	db PSYCHIC_M
-if _CRYSTAL
-	db CROSS_CHOP
-endc
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db PSYBEAM      ;060
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db PETAL_DANCE  ;080
+	db PSYCHIC_M    ;094
+	db HYPNOSIS     ;095
+	db RAGE         ;099
+	db MIMIC        ;102
+	db CONFUSE_RAY  ;109
+	db LIGHT_SCREEN ;113
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db FORESIGHT    ;193
+	db CROSS_CHOP   ;238
+	db FUTURE_SIGHT ;248
 	db -1 ; end
 
 MankeyEggMoves:
-	db ROCK_SLIDE
-	db FORESIGHT
-	db MEDITATE
-	db COUNTER
-	db REVERSAL
-	db BEAT_UP
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db MEDITATE     ;096
+	db RAGE         ;099
+	db MIMIC        ;102
+	db METRONOME    ;118
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
+	db FORESIGHT    ;193
+	db BEAT_UP      ;251
 	db -1 ; end
 
 GrowlitheEggMoves:
-	db BODY_SLAM
-	db SAFEGUARD
-	db CRUNCH
-	db THRASH
-	db FIRE_SPIN
+	db DOUBLE_KICK  ;024
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db STRENGTH     ;070
+	db SOLARBEAM    ;076
+	db DRAGON_RAGE  ;082
+	db FIRE_SPIN    ;083
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db SUBSTITUTE   ;164
+	db SAFEGUARD    ;219
+	db CRUNCH       ;242
 	db -1 ; end
 
 PoliwagEggMoves:
-	db MIST
-	db SPLASH
-	db BUBBLEBEAM
-	db HAZE
-	db MIND_READER
+	db MEGA_PUNCH   ;005
+	db ICE_PUNCH    ;008
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db MIST         ;054
+	db WATER_GUN    ;055
+	db HYDRO_PUMP   ;056
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db STRENGTH     ;070
+	db GROWTH       ;074
+	db EARTHQUAKE   ;089
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db METRONOME    ;118
+	db SKULL_BASH   ;130
+	db LOVELY_KISS  ;142
+	db PSYWAVE      ;149
+	db SPLASH       ;150
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db MIND_READER  ;170
 	db -1 ; end
 
 AbraEggMoves:
-	db LIGHT_SCREEN
-	db ENCORE
-	db BARRIER
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDER_WAVE ;086
+	db DIG          ;091
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db BARRIER      ;112
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db ENCORE       ;227
 	db -1 ; end
 
 MachopEggMoves:
-	db LIGHT_SCREEN
-	db MEDITATE
-	db ROLLING_KICK
-	db ENCORE
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db ROLLING_KICK ;027
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db FISSURE      ;090
+	db MEDITATE     ;096
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db METRONOME    ;118
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db ENCORE       ;227
 	db -1 ; end
 
 BellsproutEggMoves:
-	db SWORDS_DANCE
-	db ENCORE
-	db REFLECT
-	db SYNTHESIS
-	db LEECH_LIFE
+	db SWORDS_DANCE	;014
+	db BIND			;020
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db LEECH_LIFE   ;141
+	db LOVELY_KISS  ;142
+	db SUBSTITUTE   ;164
+	db SYNTHESIS    ;235
+	db ENCORE       ;227
 	db -1 ; end
 
 TentacoolEggMoves:
-	db AURORA_BEAM
-	db MIRROR_COAT
-	db RAPID_SPIN
-	db HAZE
-	db SAFEGUARD
+	db SWORDS_DANCE	;014
+	db BIND			;020
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db AURORA_BEAM  ;062
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db RAGE         ;099
+	db MIMIC        ;102
+	db CONFUSE_RAY  ;109
+	db HAZE         ;114
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db BUBBLE       ;145
+	db SUBSTITUTE   ;164
+	db SAFEGUARD    ;219
+	db RAPID_SPIN   ;229
+	db MIRROR_COAT  ;243
 	db -1 ; end
 
 GeodudeEggMoves:
-	db MEGA_PUNCH
-	db ROCK_SLIDE
+	db MEGA_PUNCH   ;005
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER      ;087
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db METRONOME    ;118
+	db SELFDESTRUCT ;120
+	db EXPLOSION    ;153
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 PonytaEggMoves:
-	db FLAME_WHEEL
-	db THRASH
-	db DOUBLE_KICK
-	db HYPNOSIS
-	db CHARM
-	db QUICK_ATTACK
+	db PAY_DAY      ;006
+	db DOUBLE_KICK  ;024
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db LOW_KICK     ;067
+	db STRENGTH     ;070
+	db FISSURE      ;090
+	db HYPNOSIS     ;095
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db SUBSTITUTE   ;164
+	db FLAME_WHEEL  ;172
+	db CHARM        ;204
 	db -1 ; end
 
 SlowpokeEggMoves:
-	db SAFEGUARD
-	db BELLY_DRUM
-	db FUTURE_SIGHT
-	db STOMP
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db ICE_PUNCH    ;008
+	db STOMP        ;023
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDER_WAVE ;086
+	db FISSURE      ;090
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db BELLY_DRUM   ;187
+	db SAFEGUARD    ;219
+	db FUTURE_SIGHT ;248
 	db -1 ; end
 
+MagnemiteEggMoves:
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db AGILITY      ;097
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db EXPLOSION    ;153
+	db SUBSTITUTE   ;164
+	db -1
+
 FarfetchDEggMoves:
-if !_CRYSTAL
-	db STEEL_WING
-endc
-	db FORESIGHT
-	db MIRROR_MOVE
-	db GUST
-	db QUICK_ATTACK
-	db FLAIL
+	db RAZOR_WIND	;013
+	db SWORDS_DANCE	;014
+	db GUST         ;016
+	db WHIRLWIND    ;018
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db AGILITY      ;097
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db MIRROR_MOVE  ;119
+	db SKULL_BASH   ;130
+	db SKY_ATTACK   ;143
+	db SLASH        ;163
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db FORESIGHT    ;193
+	db STEEL_WING   ;221
 	db -1 ; end
 
 DoduoEggMoves:
-	db QUICK_ATTACK
-	db SUPERSONIC
-	db HAZE
-	db FAINT_ATTACK
-	db FLAIL
+	db SWORDS_DANCE	;014
+	db WHIRLWIND    ;018
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db SUPERSONIC   ;048
+	db HYPER_BEAM   ;063
+	db LOW_KICK     ;067
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db SKY_ATTACK   ;143
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db FAINT_ATTACK ;185
+	db MIRROR_COAT  ;243
 	db -1 ; end
 
 SeelEggMoves:
-	db LICK
-	db PERISH_SONG
-	db DISABLE
-	db PECK
-	db SLAM
-	db ENCORE
+	db PAY_DAY      ;006
+	db SLAM         ;021
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db DISABLE      ;050
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db PECK         ;064
+	db STRENGTH     ;070
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LICK         ;122
+	db SKULL_BASH   ;130
+	db SUBSTITUTE   ;164
+	db PERISH_SONG  ;195
+	db ENCORE       ;227
 	db -1 ; end
 
 GrimerEggMoves:
-	db HAZE
-	db MEAN_LOOK
-	db LICK
+	db BODY_SLAM    ;034
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db STRENGTH     ;070
+	db MEGA_DRAIN   ;072
+	db THUNDERBOLT  ;085
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db SELFDESTRUCT ;120
+	db LICK         ;122
+	db EXPLOSION    ;153
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db MEAN_LOOK    ;212
 	db -1 ; end
 
 ShellderEggMoves:
-	db BUBBLEBEAM
-	db TAKE_DOWN
-	db BARRIER
-	db RAPID_SPIN
-	db SCREECH
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db TWINEEDLE    ;041
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db BARRIER      ;112
+	db REFLECT      ;115
+	db SELFDESTRUCT ;120
+	db EXPLOSION    ;153
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db RAPID_SPIN   ;229
 	db -1 ; end
 
 GastlyEggMoves:
-	db PSYWAVE
-	db PERISH_SONG
-	db HAZE
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db FIRE_PUNCH   ;007
+	db ICE_PUNCH    ;008
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db HEADBUTT     ;029
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db DISABLE      ;050
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db STRENGTH     ;070
+	db MEGA_DRAIN   ;072
+	db THUNDERBOLT  ;085
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db METRONOME    ;118
+	db SELFDESTRUCT ;120
+	db SMOG         ;123
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db EXPLOSION    ;153
+	db SUBSTITUTE   ;164
+	db PERISH_SONG  ;195
 	db -1 ; end
 
 OnixEggMoves:
-	db ROCK_SLIDE
-	db FLAIL
+	db BIND			;020
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db DEFENSE_CURL ;111
+	db SELFDESTRUCT ;120
+	db SKULL_BASH   ;130
+	db EXPLOSION    ;153
+	db ROCK_SLIDE   ;157
+	db SHARPEN      ;159
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
 DrowzeeEggMoves:
-	db LIGHT_SCREEN
-	db BARRIER
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db BARRIER      ;112
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 KrabbyEggMoves:
-	db DIG
-	db HAZE
-	db AMNESIA
-	db FLAIL
-	db SLAM
+	db SWORDS_DANCE	;014
+	db SLAM         ;021
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db DIG          ;091
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db BIDE         ;117
+	db AMNESIA      ;133
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
+VoltorbEggMoves:
+	db TAKE_DOWN    ;036
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db AGILITY      ;097
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SELFDESTRUCT ;120
+	db SKULL_BASH   ;130
+	db EXPLOSION    ;153
+	db SUBSTITUTE   ;164
+	db -1
+
 ExeggcuteEggMoves:
-	db SYNTHESIS
-	db MOONLIGHT
-	db REFLECT
-	db MEGA_DRAIN
-	db ANCIENTPOWER
+	db SWORDS_DANCE	;014
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db LOW_KICK     ;067
+	db MEGA_DRAIN   ;072
+	db EARTHQUAKE   ;089
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SELFDESTRUCT ;120
+	db EGG_BOMB     ;121
+	db PSYWAVE      ;149
+	db EXPLOSION    ;153
+	db SUBSTITUTE   ;164
+	db SYNTHESIS    ;235
+	db MOONLIGHT    ;236
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 CuboneEggMoves:
-	db ROCK_SLIDE
-	db ANCIENTPOWER
-	db BELLY_DRUM
-	db SCREECH
-	db SKULL_BASH
-	db PERISH_SONG
-if _CRYSTAL
-	db SWORDS_DANCE
-endc
+	db MEGA_PUNCH   ;005
+	db THUNDERPUNCH ;009
+	db SWORDS_DANCE	;014
+	db DOUBLE_KICK  ;024
+	db MEGA_KICK    ;025
+	db FURY_ATTACK  ;031
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db SING         ;047
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER      ;087
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db BELLY_DRUM   ;187
+	db PERISH_SONG  ;195
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 LickitungEggMoves:
-	db BELLY_DRUM
-	db MAGNITUDE
-	db BODY_SLAM
+	db DOUBLESLAP   ;003
+	db MEGA_PUNCH   ;005
+	db SWORDS_DANCE	;014
+	db BIND			;020
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db BELLY_DRUM   ;187
+	db MAGNITUDE    ;222
 	db -1 ; end
 
 KoffingEggMoves:
-	db SCREECH
-	db PSYWAVE
-	db PSYBEAM
-	db DESTINY_BOND
-	db PAIN_SPLIT
+	db FLAMETHROWER ;053
+	db PSYBEAM      ;060
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db SELFDESTRUCT ;120
+	db PSYWAVE      ;149
+	db EXPLOSION    ;153
+	db SUBSTITUTE   ;164
+	db DESTINY_BOND ;194
+	db PAIN_SPLIT   ;220
 	db -1 ; end
 
 RhyhornEggMoves:
-	db CRUNCH
-	db REVERSAL
-	db ROCK_SLIDE
-	db THRASH
-	db PURSUIT
-	db COUNTER
-	db MAGNITUDE
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db FIRE_PUNCH   ;007
+	db THUNDERPUNCH ;009
+	db SWORDS_DANCE	;014
+	db MEGA_KICK    ;025
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
+	db MAGNITUDE    ;222
+	db PURSUIT      ;228
+	db CRUNCH       ;242
 	db -1 ; end
 
 ChanseyEggMoves:
-	db PRESENT
-	db METRONOME
-	db HEAL_BELL
+	db MEGA_PUNCH   ;005
+	db FIRE_PUNCH   ;007
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db EGG_BOMB     ;121
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db ROCK_SLIDE   ;157
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db HEAL_BELL    ;215
+	db PRESENT      ;217
 	db -1 ; end
 
 TangelaEggMoves:
-	db FLAIL
-	db CONFUSION
-	db MEGA_DRAIN
-	db REFLECT
-	db AMNESIA
+	db SWORDS_DANCE	;014
+	db BIND			;020
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db MEGA_DRAIN   ;072
+	db LEECH_SEED   ;073
+	db SLEEP_POWDER ;079
+	db CONFUSION    ;093
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db AMNESIA      ;133
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
 KangaskhanEggMoves:
-	db STOMP
-	db FORESIGHT
-	db FOCUS_ENERGY
-	db SAFEGUARD
-	db DISABLE
+	db MEGA_PUNCH   ;005
+	db STOMP        ;023
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db SING         ;047
+	db DISABLE      ;050
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db FOCUS_ENERGY ;116
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FORESIGHT    ;193
+	db SAFEGUARD    ;219
 	db -1 ; end
 
 HorseaEggMoves:
-	db FLAIL
-	db AURORA_BEAM
-	db OCTAZOOKA
-	db DISABLE
-	db SPLASH
-	db DRAGON_RAGE
+	db RAZOR_WIND	;013
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db DISABLE      ;050
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db AURORA_BEAM  ;062
+	db HYPER_BEAM   ;063
+	db DRAGON_RAGE  ;082
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db SKULL_BASH   ;130
+	db SPLASH       ;150
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db OCTAZOOKA    ;190
 	db -1 ; end
 
 GoldeenEggMoves:
-	db PSYBEAM
-	db HAZE
-	db HYDRO_PUMP
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db WATER_GUN    ;055
+	db HYDRO_PUMP   ;056
+	db ICE_BEAM     ;058
+	db PSYBEAM      ;060
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db SKULL_BASH   ;130
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
-if !_CRYSTAL
 StaryuEggMoves:
-	db AURORA_BEAM
-	db BARRIER
-	db SUPERSONIC
-	db -1 ; end
-endc
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db SUPERSONIC   ;048
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db BUBBLEBEAM   ;061
+	db AURORA_BEAM  ;062
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db BARRIER      ;112
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db -1
 
 MrMimeEggMoves:
-	db FUTURE_SIGHT
-	db HYPNOSIS
-	db MIMIC
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db HYPNOSIS     ;095
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db CONFUSE_RAY  ;109
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db SKULL_BASH   ;130
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
+	db FUTURE_SIGHT ;248
 	db -1 ; end
 
 ScytherEggMoves:
-	db COUNTER
-	db SAFEGUARD
-	db BATON_PASS
-	db RAZOR_WIND
-	db REVERSAL
-	db LIGHT_SCREEN
+	db RAZOR_WIND	;013
+	db SWORDS_DANCE	;014
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db SONICBOOM    ;049
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db SKULL_BASH   ;130
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
+	db SAFEGUARD    ;219
+	db BATON_PASS   ;226
 	db -1 ; end
 
 PinsirEggMoves:
-	db FURY_ATTACK
-	db FLAIL
+	db SWORDS_DANCE	;014
+	db BIND			;020
+	db FURY_ATTACK  ;031
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db SEISMIC_TOSS ;069
+	db STRING_SHOT  ;081
+	db ROCK_THROW   ;088
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
+TaurosEggMoves:
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db THUNDER      ;087
+	db EARTHQUAKE   ;089
+	db FISSURE      ;090
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db -1
+
+MagikarpEggMoves:
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db HYDRO_PUMP   ;056
+	db SURF         ;057
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db STRENGTH     ;070
+	db DRAGON_RAGE  ;082
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db EARTHQUAKE   ;089
+	db TOXIC        ;092
+	db RAGE         ;099
+	db MIMIC        ;102
+	db DOUBLE_TEAM  ;104
+	db REFLECT      ;115
+	db FIRE_BLAST   ;126
+	db WATERFALL    ;127
+	db SKULL_BASH   ;130
+	db BUBBLE       ;145
+	db SUBSTITUTE   ;164
+	db -1
+
 LaprasEggMoves:
-	db AURORA_BEAM
-	db FORESIGHT
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db BITE         ;044
+	db ROAR         ;046
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db AURORA_BEAM  ;062
+	db HYPER_BEAM   ;063
+	db DRAGON_RAGE  ;082
+	db THUNDERBOLT  ;085
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
+	db FORESIGHT    ;193
 	db -1 ; end
 
 EeveeEggMoves:
-	db FLAIL
-	db CHARM
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db SING         ;047
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db HYPER_BEAM   ;063
+	db STRENGTH     ;070
+	db GROWTH       ;074
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db FIRE_BLAST   ;126
+	db WATERFALL    ;127
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db CHARM        ;204
 	db -1 ; end
 
+PorygonEggMoves:
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db BARRIER      ;112
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db DREAM_EATER  ;138
+	db PSYWAVE      ;149
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db -1
+
 OmanyteEggMoves:
-	db BUBBLEBEAM
-	db AURORA_BEAM
-	db SLAM
-	db SUPERSONIC
-	db HAZE
+	db BIND			;020
+	db SLAM         ;021
+	db HORN_DRILL   ;032
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db SUPERSONIC   ;048
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db AURORA_BEAM  ;062
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db SEISMIC_TOSS ;069
+	db ROCK_THROW   ;088
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db REFLECT      ;115
+	db BIDE         ;117
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 KabutoEggMoves:
-	db BUBBLEBEAM
-	db AURORA_BEAM
-	db RAPID_SPIN
-	db DIG
-	db FLAIL
+	db RAZOR_WIND	;013
+	db SWORDS_DANCE	;014
+	db MEGA_KICK    ;025
+	db HEADBUTT     ;029
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db AURORA_BEAM  ;062
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db SEISMIC_TOSS ;069
+	db ROCK_THROW   ;088
+	db DIG          ;091
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db CONFUSE_RAY  ;109
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db RAPID_SPIN   ;229
 	db -1 ; end
 
 AerodactylEggMoves:
-	db WHIRLWIND
-	db PURSUIT
-	db FORESIGHT
-if !_CRYSTAL
-	db STEEL_WING
-endc
+	db RAZOR_WIND	;013
+	db WHIRLWIND    ;018
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db DRAGON_RAGE  ;082
+	db ROCK_THROW   ;088
+	db EARTHQUAKE   ;089
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SKY_ATTACK   ;143
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FORESIGHT    ;193
+	db STEEL_WING   ;221
+	db PURSUIT      ;228
 	db -1 ; end
 
 SnorlaxEggMoves:
-	db LICK
-if !_CRYSTAL
-	db CHARM
-endc
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db WHIRLWIND    ;018
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db THUNDERBOLT  ;085
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db SELFDESTRUCT ;120
+	db LICK         ;122
+	db SKULL_BASH   ;130
+	db LOVELY_KISS  ;142
+	db PSYWAVE      ;149
+	db SPLASH       ;150
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db CHARM        ;204
 	db -1 ; end
 
 DratiniEggMoves:
-	db LIGHT_SCREEN
-	db MIST
-	db HAZE
-	db SUPERSONIC
+	db FIRE_PUNCH   ;007
+	db ICE_PUNCH    ;008
+	db THUNDERPUNCH ;009
+	db RAZOR_WIND	;013
+	db BIND			;020
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db SUPERSONIC   ;048
+	db FLAMETHROWER ;053
+	db MIST         ;054
+	db WATER_GUN    ;055
+	db HYDRO_PUMP   ;056
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db DRAGON_RAGE  ;082
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db EARTHQUAKE   ;089
+	db RAGE         ;099
+	db MIMIC        ;102
+	db BARRIER      ;112
+	db LIGHT_SCREEN ;113
+	db HAZE         ;114
+	db REFLECT      ;115
+	db SKULL_BASH   ;130
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 ChikoritaEggMoves:
-	db VINE_WHIP
-	db LEECH_SEED
-	db COUNTER
-	db ANCIENTPOWER
-	db FLAIL
-	db SWORDS_DANCE
+	db SWORDS_DANCE	;014
+	db VINE_WHIP    ;022
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db LEECH_SEED   ;073
+	db PETAL_DANCE  ;080
+	db EARTHQUAKE   ;089
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 CyndaquilEggMoves:
-	db FURY_SWIPES
-	db QUICK_ATTACK
-	db REVERSAL
-	db THRASH
-	db FORESIGHT
-if _CRYSTAL
-	db SUBMISSION
-endc
+	db MEGA_PUNCH   ;005
+	db FIRE_PUNCH   ;007
+	db THUNDERPUNCH ;009
+	db DOUBLE_KICK  ;024
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db SOLARBEAM    ;076
+	db EARTHQUAKE   ;089
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db FURY_SWIPES  ;154
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
+	db FORESIGHT    ;193
 	db -1 ; end
 
 TotodileEggMoves:
-	db CRUNCH
-	db THRASH
-	db HYDRO_PUMP
-	db ANCIENTPOWER
-	db RAZOR_WIND
-	db ROCK_SLIDE
+	db MEGA_PUNCH   ;005
+	db ICE_PUNCH    ;008
+	db RAZOR_WIND	;013
+	db SWORDS_DANCE	;014
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db HYDRO_PUMP   ;056
+	db ICE_BEAM     ;058
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db EARTHQUAKE   ;089
+	db RAGE         ;099
+	db MIMIC        ;102
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db CRUNCH       ;242
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 SentretEggMoves:
-	db DOUBLE_EDGE
-	db PURSUIT
-	db SLASH
-	db FOCUS_ENERGY
-	db REVERSAL
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db THUNDER      ;087
+	db RAGE         ;099
+	db MIMIC        ;102
+	db FOCUS_ENERGY ;116
+	db SUPER_FANG   ;162
+	db SLASH        ;163
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
+	db PURSUIT      ;228
 	db -1 ; end
 
 HoothootEggMoves:
-	db MIRROR_MOVE
-	db SUPERSONIC
-	db FAINT_ATTACK
-	db WING_ATTACK
-	db WHIRLWIND
-if _CRYSTAL
-	db SKY_ATTACK
-endc
+	db WING_ATTACK  ;017
+	db WHIRLWIND    ;018
+	db DOUBLE_EDGE  ;038
+	db SUPERSONIC   ;048
+	db HYPER_BEAM   ;063
+	db AGILITY      ;097
+	db RAGE         ;099
+	db NIGHT_SHADE  ;101
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db MIRROR_MOVE  ;119
+	db SKY_ATTACK   ;143
+	db SUBSTITUTE   ;164
+	db FAINT_ATTACK ;185
 	db -1 ; end
 
 LedybaEggMoves:
-	db PSYBEAM
-	db BIDE
-	db LIGHT_SCREEN
+	db MEGA_PUNCH   ;005
+	db SWORDS_DANCE	;014
+	db MEGA_KICK    ;025
+	db DOUBLE_EDGE  ;038
+	db PSYBEAM      ;060
+	db HYPER_BEAM   ;063
+	db STRING_SHOT  ;081
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db BARRIER      ;112
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db BIDE         ;117
+	db DIZZY_PUNCH  ;146
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 SpinarakEggMoves:
-	db PSYBEAM
-	db DISABLE
-	db SONICBOOM
-	db BATON_PASS
-	db PURSUIT
+	db SWORDS_DANCE	;014
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db TWINEEDLE    ;041
+	db SONICBOOM    ;049
+	db DISABLE      ;050
+	db PSYBEAM      ;060
+	db HYPER_BEAM   ;063
+	db GROWTH       ;074
+	db STRING_SHOT  ;081
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LEECH_LIFE   ;141
+	db SUBSTITUTE   ;164
+	db BATON_PASS   ;226
+	db PURSUIT      ;228
 	db -1 ; end
 
 ChinchouEggMoves:
-	db FLAIL
-	db SUPERSONIC
-	db SCREECH
+	db DOUBLE_EDGE  ;038
+	db SUPERSONIC   ;048
+	db MIST         ;054
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db PSYBEAM      ;060
+	db HYPER_BEAM   ;063
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db LIGHT_SCREEN ;113
+	db AMNESIA      ;133
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
 PichuEggMoves:
-	db REVERSAL
-	db BIDE
-	db PRESENT
-	db ENCORE
-	db DOUBLESLAP
+	db DOUBLESLAP   ;003
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db THUNDERPUNCH ;009
+	db FLY          ;019
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db SING         ;047
+	db SURF         ;057
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db STRENGTH     ;070
+	db PETAL_DANCE  ;080
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db DIG          ;091
+	db PSYCHIC_M    ;094
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db BIDE         ;117
+	db DIZZY_PUNCH  ;146
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
+	db PRESENT      ;217
+	db ENCORE       ;227
 	db -1 ; end
 
 CleffaEggMoves:
-	db PRESENT
-	db METRONOME
-	db AMNESIA
-	db BELLY_DRUM
-	db SPLASH
-	db MIMIC
+	db MEGA_PUNCH   ;005
+	db FIRE_PUNCH   ;007
+	db ICE_PUNCH    ;008
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db STRENGTH     ;070
+	db PETAL_DANCE  ;080
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db AMNESIA      ;133
+	db SOFTBOILED   ;135
+	db DREAM_EATER  ;138
+	db DIZZY_PUNCH  ;146
+	db PSYWAVE      ;149
+	db SPLASH       ;150
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db BELLY_DRUM   ;187
+	db PRESENT      ;217
 	db -1 ; end
 
 IgglybuffEggMoves:
-	db PERISH_SONG
-	db PRESENT
-	db FAINT_ATTACK
+	db MEGA_PUNCH   ;005
+	db FIRE_PUNCH   ;007
+	db ICE_PUNCH    ;008
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db SUBMISSION   ;066
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db STRENGTH     ;070
+	db PETAL_DANCE  ;080
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db DREAM_EATER  ;138
+	db DIZZY_PUNCH  ;146
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
+	db FAINT_ATTACK ;185
+	db PERISH_SONG  ;195
+	db PRESENT      ;217
 	db -1 ; end
 
 TogepiEggMoves:
-	db PRESENT
-	db MIRROR_MOVE
-	db PECK
-	db FORESIGHT
-	db FUTURE_SIGHT
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db PECK         ;064
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db MIRROR_MOVE  ;119
+	db SOFTBOILED   ;135
+	db DREAM_EATER  ;138
+	db SKY_ATTACK   ;143
+	db TRI_ATTACK   ;161
+	db SUBSTITUTE   ;164
+	db FORESIGHT    ;193
+	db FUTURE_SIGHT ;248
+	db PRESENT      ;217
 	db -1 ; end
 
 NatuEggMoves:
-	db HAZE
-	db DRILL_PECK
-	db QUICK_ATTACK
-	db FAINT_ATTACK
-	db STEEL_WING
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db DRILL_PECK   ;065
+	db THUNDER_WAVE ;086
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db HAZE         ;114
+	db REFLECT      ;115
+	db DREAM_EATER  ;138
+	db SKY_ATTACK   ;143
+	db SUBSTITUTE   ;164
+	db FAINT_ATTACK ;185
+	db STEEL_WING   ;221
 	db -1 ; end
 
 MareepEggMoves:
-	db THUNDERBOLT
-	db TAKE_DOWN
-	db BODY_SLAM
-	db SAFEGUARD
-	db SCREECH
-	db REFLECT
+	db MEGA_PUNCH   ;005
+	db FIRE_PUNCH   ;007
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db DIZZY_PUNCH  ;146
+	db SUBSTITUTE   ;164
+	db SAFEGUARD    ;219
 	db -1 ; end
 
 MarillEggMoves:
-	db LIGHT_SCREEN
-	db PRESENT
-	db AMNESIA
-	db FUTURE_SIGHT
-	db BELLY_DRUM
-	db PERISH_SONG
-	db SUPERSONIC
-	db FORESIGHT
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db SUPERSONIC   ;048
+	db HYDRO_PUMP   ;056
+	db ICE_BEAM     ;058
+	db HYPER_BEAM   ;063
+	db SEISMIC_TOSS ;069
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db AMNESIA      ;133
+	db SUBSTITUTE   ;164
+	db BELLY_DRUM   ;187
+	db FORESIGHT    ;193
+	db PERISH_SONG  ;195
+	db FUTURE_SIGHT ;248
+	db PRESENT      ;217
 	db -1 ; end
 
 SudowoodoEggMoves:
-	db SELFDESTRUCT
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HARDEN       ;106
+	db DEFENSE_CURL ;111
+	db SELFDESTRUCT ;120
+	db EXPLOSION    ;153
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 HoppipEggMoves:
-	db CONFUSION
-	db GROWL
-	db ENCORE
-	db DOUBLE_EDGE
-	db REFLECT
-	db AMNESIA
-	db PAY_DAY
+	db PAY_DAY      ;006
+	db SWORDS_DANCE	;014
+	db DOUBLE_EDGE  ;038
+	db GROWL        ;045
+	db HYPER_BEAM   ;063
+	db CONFUSION    ;093
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db AMNESIA      ;133
+	db SUBSTITUTE   ;164
+	db ENCORE       ;227
 	db -1 ; end
 
 AipomEggMoves:
-	db COUNTER
-	db SCREECH
-	db PURSUIT
-	db AGILITY
-	db SPITE
-	db SLAM
-	db DOUBLESLAP
-	db BEAT_UP
+	db DOUBLESLAP   ;003
+	db MEGA_PUNCH   ;005
+	db SLAM         ;021
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db METRONOME    ;118
+	db DREAM_EATER  ;138
+	db SPITE        ;180
+	db SUBSTITUTE   ;164
+	db PURSUIT      ;228
+	db BEAT_UP      ;251
 	db -1 ; end
 
+SunkernEggMoves:
+	db DOUBLE_EDGE  ;038
+	db TOXIC        ;092
+	db RAGE         ;099
+	db MIMIC        ;102
+	db DOUBLE_TEAM  ;104
+	db LIGHT_SCREEN ;113
+	db BIDE         ;117
+	db SPLASH       ;150
+	db SUBSTITUTE   ;164
+	db -1
+
 YanmaEggMoves:
-	db WHIRLWIND
-	db REVERSAL
-	db LEECH_LIFE
+	db WHIRLWIND    ;018
+	db DOUBLE_EDGE  ;038
+	db STRING_SHOT  ;081
+	db RAGE         ;099
+	db MIMIC        ;102
+	db DREAM_EATER  ;138
+	db LEECH_LIFE   ;141
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
 	db -1 ; end
 
 WooperEggMoves:
-	db BODY_SLAM
-	db ANCIENTPOWER
-	db SAFEGUARD
+	db MEGA_PUNCH   ;005
+	db DOUBLE_KICK  ;024
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db RAGE         ;099
+	db MIMIC        ;102
+	db RECOVER      ;105
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db SAFEGUARD    ;219
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 MurkrowEggMoves:
-	db WHIRLWIND
-	db DRILL_PECK
-	db QUICK_ATTACK
-	db MIRROR_MOVE
-	db WING_ATTACK
-if _CRYSTAL
-	db SKY_ATTACK
-endc
+	db WING_ATTACK  ;017
+	db WHIRLWIND    ;018
+	db DOUBLE_EDGE  ;038
+	db DRILL_PECK   ;065
+	db THUNDER_WAVE ;086
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db CONFUSE_RAY  ;109
+	db MIRROR_MOVE  ;119
+	db DREAM_EATER  ;138
+	db SKY_ATTACK   ;143
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 MisdreavusEggMoves:
-	db SCREECH
-	db DESTINY_BOND
+	db DOUBLE_EDGE  ;038
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db HYPNOSIS     ;095
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db DESTINY_BOND ;194
 	db -1 ; end
 
+WobbuffetEggMoves:
+	db -1
+
 GirafarigEggMoves:
-	db TAKE_DOWN
-	db AMNESIA
-	db FORESIGHT
-	db FUTURE_SIGHT
-	db BEAT_UP
+	db RAZOR_WIND	;013
+	db DOUBLE_KICK  ;024
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db AMNESIA      ;133
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db FORESIGHT    ;193
+	db FUTURE_SIGHT ;248
+	db BEAT_UP      ;251
 	db -1 ; end
 
 PinecoEggMoves:
-	db REFLECT
-	db PIN_MISSILE
-	db FLAIL
-	db SWIFT
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db PIN_MISSILE  ;042
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db STRING_SHOT  ;081
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SELFDESTRUCT ;120
+	db SWIFT        ;129
+	db EXPLOSION    ;153
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
 DunsparceEggMoves:
-	db BIDE
-	db ANCIENTPOWER
-	db ROCK_SLIDE
-	db BITE
-	db RAGE
+	db BIND			;020
+	db FURY_ATTACK  ;031
+	db HORN_DRILL   ;032
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db BITE         ;044
+	db FLAMETHROWER ;053
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db COUNTER      ;068
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db BIDE         ;117
+	db DREAM_EATER  ;138
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 GligarEggMoves:
-	db METAL_CLAW
-	db WING_ATTACK
-	db RAZOR_WIND
-	db COUNTER
+	db RAZOR_WIND	;013
+	db SWORDS_DANCE	;014
+	db WING_ATTACK  ;017
+	db DOUBLE_EDGE  ;038
+	db COUNTER      ;068
+	db AGILITY      ;097
+	db RAGE         ;099
+	db MIMIC        ;102
+	db DREAM_EATER  ;138
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db METAL_CLAW   ;232
 	db -1 ; end
 
 SnubbullEggMoves:
-	db METRONOME
-	db FAINT_ATTACK
-	db REFLECT
-	db PRESENT
-	db CRUNCH
-	db HEAL_BELL
-	db LICK
-	db LEER
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db LEER         ;043
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db LICK         ;122
+	db LOVELY_KISS  ;142
+	db ROCK_SLIDE   ;157
+	db SUPER_FANG   ;162
+	db SUBSTITUTE   ;164
+	db FAINT_ATTACK ;185
+	db HEAL_BELL    ;215
+	db PRESENT      ;217
+	db CRUNCH       ;242
 	db -1 ; end
 
 QwilfishEggMoves:
-	db FLAIL
-	db HAZE
-	db BUBBLEBEAM
-	db SUPERSONIC
+	db DOUBLE_EDGE  ;038
+	db SUPERSONIC   ;048
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db SELFDESTRUCT ;120
+	db EXPLOSION    ;153
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
 ShuckleEggMoves:
-	db SWEET_SCENT
+	db BIND			;020
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db ACID         ;051
+	db STRING_SHOT  ;081
+	db RAGE         ;099
+	db MIMIC        ;102
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db SWEET_SCENT  ;230
 	db -1 ; end
 
 HeracrossEggMoves:
-	db HARDEN
-	db BIDE
-	db FLAIL
+	db SWORDS_DANCE	;014
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HARDEN       ;106
+	db BIDE         ;117
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db FLAIL        ;175
 	db -1 ; end
 
 SneaselEggMoves:
-	db COUNTER
-	db SPITE
-	db FORESIGHT
-	db REFLECT
-	db BITE
+	db ICE_PUNCH    ;008
+	db SWORDS_DANCE	;014
+	db DOUBLE_EDGE  ;038
+	db BITE         ;044
+	db ICE_BEAM     ;058
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db RAGE         ;099
+	db MIMIC        ;102
+	db REFLECT      ;115
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db SPITE        ;180
+	db FORESIGHT    ;193
 	db -1 ; end
 
 TeddiursaEggMoves:
-	db CRUNCH
-	db TAKE_DOWN
-	db SEISMIC_TOSS
-	db FOCUS_ENERGY
-	db COUNTER
-if _CRYSTAL
-	db METAL_CLAW
-endc
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db SWORDS_DANCE	;014
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db RAGE         ;099
+	db MIMIC        ;102
+	db FOCUS_ENERGY ;116
+	db METRONOME    ;118
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db METAL_CLAW   ;232
+	db CRUNCH       ;242
 	db -1 ; end
 
 SlugmaEggMoves:
-	db ACID_ARMOR
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db SOLARBEAM    ;076
+	db EARTHQUAKE   ;089
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db SELFDESTRUCT ;120
+	db ACID_ARMOR   ;151
+	db EXPLOSION    ;153
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 SwinubEggMoves:
-	db TAKE_DOWN
-	db BITE
-	db BODY_SLAM
-	db ROCK_SLIDE
-	db ANCIENTPOWER
+	db WHIRLWIND    ;018
+	db BODY_SLAM    ;034
+	db TAKE_DOWN    ;036
+	db DOUBLE_EDGE  ;038
+	db BITE         ;044
+	db ICE_BEAM     ;058
+	db HYPER_BEAM   ;063
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 CorsolaEggMoves:
-	db ROCK_SLIDE
-	db SAFEGUARD
-	db SCREECH
-	db MIST
-	db AMNESIA
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db MIST         ;054
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db CONFUSE_RAY  ;109
+	db BARRIER      ;112
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db BIDE         ;117
+	db SELFDESTRUCT ;120
+	db AMNESIA      ;133
+	db EXPLOSION    ;153
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db SAFEGUARD    ;219
 	db -1 ; end
 
 RemoraidEggMoves:
-	db AURORA_BEAM
-	db OCTAZOOKA
-	db SUPERSONIC
-	db HAZE
-	db SCREECH
+	db BIND			;020
+	db DOUBLE_EDGE  ;038
+	db SUPERSONIC   ;048
+	db FLAMETHROWER ;053
+	db MIST         ;054
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db AURORA_BEAM  ;062
+	db SEISMIC_TOSS ;069
+	db STRING_SHOT  ;081
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db HAZE         ;114
+	db SWIFT        ;129
+	db AMNESIA      ;133
+	db SUBSTITUTE   ;164
+	db OCTAZOOKA    ;190
 	db -1 ; end
 
 DelibirdEggMoves:
-	db AURORA_BEAM
-	db QUICK_ATTACK
-	db FUTURE_SIGHT
-	db SPLASH
-	db RAPID_SPIN
+	db MEGA_PUNCH   ;005
+	db PAY_DAY      ;006
+	db ICE_PUNCH    ;008
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db ICE_BEAM     ;058
+	db AURORA_BEAM  ;062
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db QUICK_ATTACK ;098
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKY_ATTACK   ;143
+	db SPLASH       ;150
+	db SUBSTITUTE   ;164
+	db RAPID_SPIN   ;229
+	db FUTURE_SIGHT ;248
 	db -1 ; end
 
 MantineEggMoves:
-	db TWISTER
-	db HYDRO_PUMP
-	db HAZE
-	db SLAM
+	db GUST         ;016
+	db SLAM         ;021
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db HYDRO_PUMP   ;056
+	db ICE_BEAM     ;058
+	db HYPER_BEAM   ;063
+	db STRING_SHOT  ;081
+	db RAGE         ;099
+	db MIMIC        ;102
+	db HAZE         ;114
+	db AMNESIA      ;133
+	db SPLASH       ;150
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db TWISTER      ;239
 	db -1 ; end
 
 SkarmoryEggMoves:
-	db DRILL_PECK
-	db PURSUIT
-	db WHIRLWIND
-if _CRYSTAL
-	db SKY_ATTACK
-endc
+	db SWORDS_DANCE	;014
+	db WHIRLWIND    ;018
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db DRILL_PECK   ;065
+	db COUNTER      ;068
+	db RAGE         ;099
+	db MIMIC        ;102
+	db SKY_ATTACK   ;143
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db PURSUIT      ;228
 	db -1 ; end
 
 HoundourEggMoves:
-	db FIRE_SPIN
-	db RAGE
-	db PURSUIT
-	db COUNTER
-	db SPITE
-	db REVERSAL
-	db BEAT_UP
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db FIRE_SPIN    ;083
+	db RAGE         ;099
+	db MIMIC        ;102
+	db DREAM_EATER  ;138
+	db SUPER_FANG   ;162
+	db SUBSTITUTE   ;164
+	db REVERSAL     ;179
+	db SPITE        ;180
+	db PURSUIT      ;228
+	db BEAT_UP      ;251
 	db -1 ; end
 
 PhanpyEggMoves:
-	db FOCUS_ENERGY
-	db BODY_SLAM
-	db ANCIENTPOWER
-if _CRYSTAL
-	db WATER_GUN
-endc
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db WATER_GUN    ;055
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db ABSORB       ;071
+	db FISSURE      ;090
+	db RAGE         ;099
+	db MIMIC        ;102
+	db FOCUS_ENERGY ;116
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
 StantlerEggMoves:
-	db REFLECT
-	db SPITE
-	db DISABLE
-	db LIGHT_SCREEN
-	db BITE
+	db DOUBLE_KICK  ;024
+	db BODY_SLAM    ;034
+	db THRASH       ;037
+	db DOUBLE_EDGE  ;038
+	db BITE         ;044
+	db DISABLE      ;050
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db DREAM_EATER  ;138
+	db SUBSTITUTE   ;164
+	db SPITE        ;180
 	db -1 ; end
 
 TyrogueEggMoves:
-	db RAPID_SPIN
-	db HI_JUMP_KICK
-	db MACH_PUNCH
-	db MIND_READER
+	db MEGA_PUNCH   ;005
+	db FIRE_PUNCH   ;007
+	db ICE_PUNCH    ;008
+	db THUNDERPUNCH ;009
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db SUBMISSION   ;066
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db RAGE         ;099
+	db MIMIC        ;102
+	db METRONOME    ;118
+	db HI_JUMP_KICK ;136
+	db DIZZY_PUNCH  ;146
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db MIND_READER  ;170
+	db MACH_PUNCH   ;183
+	db RAPID_SPIN   ;229
 	db -1 ; end
 
 SmoochumEggMoves:
-if !_CRYSTAL
-	db LOVELY_KISS
-endc
-	db MEDITATE
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db HEADBUTT     ;029
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db WATER_GUN    ;055
+	db ICE_BEAM     ;058
+	db BUBBLEBEAM   ;061
+	db HYPER_BEAM   ;063
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db PETAL_DANCE  ;080
+	db MEDITATE     ;096
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db LOVELY_KISS  ;142
+	db DIZZY_PUNCH  ;146
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
 	db -1 ; end
 
 ElekidEggMoves:
-	db KARATE_CHOP
-	db BARRIER
-	db ROLLING_KICK
-	db MEDITATE
-if _CRYSTAL
-	db CROSS_CHOP
-endc
+	db KARATE_CHOP  ;002
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db ROLLING_KICK ;027
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db HYPER_BEAM   ;063
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db EARTHQUAKE   ;089
+	db MEDITATE     ;096
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db BARRIER      ;112
+	db LIGHT_SCREEN ;113
+	db REFLECT      ;115
+	db METRONOME    ;118
+	db DIZZY_PUNCH  ;146
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
+	db CROSS_CHOP   ;238
 	db -1 ; end
 
 MagbyEggMoves:
 	db KARATE_CHOP
-	db MEGA_PUNCH
-	db BARRIER
-	db SCREECH
-if _CRYSTAL
-	db CROSS_CHOP
-endc
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db FLAMETHROWER ;053
+	db HYPER_BEAM   ;063
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db SOLARBEAM    ;076
+	db RAGE         ;099
+	db TELEPORT     ;100
+	db MIMIC        ;102
+	db SCREECH      ;103
+	db BARRIER      ;112
+	db FOCUS_ENERGY ;116
+	db METRONOME    ;118
+	db DIZZY_PUNCH  ;146
+	db PSYWAVE      ;149
+	db SUBSTITUTE   ;164
+	db CROSS_CHOP   ;238
 	db -1 ; end
 
 MiltankEggMoves:
-	db PRESENT
-	db REVERSAL
-	db SEISMIC_TOSS
+	db MEGA_PUNCH   ;005
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db DOUBLE_EDGE  ;038
+	db ICE_BEAM     ;058
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db RAGE         ;099
+	db MIMIC        ;102
+	db METRONOME    ;118
+	db DIZZY_PUNCH  ;146
+	db ROCK_SLIDE   ;157
+	db REVERSAL     ;179
+	db SUBSTITUTE   ;164
+	db PRESENT      ;217
 	db -1 ; end
 
 LarvitarEggMoves:
-	db PURSUIT
-	db STOMP
-	db OUTRAGE
-	db FOCUS_ENERGY
-	db ANCIENTPOWER
+	db MEGA_PUNCH   ;005
+	db FIRE_PUNCH   ;007
+	db THUNDERPUNCH ;009
+	db STOMP        ;023
+	db MEGA_KICK    ;025
+	db BODY_SLAM    ;034
+	db DOUBLE_EDGE  ;038
+	db ROAR         ;046
+	db FLAMETHROWER ;053
+	db ICE_BEAM     ;058
+	db BLIZZARD     ;059
+	db LOW_KICK     ;067
+	db COUNTER      ;068
+	db SEISMIC_TOSS ;069
+	db THUNDERBOLT  ;085
+	db THUNDER_WAVE ;086
+	db THUNDER      ;087
+	db RAGE         ;099
+	db MIMIC        ;102
+	db FOCUS_ENERGY ;116
+	db DIZZY_PUNCH  ;146
+	db ROCK_SLIDE   ;157
+	db SUBSTITUTE   ;164
+	db OUTRAGE      ;200
+	db PURSUIT      ;228
+	db ANCIENTPOWER ;246
 	db -1 ; end
 
+DittoEggMoves:
+ArticunoEggMoves:
+ZapdosEggMoves:
+MoltresEggMoves:
+MewtwoEggMoves:
+MewEggMoves:
+UnownEggMoves:
+SmeargleEggMoves:
+RaikouEggMoves:
+EnteiEggMoves:
+SuicuneEggMoves:
+LugiaEggMoves:
+HoohEggMoves:
+CelebiEggMoves:
+MissingnoEggMoves:
 NoEggMoves:
 	db -1 ; end

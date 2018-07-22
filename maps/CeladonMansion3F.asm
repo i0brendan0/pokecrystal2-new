@@ -14,7 +14,7 @@ CooltrainerMScript_0x71670:
 	opentext
 	writetext UnknownText_0x716ce
 	checkcode VAR_DEXCAUGHT
-	ifgreater NUM_POKEMON - 2 - 1, UnknownScript_0x7167e ; ignore Mew and Celebi
+	ifgreater NUM_POKEMON - 1, UnknownScript_0x7167e ; ignore Missingno
 	waitbutton
 	closetext
 	end
@@ -76,8 +76,168 @@ MapCeladonMansion3FSignpost1Script:
 	jumptext UnknownText_0x71928
 
 MapCeladonMansion3FSignpost2Script:
-	jumptext UnknownText_0x71952
+	opentext
+	writetext UnknownText_0x71952
+	yesorno
+	iffalse .DidNotMessWithGame
+	checkevent EVENT_BEAT_RED
+	iffalse .NothingHappened
+	callasm .MissingNoCaught
+	iftrue .NothingHappened
+	random 100
+	if_true .SeenMissingNo ; 99/100 - 99%
+	writetext MissingNoCry
+	cry MISSINGNO
+	setevent EVENT_SAW_MISSINGNO
+	pause 20
+	loadwildmon MISSINGNO, 25
+	startbattle
+	end
 
+.DidNotMessWithGame:
+	writetext DidNotMessText
+	waitbutton
+	closetext
+	end
+
+.MissingNoCaught:
+	ld a, MISSINGNO
+	farcall CheckCaughtMon
+	ld [ScriptVar], a
+	ret
+
+.SeenMissingNo:
+	checkevent EVENT_SAW_MISSINGNO
+	iftrue .NothingHappened
+
+.NotMissingNo: ;If MissingNo. does not show up, new random #
+	random 255
+	if_greater_than 100, .NothingHappened ;155/255 ~ 60.7%
+	if_greater_than  70, .GivePokeBall    ; 30/255 ~ 11.8%
+	if_greater_than  56, .Give2000Money   ; 14/255 ~ 05.5%
+	if_greater_than  50, .GivePotion      ;  6/255 ~ 02.4%
+	if_greater_than  40, .Take1000Money   ; 10/255 ~ 03.9%
+	if_greater_than  33, .GiveGreatBall   ;  7/255 ~ 02.7%
+	if_greater_than  20, .TakePokeBall    ; 13/255 ~ 05.1%
+	if_greater_than  16, .GiveUltraBall   ;  4/255 ~ 01.2%
+	if_greater_than  10, .Give100Coins    ;  6/255 ~ 02.7%
+	if_greater_than   5, .GiveLeftovers   ;  5/255 ~ 02.0%
+	if_greater_than   1, .Give1000Coins   ;  4/255 ~ 01.6%
+	verbosegiveitem MASTER_BALL           ;  1/255 ~ 00.4%
+	waitbutton
+	closetext
+	end
+
+.GivePokeBall:
+	verbosegiveitem POKE_BALL
+	waitbutton
+	closetext
+	end
+
+.Give2000Money:
+	checkmoney 0, 998000
+	iftrue .GiveMoneyToMom
+	givemoney 0, 2000
+	writetext GotMoneyText
+	playsound SFX_ITEM
+	waitsfx
+	waitbutton
+	closetext
+	end
+
+.GiveMoneyToMom:
+	checkmoney 1, 998000
+	iftrue .NothingHappened
+	givemoney 1, 2000
+	writetext MomGotMoneyText
+	playsound SFX_ITEM
+	waitsfx
+	waitbutton
+	closetext
+	end
+
+.GivePotion:
+	verbosegiveitem POTION
+	waitbutton
+	closetext
+	end
+
+.Take1000Money:
+	checkmoney 0, 1000
+	iffalse .TakeMoneyFromMom
+	takemoney 0, 1000
+	writetext LostMoneyText
+	waitbutton
+	closetext
+	end
+
+.TakeMoneyFromMom:
+	checkmoney 1, 1000
+	iffalse .NothingHappened
+	takemoney 1, 1000
+	writetext MomLostMoneyText
+	waitbutton
+	closetext
+	end
+
+.GiveGreatBall:
+	verbosegiveitem GREAT_BALL
+	waitbutton
+	closetext
+	end
+
+.TakePokeBall:
+	checkitem POKE_BALL
+	iffalse .NothingHappened
+	takeitem POKE_BALL
+	writetext LostPokeballText
+	waitbutton
+	closetext
+	end
+
+.GiveUltraBall:
+	verbosegiveitem ULTRA_BALL
+	waitbutton
+	closetext
+	end
+
+.Give100Coins:
+	checkcoins 9800
+	iftrue .NothingHappened
+	givecoins 100
+	writetext Got100CoinsText
+	playsound SFX_ITEM
+	waitsfx
+	waitbutton
+	closetext
+	end
+
+.GiveLeftovers:
+	verbosegiveitem LEFTOVERS
+	waitbutton
+	closetext
+	end
+
+.Give1000Coins:
+	checkcoins 9000
+	iftrue .NothingHappened
+	givecoins 1000
+	writetext Got1000CoinsText
+	playsound SFX_ITEM
+	waitsfx
+	waitbutton
+	closetext
+	end
+
+.NothingHappened:
+	closetext
+	pause 10
+	opentext
+	writetext NothingText
+	waitbutton
+	closetext
+	end
+	
 MapCeladonMansion3FSignpost3Script:
 	jumptext UnknownText_0x71996
 
@@ -178,6 +338,8 @@ UnknownText_0x71952:
 
 	para "with it could put"
 	line "a bug in the game!"
+	
+	para "Mess with it?<...>"
 	done
 
 UnknownText_0x71996:
@@ -187,6 +349,57 @@ UnknownText_0x71996:
 	cont "a # DOLL."
 	done
 
+DidNotMessText:
+	text "Decided not to"
+	line "mess with the"
+	cont "game program."
+	done
+
+NothingText:
+	text "Looks like no-"
+	line "thing happened."
+	done
+
+MissingNoCry:
+	text "???: -/0'vü] J←▼×"
+	cont "4♂ &<MN>Ö ERROR M"
+	done
+
+GotMoneyText:
+	text "<PLAYER> recieved"
+	cont "¥2000."
+	done
+
+MomGotMoneyText:
+	text "<PLAYER>'s MOM"
+	cont "recieved ¥2000."
+	done
+
+LostMoneyText:
+	text "<PLAYER> lost"
+	cont "¥1000."
+	done
+
+MomLostMoneyText:
+	text "<PLAYER>'s MOM"
+	cont "lost ¥1000."
+	done
+
+LostPokeballText:
+	text "<PLAYER> lost"
+	cont "a POKEBALL."
+	done
+
+Got100CoinsText:
+	text "<PLAYER> recieved"
+	cont "100 Coins."
+	done
+
+Got1000CoinsText:
+	text "<PLAYER> recieved"
+	cont "1000 Coins."
+	done
+	
 CeladonMansion3F_MapEvents:
 	db 0, 0 ; filler
 

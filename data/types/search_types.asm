@@ -17,4 +17,9 @@ PokedexTypeSearchConversionTable: ; 410f6
 	db DRAGON
 	db DARK
 	db STEEL
+    db FAIRY_T
+    db BIRD
+    db LIGHT_T
+    db CHAOS_T
+    db MYSTERY_T
 ; 41107

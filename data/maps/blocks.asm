@@ -1045,3 +1045,27 @@ BetaBlank_Blocks:
 
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"
+	
+
+;SECTION "Map Blocks 4", ROMX
+
+SilverCaveMoltresRoom_BlockData:
+	INCBIN "maps/SilverCaveMoltresRoom.blk"
+
+SeafoamIslandB1F_BlockData:
+	INCBIN "maps/SeafoamIslandB1F.blk"
+
+SafariZone2_BlockData:
+	INCBIN "maps/SafariZone2.blk"
+
+SafariZone3_BlockData:
+	INCBIN "maps/SafariZone3.blk"
+
+CeruleanCave_BlockData:
+	INCBIN "maps/CeruleanCave.blk"
+
+FarawayIslandOutside_BlockData:
+	INCBIN "maps/FarawayIslandOutside.blk"
+
+FarawayIslandCave_BlockData:
+	INCBIN "maps/FarawayIslandCave.blk"

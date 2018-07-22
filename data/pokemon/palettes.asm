@@ -5,8 +5,8 @@ PokemonPalettes: ; a8ce
 	RGB 30, 22, 17
 	RGB 16, 14, 19
 ; 000 shiny
-	RGB 30, 22, 17
-	RGB 16, 14, 19
+	RGB 17, 22, 30
+	RGB 19, 14, 16
 
 INCLUDE "gfx/pokemon/bulbasaur/normal.pal"
 INCLUDE "gfx/pokemon/bulbasaur/shiny.pal"
@@ -510,13 +510,8 @@ INCLUDE "gfx/pokemon/ho_oh/normal.pal"
 INCLUDE "gfx/pokemon/ho_oh/shiny.pal"
 INCLUDE "gfx/pokemon/celebi/normal.pal"
 INCLUDE "gfx/pokemon/celebi/shiny.pal"
-
-; 252
-	RGB 30, 26, 11
-	RGB 23, 16, 00
-; 252 shiny
-	RGB 30, 26, 11
-	RGB 23, 16, 00
+INCLUDE "gfx/pokemon/missingno/normal.pal"
+INCLUDE "gfx/pokemon/missingno/shiny.pal"
 
 INCLUDE "gfx/pokemon/egg/normal.pal"
 INCLUDE "gfx/pokemon/egg/shiny.pal"

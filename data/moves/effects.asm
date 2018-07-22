@@ -573,7 +573,6 @@ DefenseDownHit:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	effectchance ; bug: duplicate effectchance shouldn't be here
 	defensedown
 	statdownmessage
 	endmove

@@ -484,3 +484,10 @@ SECTION "Map Scripts 25", ROMX
 
 INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/Route10North.asm"
+INCLUDE "maps/SilverCaveMoltresRoom.asm"
+INCLUDE "maps/SeafoamIslandB1F.asm"
+INCLUDE "maps/SafariZone2.asm"
+INCLUDE "maps/SafariZone3.asm"
+INCLUDE "maps/CeruleanCave.asm"
+INCLUDE "maps/FarawayIslandOutside.asm"
+INCLUDE "maps/FarawayIslandCave.asm"

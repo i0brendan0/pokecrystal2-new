@@ -446,7 +446,10 @@ ENDM
 	map_attributes RockTunnel1F, ROCK_TUNNEL_1F, $09, 0
 	map_attributes RockTunnelB1F, ROCK_TUNNEL_B1F, $09, 0
 	map_attributes SafariZoneFuchsiaGateBeta, SAFARI_ZONE_FUCHSIA_GATE_BETA, $00, 0
-	map_attributes SafariZoneBeta, SAFARI_ZONE_BETA, $13, 0
+	map_attributes SafariZoneBeta, SAFARI_ZONE_BETA, $13, WEST | EAST
+	connection west, SAFARI_ZONE_2, SafariZone2, 0, 0, 10, SAFARI_ZONE_BETA
+	connection east, SAFARI_ZONE_3, SafariZone3, 0, 0, 10, SAFARI_ZONE_BETA
+
 	map_attributes VictoryRoad, VICTORY_ROAD, $1d, 0
 	map_attributes EcruteakTinTowerEntrance, ECRUTEAK_TIN_TOWER_ENTRANCE, $00, 0
 	map_attributes WiseTriosRoom, WISE_TRIOS_ROOM, $00, 0
@@ -661,3 +664,14 @@ ENDM
 	map_attributes Route30BerryHouse, ROUTE_30_BERRY_HOUSE, $00, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $00, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $00, 0
+	map_attributes SilverCaveMoltresRoom, SILVER_CAVE_MOLTRES_ROOM, 9, 0
+	map_attributes SeafoamIslandB1F, SEAFOAM_ISLAND_B1_F, 9, 0
+	map_attributes SafariZone2, SAFARI_ZONE_2, 0, EAST
+	connection east, SAFARI_ZONE_BETA, SafariZoneBeta, 0, 0, 14, SAFARI_ZONE_2
+
+	map_attributes SafariZone3, SAFARI_ZONE_3, 0, WEST
+	connection west, SAFARI_ZONE_BETA, SafariZoneBeta, 0, 0, 14, SAFARI_ZONE_3
+
+	map_attributes CeruleanCave, CERULEAN_CAVE, 9, 0
+	map_attributes FarawayIslandOutside, FARAWAY_ISLAND_OUTSIDE, 67, 0
+	map_attributes FarawayIslandCave, FARAWAY_ISLAND_CAVE, 9, 0

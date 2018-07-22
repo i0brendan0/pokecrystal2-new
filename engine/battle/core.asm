@@ -5921,7 +5921,7 @@ CheckPlayerHasUsableMoves: ; 3e786
 
 .done
 	; Bug: this will result in a move with PP Up confusing the game.
-	and a ; should be "and PP_MASK"
+	and PP_MASK ; should be "and PP_MASK"
 	ret nz
 
 .force_struggle
@@ -6171,19 +6171,19 @@ LoadEnemyMon: ; 3e8eb
 
 ; Failing that, it's all up to chance
 ;  Effective chances:
-;    75% None
-;    23% Item1
-;     2% Item2
+;    70% None
+;    24% Item1
+;     6% Item2
 
-; 25% chance of getting an item
+; 30% chance of getting an item
 	call BattleRandom
-	cp 75 percent + 1
+	cp 70 percent + 1
 	ld a, NO_ITEM
 	jr c, .UpdateItem
 
-; From there, an 8% chance for Item2
+; From there, an 20% chance for Item2
 	call BattleRandom
-	cp 8 percent ; 8% of 25% = 2% Item2
+	cp 20 percent ; 20% of 30% = 6% Item2
 	ld a, [wBaseItems]
 	jr nc, .UpdateItem
 	ld a, [wBaseItems+1]
@@ -6274,7 +6274,10 @@ LoadEnemyMon: ; 3e8eb
 	cp BATTLETYPE_SHINY
 	jr nz, .GenerateDVs
 
-	ld b, ATKDEFDV_SHINY ; $ea
+	call Random
+	and $f0
+	or $2a
+	ld b, a ; $Xa
 	ld c, SPDSPCDV_SHINY ; $aa
 	jr .UpdateDVs
 

@@ -1414,7 +1414,6 @@ BattleAnim_Sonicboom: ; c9c00
 ; c9c36
 
 BattleAnim_Gust: ; c9c36
-BattleAnim_Sonicboom_JP: ; c9c36
 	anim_2gfx ANIM_GFX_WIND, ANIM_GFX_HIT
 .loop
 	anim_sound 0, 1, SFX_RAZOR_WIND

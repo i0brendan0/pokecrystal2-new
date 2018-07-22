@@ -1,6 +1,5 @@
 	const_def 2 ; object constants
 	const OLIVINEHOUSEBETA_TEACHER
-	const OLIVINEHOUSEBETA_RHYDON
 
 OlivineHouseBeta_MapScripts:
 	db 0 ; scene scripts
@@ -8,15 +7,32 @@ OlivineHouseBeta_MapScripts:
 	db 0 ; callbacks
 
 OlivineHouseBetaTeacherScript:
-	jumptextfaceplayer OlivineHouseBetaTeacherText
+    faceplayer
+    opentext
+    checkevent EVENT_MET_MOVE_RELEARNER
+    iftrue .met_relearner
+    writetext .intro_text
+    setevent EVENT_MET_MOVE_RELEARNER
+.met_relearner:
+    special MoveRelearner
+    end    
+    
+.intro_text:
+	text "Hello! I'm the"
+	line "Move Relearner!"
 
-RhydonScript_0x9c592:
-	opentext
-	writetext UnknownText_0x9c5f0
-	cry RHYDON
-	waitbutton
-	closetext
-	end
+	para "I can help your"
+	line "#mon remember"
+	para "moves that they"
+	line "have forgotten."
+
+	para "I can do this for"
+	line "you, in exchange"
+	cont "for a Heart Scale."
+
+	para "I collect them,"
+	line "you see."
+	prompt
 
 OlivineHouseBetaBookshelf1:
 	jumpstd picturebookshelf
@@ -31,10 +47,6 @@ OlivineHouseBetaTeacherText:
 	para "PHARMACIST in"
 	line "ECRUTEAK made some"
 	cont "medicine for me."
-	done
-
-UnknownText_0x9c5f0:
-	text "RHYDON: Gugooh!"
 	done
 
 OlivineHouseBeta_MapEvents:
@@ -52,4 +64,3 @@ OlivineHouseBeta_MapEvents:
 
 	db 2 ; object events
 	object_event  2,  3, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineHouseBetaTeacherScript, -1
-	object_event  6,  4, SPRITE_RHYDON, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RhydonScript_0x9c592, -1

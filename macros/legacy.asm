@@ -20,6 +20,8 @@ if_not_equal    EQUS "ifnotequal"
 if_greater_than EQUS "ifgreater"
 if_less_than    EQUS "ifless"
 end_all         EQUS "endall"
+if_true         EQUS "iftrue"
+if_false        EQUS "iffalse"
 
 checkmaptriggers EQUS "checkmapscene"
 domaptrigger     EQUS "setmapscene"

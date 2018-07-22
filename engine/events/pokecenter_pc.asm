@@ -45,17 +45,29 @@ PokemonCenterPC: ; 1559a
 	dw OaksPC, .String_OaksPC
 	dw HallOfFamePC, .String_HallOfFame
 	dw TurnOffPC, .String_TurnOff
+	dw SomeonesPC, .String_SomeonesPC
 
 .String_PlayersPC:  db "<PLAYER>'s PC@"
 .String_BillsPC:    db "BILL's PC@"
 .String_OaksPC:     db "PROF.OAK's PC@"
 .String_HallOfFame: db "HALL OF FAME@"
 .String_TurnOff:    db "TURN OFF@"
+.String_SomeonesPC: db "SOMEONE's PC@"
 
 .WhichPC:
+	; before Bill
+	db  3
+	db  5, 0, 4 ; someone's, player's, turn off
+	db -1
+	
 	; before pokedex
 	db  3 ; items
 	db  1, 0, 4 ; bill's, player's, turn off
+	db -1
+
+	; before Bill, after pokedex
+	db  3
+	db  5, 0, 2, 4 ; bill's, player's, oak's, turn off
 	db -1
 
 	; before Hall Of Fame
@@ -71,15 +83,25 @@ PokemonCenterPC: ; 1559a
 .ChooseWhichPCListToUse:
 	call CheckReceivedDex
 	jr nz, .got_dex
+	ld de, ENGINE_TIME_CAPSULE
+	ld b, CHECK_FLAG
+	call EventFlagAction
 	ld a, $0
+	ret z
+	ld a, $1
 	ret
 
 .got_dex
+	ld de, ENGINE_TIME_CAPSULE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, $2
+	ret z
 	ld a, [wHallOfFameCount]
 	and a
-	ld a, $1
+	ld a, $3
 	ret z
-	ld a, $2
+	ld a, $4
 	ret
 ; 15650
 
@@ -103,12 +125,18 @@ PC_CheckPartyForPokemon: ; 15650
 BillsPC: ; 15668
 	call PC_PlayChoosePCSound
 	ld hl, PokecenterPCText_AccessedBillsPC
+FinishPC:
 	call PC_DisplayText
 	farcall _BillsPC
 	and a
 	ret
 ; 15679 (5:5679)
 
+SomeonesPC:
+	call PC_PlayChoosePCSound
+	ld hl, PokecenterPCText_AccessedSomeonesPC
+	jr FinishPC
+	
 PlayersPC: ; 15679
 	call PC_PlayChoosePCSound
 	ld hl, PokecenterPCText_AccessedOwnPC
@@ -673,4 +701,10 @@ PokecenterPCText_LinkClosed: ; 0x15a40
 	; … Link closed…
 	text_jump UnknownText_0x1c1505
 	db "@"
+	
+PokecenterPCText_AccessedSomeonesPC:
+	text_jump SomeonesPCText
+	db "@"
+	
+
 ; 0x15a45
