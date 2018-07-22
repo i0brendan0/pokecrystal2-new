@@ -7223,14 +7223,6 @@ INCLUDE "engine/battle/move_effects/thunder.asm"
 
 
 CheckHiddenOpponent: ; 37daa
-; BUG: This routine should account for Lock-On and Mind Reader.
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
-	call GetBattleVar
-    bit SUBSTATUS_LOCK_ON, a
-    ret z
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	ret
 
 ; 37db2

@@ -304,8 +304,7 @@ Function511ec: ; 511ec
 	call GetFarHalfword
 	pop af
 	pop de
-	call FarDecompress
-	ret
+	jp FarDecompress
 
 GetTrainerPic: ; 5120d
 	ld a, [wTrainerClass]
@@ -452,8 +451,6 @@ PadFrontpic: ; 512ab
 	jr nz, .five_loop
 	ld c, $70
 	xor a
-	call .Fill
-	ret
 
 .Fill:
 	ld [hli], a
