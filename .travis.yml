@@ -18,6 +18,7 @@ before_script:
       fi;
     }
 script:
+  - make clean
   - make -j2
   - check_status
 
