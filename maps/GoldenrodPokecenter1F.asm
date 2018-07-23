@@ -46,7 +46,7 @@ GoldenrodPokecenter1F_GSBallSceneLeft:
 
 GoldenrodPokecenter1F_GSBallSceneRight:
 	checkevent EVENT_BEAT_RED
-	iftrue .gsballl
+	iftrue .gsball
 	end
 
 .gsball
