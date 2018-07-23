@@ -754,6 +754,7 @@ BattleCommand_CheckObedience: ; 343db
 	bit FOGBADGE, [hl]
 	ld a, 50
 	jr nz, .getlevel
+	
 	; plainbadge
 	bit PLAINBADGE, [hl]
 	ld a, 40
@@ -1256,7 +1257,10 @@ BattleCommand_Critical: ; 34631
 	ld c, 0
 
 	cp CHANSEY
+	jr z, .up
+	cp BLISSEY
 	jr nz, .Farfetchd
+.up
 	ld a, [hl]
 	cp LUCKY_PUNCH
 	jr nz, .FocusEnergy
@@ -1381,8 +1385,21 @@ BattleCommand_Stab: ; 346d2
 	jr z, .stab
 	cp c
 	jr z, .stab
-
-	jr .SkipStab
+	
+	ld hl, wBattleMonSpecies
+	ld a, [hBattleTurn]
+	and a
+	jr z, .player
+	ld hl, wEnemyMonSpecies
+.player
+	ld a, [hl]
+	cp UNOWN
+	jr nz, .SkipStab
+	
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp HIDDEN_POWER
+	jr nz, .SkipStab
 
 .stab
 	ld hl, wCurDamage + 1
@@ -6317,6 +6334,8 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	jr z, .got_effect
 	cp EFFECT_SWAGGER
 	jr z, .got_effect
+	cp EFFECT_MYTHIFY
+	jr z, .got_effect
 	call AnimateCurrentMove
 
 .got_effect
@@ -7520,3 +7539,5 @@ _CheckBattleScene: ; 37ed5
 	ret
 
 ; 37ee2
+
+INCLUDE "engine/battle/move_effects/mythify.asm"

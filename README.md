@@ -27,14 +27,11 @@ List of major changes
 * Add a Move Relearner. - This has not been extensively tested yet.
 
 List of minor changes
-* Moves are updated to the latest Gen stats with a couple changing type. No fairy type.... Yet. Maybe some new types.
+* Moves are updated to the latest Gen stats with a couple changing type.
 * Ghost-type is now Special, while Dark-type is now Physical.
 * Many bugs left from Gen 2 are fixed. Even some that weren't widely known about.
 * Each Johto badge increases the level that traded Pokemon obey. Kanto badges are not taken into account.
 * Some moves have been given the correct name based on limits from Gen 2.
-* Steel is no longer resistant to Dark and Ghost.
-* Poison is now super-effective to Bug as in Gen 1.
-* Bug now resists Psychic. A balancing decision.
 * The phone list size is increased to 20. 
 * The number at which Pokemon evolve by happiness is decreased to 200.
 * Some Pokemon have a second type.
@@ -54,14 +51,29 @@ List of minor changes
 * Updated Pokemons' stats to the latest Gen.
 * Pokemon Trainers which have been given shiny Pokemon have edited parties.
 * The chances to have a wild Pokemon with a held item has been increased to 24% and 6%.
-* The Unown that you can catch from each puzzle have been changed
+* The Unown that you can catch from each puzzle have been changed.
 * The Light Ball will increase Special Attack for Pichu, Pikachu, and Raichu.
+* 3 new moves. Magnet Bomb - Steel, Fairy Wind - Fairy, Mythify - Mystery.
+* Lucky Punch will increase critical ratio for Chansey and Blissey.
+* Unown will always recieve STAB for using Hidden Power.
+
+List of Type Matchup Changes
+* Steel is no longer resistant to Dark and Ghost.
+* Poison is now super-effective to Bug as in Gen 1.
+* Bug now resists Psychic. A balancing decision.
+* Fairy type from Gen VII is added.
+* Bird type is now a useable type.
+* Mystery type - New
+* Chaos type - New
+* Light type - New
 
 List of minor things left to do
 * Add more Egg moves.
 * Add more Level Up moves.
 * Add more TM moves.
 * Add a Soothe Bell item. The code has been extensively tested and ready for implementation. 
+* Add new type boosts.
+* Add new type boost hold items to the game.
 
 List of major things left to do
 * Update all trainers' Pokemon with newly acquired moves.

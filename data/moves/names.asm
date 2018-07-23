@@ -251,3 +251,5 @@ MoveNames::
 	db "WHIRLPOOL@"
 	db "BEAT UP@"
     db "MAGNET BOMB@"
+	db "FAIRY WIND@"
+	db "MYTHIFY@"

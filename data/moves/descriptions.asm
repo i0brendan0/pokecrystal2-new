@@ -252,14 +252,12 @@ MoveDescriptions:: ; 2cb52
 	dw WhirlpoolDescription
 	dw BeatUpDescription
 	dw MagnetBombDescription
-	dw MoveFDDescription
-	dw MoveFEDescription
+	dw FairyWindDescription
+	dw MythifyDescription
 	dw MoveFFDescription
 	dw Move00Description
 ; 2cd52
 
-MoveFDDescription:
-MoveFEDescription:
 MoveFFDescription:
 Move00Description:
 	db "?@"
@@ -1267,6 +1265,15 @@ BeatUpDescription:
 	db   "Party #MON join"
 	next "in the attack.@"
 ; 2ed44
-MagnetBombDescription
+
+MagnetBombDescription:
 	db   "A steel bomb that"
 	next "never misses.@"
+	
+FairyWindDescription:
+	db   "The user strikes"
+	next "with a fairy wind.@"
+
+MythifyDescription:
+	db   "Strong but confuses"
+	next "either #MON.@"

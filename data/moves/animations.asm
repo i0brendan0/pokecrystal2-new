@@ -253,8 +253,8 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
 	dw BattleAnim_MagnetBomb
-	dw BattleAnim_253
-	dw BattleAnim_254
+	dw BattleAnim_FairyWind
+	dw BattleAnim_Mythify
 	dw BattleAnim_SweetScent2
 ; $100
 	dw BattleAnim_ThrowPokeBall
@@ -282,8 +282,6 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-BattleAnim_253: ; c929b
-BattleAnim_254: ; c929b
 BattleAnim_MirrorMove: ; c929b
 	anim_ret
 ; c929c
@@ -2583,6 +2581,7 @@ BattleAnim_Bonemerang: ; ca5f6
 	anim_ret
 ; ca60c
 
+BattleAnim_FairyWind:
 BattleAnim_Swift: ; ca60c
 	anim_1gfx ANIM_GFX_OBJECTS
 	anim_sound 6, 2, SFX_METRONOME
@@ -2881,6 +2880,7 @@ BattleAnim_Harden: ; ca85e
 	anim_ret
 ; ca86c
 
+BattleAnim_Mythify:
 BattleAnim_Psywave: ; ca86c
 	anim_1gfx ANIM_GFX_PSYCHIC
 	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0

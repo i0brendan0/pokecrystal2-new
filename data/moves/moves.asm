@@ -264,5 +264,5 @@ Moves: ; 41afb
 	move WHIRLPOOL,    EFFECT_TRAP_TARGET,        35, WATER,     85, 15,   0
 	move BEAT_UP,      EFFECT_BEAT_UP,            10, DARK,     100, 10,   0
 	move MAGNET_BOMB,  EFFECT_ALWAYS_HIT,         60, STEEL,    100, 20,   0
-;	move FAIRY_WIND,   EFFECT_NORMAL_HIT,         40, FAIRY_T,  100, 30,   0
-;   move , EFFECT_, 0, MYSTERY_T, 0, 0, 0
+	move FAIRY_WIND,   EFFECT_NORMAL_HIT,         40, FAIRY_T,  100, 30,   0
+	move MYTHIFY,      EFFECT_MYTHIFY,           100, MYSTERY_T, 100, 10, 100
