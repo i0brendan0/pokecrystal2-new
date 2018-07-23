@@ -11,7 +11,7 @@ RGBLINK := rgblink
 
 roms := pokecrystal2.gbc
 
-crystal2_obj := \
+crystal_obj := \
 audio.o \
 home.o \
 main.o \
@@ -30,16 +30,16 @@ lib/mobile/main.o
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all crystal2 clean compare tools
+.PHONY: all crystal clean compare tools
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
 
-all: crystal2
+all: crystal
 crystal: pokecrystal2.gbc
 
 clean:
-	rm -f $(roms) $(crystal2_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
 	$(MAKE) clean -C tools/
 
 tools:
