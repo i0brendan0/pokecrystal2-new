@@ -56,6 +56,7 @@ displaylocation   EQUS "landmarktotext"
 
 
 ; macros/scripts/maps.asm
+mapgroup EQUS "mapconst"
 
 mapconst: MACRO
 	map_const \1, \3, \2
