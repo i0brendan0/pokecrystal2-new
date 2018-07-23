@@ -258,10 +258,9 @@
 	const WHIRLPOOL    ; fa
 	const BEAT_UP      ; fb
     const MAGNET_BOMB
+	const FAIRY_WIND
+	const MYTHIFY
 NUM_ATTACKS EQU const_value + -1
-
-	const MOVE_OR_ANIM_FD ; fd
-	const MOVE_OR_ANIM_FE ; fe
 
 ; Battle animations use the same constants as the moves up to this point
 	const ANIM_SWEET_SCENT_2     ; ff
