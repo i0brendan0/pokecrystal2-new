@@ -146,7 +146,7 @@ KantoWaterWildMons: ; 0x2b7f7
 	db 30, TENTACOOL
 	db 35, TENTACRUEL
 	
-	map SEAFOAM_ISLAND_B1_F
+	map_id SEAFOAM_ISLAND_B1_F
 	db 10 percent
 	db 35, DEWGONG
 	db 40, GOLDUCK
