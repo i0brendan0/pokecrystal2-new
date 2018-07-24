@@ -93,7 +93,7 @@ BattleCommand_BeatUp: ; 35461
 .enemy_continue
 	ld a, [wBattleMode]
 	dec a
-	jr z, .wild
+	jp z, .wild
 
 	ld a, [wLinkMode]
 	and a
