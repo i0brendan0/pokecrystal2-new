@@ -90,7 +90,7 @@ ChangeHappiness: ; 71c2
 	call GetItemHeldEffect
 	pop hl
 	ld a, b
-	cp HELD_FRIENDSHIP_INCREASE
+	cp HELD_FRIENDSHIP_BOOST
 	jr z, .increase
 	pop af
 	jr .done
