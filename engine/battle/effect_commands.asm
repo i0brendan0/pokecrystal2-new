@@ -6033,7 +6033,6 @@ BattleCommand_Charge: ; 36b4d
 	ld hl, .Dig
 
 .done
-BattleCommand3c: ;to give free space
 	ret
 
 .RazorWind:
@@ -6426,6 +6425,7 @@ CheckMoveTypeMatchesTarget: ; 36e5b
 	ld a, 1
 	and a
 	pop hl
+BattleCommand3c: ;to give free space
 	ret
 
 ; 36e7c
