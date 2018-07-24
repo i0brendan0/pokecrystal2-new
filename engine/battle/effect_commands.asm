@@ -5269,10 +5269,10 @@ BattleCommand_ForceSwitch: ; 3680f
 
 .trainer
 	call FindAliveEnemyMons
-	jr c, .fail
+	jp c, .fail
 	ld a, [wEnemyGoesFirst]
 	and a
-	jr z, .fail
+	jp z, .fail
 	call UpdateEnemyMonInParty
 	ld a, $1
 	ld [wKickCounter], a
