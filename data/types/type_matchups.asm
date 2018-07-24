@@ -63,7 +63,7 @@ TypeMatchups: ; 34bb1
 	db BUG,       STEEL,     NOT_VERY_EFFECTIVE
     db BUG,       FAIRY_T,   NOT_VERY_EFFECTIVE
     db BUG,       BIRD,      NOT_VERY_EFFECTIVE
-    db BUG,       CHAOS,     SUPER_EFFECTIVE
+    db BUG,       CHAOS_T,   SUPER_EFFECTIVE
 	db GHOST,     NORMAL,    NO_EFFECT
 	db GHOST,     PSYCHIC,   SUPER_EFFECTIVE
 	db GHOST,     DARK,      NOT_VERY_EFFECTIVE
