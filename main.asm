@@ -623,6 +623,6 @@ SECTION "Mobile Stadium 2", ROMX
 
 INCBIN "mobile/stadium/stadium2_2.bin"
 
-SECTION "Move Relearner", ROMX
+;SECTION "Move Relearner", ROMX
 
-INCBIN "engine/event/move_relearner.asm"
+;INCBIN "engine/event/move_relearner.asm"
