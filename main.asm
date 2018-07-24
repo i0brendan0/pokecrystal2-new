@@ -622,3 +622,7 @@ INCLUDE "engine/events/odd_egg.asm"
 SECTION "Mobile Stadium 2", ROMX
 
 INCBIN "mobile/stadium/stadium2_2.bin"
+
+SECTION "Move Relearner", ROMX
+
+INCBIN "engine/event/move_relearner.asm"
