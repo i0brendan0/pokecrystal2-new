@@ -394,6 +394,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_SOLARBEAM,        AI_Smart_Solarbeam
 	dbw EFFECT_THUNDER,          AI_Smart_Thunder
 	dbw EFFECT_FLY,              AI_Smart_Fly
+	dbw EFFECT_MYTHIFY,          AI_Smart_Mythify
 	db -1 ; end
 ; 387e3
 
@@ -1577,6 +1578,25 @@ AI_Smart_DefrostOpponent: ; 38ccb
 	ret
 ; 38cd5
 
+
+AI_Smart_Mythify:
+; Encourage the move if enemy is confused.
+; Discourage the move if player is confused.
+; Else encourage.
+	ld a, [wEnemySubStatus3]
+	bit SUBSTATUS_CONFUSED, a
+	jr z, .check_player
+	dec [hl]
+	ret
+.check_player
+	ld a, [wPlayerSubStatus3]
+	bit SUBSTATUS_CONFUSED, a
+	jr z, .else
+	inc [hl]
+	ret
+.else
+	dec [hl]
+	ret
 
 AI_Smart_Spite: ; 38cd5
 	ld a, [wLastPlayerCounterMove]
