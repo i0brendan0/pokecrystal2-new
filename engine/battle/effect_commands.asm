@@ -6212,6 +6212,7 @@ BattleCommand_ConfuseTarget: ; 36d1d
 	ret nz
 	call CheckSubstituteOpp
 	ret nz
+ConfuseTarget_AfterSubstitute:
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_CONFUSED, [hl]

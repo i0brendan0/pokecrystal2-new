@@ -12,11 +12,7 @@ BattleCommand_Mythify:
 	ret nz
 	call SafeCheckSafeguard
 	ret nz
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVarAddr
-	bit SUBSTATUS_CONFUSED, [hl]
-	ret nz
-	call BattleCommand_FinishConfusingTarget
+	call ConfuseTarget_AfterSubstitute
 	jp BattleCommand_SwitchTurn
 
 .confuse_opponent
