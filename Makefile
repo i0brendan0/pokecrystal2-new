@@ -67,8 +67,8 @@ $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 endif
 
 
-pokecrystal2.gbc: $(crystal_obj) pokecrystal2.link
-	$(RGBLINK) -n pokecrystal2.sym -m pokecrystal2.map -l pokecrystal2.link -o $@ $(crystal_obj)
+pokecrystal2.gbc: $(crystal_obj) pokecrystal.link
+	$(RGBLINK) -n pokecrystal2.sym -m pokecrystal2.map -l pokecrystal.link -o $@ $(crystal_obj)
 	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
 	tools/sort_symfile.sh pokecrystal2.sym
 
