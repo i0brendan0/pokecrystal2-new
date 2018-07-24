@@ -106,7 +106,6 @@ ROMX $24
 	"bank24"
 ROMX $25
 	"Maps"
-	"Events"
 ROMX $26
 	"Map Scripts 11"
 ROMX $27
@@ -290,7 +289,8 @@ ROMX $74
 	"Pokedex Entries 193-251"
 ROMX $75
 	"Text 4"
-;ROMX $76
+ROMX $76
+	"Events"
 ROMX $77
 	"bank77"
 	"Tileset Data 7"
