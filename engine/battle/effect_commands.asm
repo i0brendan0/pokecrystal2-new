@@ -5221,7 +5221,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	jp nz, .force_player_switch
 	ld a, [wAttackMissed]
 	and a
-	jr nz, .fail
+	jp nz, .fail
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .trainer
@@ -5240,7 +5240,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	srl b
 	srl b
 	cp b
-	jr c, .fail
+	jp c, .fail
 
 .wild_force_flee
 	call UpdateBattleMonInParty
