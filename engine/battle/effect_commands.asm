@@ -704,54 +704,9 @@ BattleCommand_CheckObedience: ; 343db
 	cp [hl]
 	ret z
 
-
 .obeylevel
-	; The maximum obedience level is constrained by owned badges:
-	ld hl, wJohtoBadges
-
-	; risingbadge
-	bit RISINGBADGE, [hl]
-	ld a, MAX_LEVEL + 1
-	jr nz, .getlevel
-
-	; glacierbadge
-	bit GLACIERBADGE, [hl]
-	ld a, 80
-	jr nz, .getlevel
-	
-	; mineralbadge
-	bit MINERALBADGE, [hl]
-	ld a, 70
-	jr nz, .getlevel
-	
-	; stormbadge
-	bit STORMBADGE, [hl]
-	ld a, 60
-	jr nz, .getlevel
-
-	; fogbadge
-	bit FOGBADGE, [hl]
-	ld a, 50
-	jr nz, .getlevel
-	
-	; plainbadge
-	bit PLAINBADGE, [hl]
-	ld a, 40
-	jr nz, .getlevel
-
-	; hivebadge
-	bit HIVEBADGE, [hl]
-	ld a, 30
-	jr nz, .getlevel
-    
-	; zephyrbadge
-	bit ZEPHYRBADGE, [hl]
-	ld a, 20
-	jr nz, .getlevel
-
-	; no badges
-	ld a, 10
-
+	farcall GetObeyLevels
+	ld a, d
 
 .getlevel
 ; c = obedience level
@@ -1318,29 +1273,8 @@ BattleCommand_Stab: ; 346d2
 	cp STRUGGLE
 	ret z
 
-	ld hl, wBattleMonType1
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wEnemyMonType1
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
+	farcall GetTypesForStab
 
-	ld a, [hBattleTurn]
-	and a
-	jr z, .go ; Who Attacks and who Defends
-
-	ld hl, wEnemyMonType1
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wBattleMonType1
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-
-.go
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr
 	ld [wTypeMatchup], a
@@ -1730,13 +1664,11 @@ BattleCommand_CheckHit: ; 34d32
 .skip_brightpowder
 	ld a, b
 	cp -1
-	jr z, .Hit
+	ret z
 
 	call BattleRandom
 	cp b
 	jr nc, .Miss
-
-.Hit:
 	ret
 	
 .Failed:
@@ -1899,26 +1831,10 @@ BattleCommand_CheckHit: ; 34d32
 
 
 .StatModifiers:
-
-	ld a, [hBattleTurn]
-	and a
-
-	; load the user's accuracy into b and the opponent's evasion into c.
-	ld hl, wPlayerMoveStruct + MOVE_ACC
-	ld a, [wPlayerAccLevel]
-	ld b, a
-	ld a, [wEnemyEvaLevel]
-	ld c, a
-
-	jr z, .got_acc_eva
-
-	ld hl, wEnemyMoveStruct + MOVE_ACC
-	ld a, [wEnemyAccLevel]
-	ld b, a
-	ld a, [wPlayerEvaLevel]
-	ld c, a
+	farcall GetWhichLevelsToUse
 
 .got_acc_eva
+	ld a, c
 	cp b
 	jr c, .skip_foresight_check
 
@@ -2665,43 +2581,14 @@ BattleCommand_BuildOpponentRage: ; 35250
 BattleCommand_RageDamage: ; 3527b
 ; ragedamage
 
-	ld a, [wCurDamage]
-	ld h, a
-	ld b, a
-	ld a, [wCurDamage + 1]
-	ld l, a
-	ld c, a
-	ld a, [hBattleTurn]
-	and a
-	ld a, [wPlayerRageCounter]
-	jr z, .rage_loop
-	ld a, [wEnemyRageCounter]
-.rage_loop
-	and a
-	jr z, .done
-	dec a
-	add hl, bc
-	jr nc, .rage_loop
-	ld hl, $ffff
-.done
-	ld a, h
-	ld [wCurDamage], a
-	ld a, l
-	ld [wCurDamage + 1], a
+	farcall DoRageDamage
 	ret
 
 ; 352a3
 
 
 EndMoveEffect: ; 352a3
-	ld a, [wBattleScriptBufferAddress]
-	ld l, a
-	ld a, [wBattleScriptBufferAddress + 1]
-	ld h, a
-	ld a, $ff
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
+	farcall DoEndMoveEffect
 	ret
 
 ; 352b1
@@ -4138,72 +4025,7 @@ BattleCommand_EatDream: ; 36008
 
 
 SapHealth: ; 36011
-	ld hl, wCurDamage
-	ld a, [hli]
-	srl a
-	ld [hDividend], a
-	ld b, a
-	ld a, [hl]
-	rr a
-	ld [hDividend + 1], a
-	or b
-	jr nz, .ok1
-	ld a, $1
-	ld [hDividend + 1], a
-.ok1
-	ld hl, wBattleMonHP
-	ld de, wBattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .battlemonhp
-	ld hl, wEnemyMonHP
-	ld de, wEnemyMonMaxHP
-.battlemonhp
-	ld bc, wBuffer4
-	ld a, [hli]
-	ld [bc], a
-	ld a, [hl]
-	dec bc
-	ld [bc], a
-	ld a, [de]
-	dec bc
-	ld [bc], a
-	inc de
-	ld a, [de]
-	dec bc
-	ld [bc], a
-	ld a, [hDividend + 1]
-	ld b, [hl]
-	add b
-	ld [hld], a
-	ld [wBuffer5], a
-	ld a, [hDividend]
-	ld b, [hl]
-	adc b
-	ld [hli], a
-	ld [wBuffer6], a
-	jr c, .okay2
-	ld a, [hld]
-	ld b, a
-	ld a, [de]
-	dec de
-	sub b
-	ld a, [hli]
-	ld b, a
-	ld a, [de]
-	inc de
-	sbc b
-	jr nc, .okay3
-.okay2
-	ld a, [de]
-	ld [hld], a
-	ld [wBuffer5], a
-	dec de
-	ld a, [de]
-	ld [hli], a
-	ld [wBuffer6], a
-	inc de
-.okay3
+	farcall DoSapHealth
 	ld a, [hBattleTurn]
 	and a
 	hlcoord 10, 9
@@ -6481,15 +6303,7 @@ BattleCommand_DoubleUndergroundDamage: ; 36f2f
 
 
 DoubleDamage: ; 36f37
-	ld hl, wCurDamage + 1
-	sla [hl]
-	dec hl
-	rl [hl]
-	ret nc
-
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
+	farcall DoDoubleDamage
 	ret
 
 ; 36f46
@@ -6673,19 +6487,7 @@ ClearLastMove: ; 372d8
 
 
 ResetActorDisable: ; 372e7
-	ld a, [hBattleTurn]
-	and a
-	jr z, .player
-
-	xor a
-	ld [wEnemyDisableCount], a
-	ld [wEnemyDisabledMove], a
-	ret
-
-.player
-	xor a
-	ld [wPlayerDisableCount], a
-	ld [wDisabledMove], a
+	farcall DoResetActorDisable
 	ret
 
 ; 372fc
@@ -7383,19 +7185,7 @@ BattleCommand_ClearText: ; 37e85
 
 SkipToBattleCommand: ; 37e8c
 ; Skip over commands until reaching command b.
-	ld a, [wBattleScriptBufferAddress + 1]
-	ld h, a
-	ld a, [wBattleScriptBufferAddress]
-	ld l, a
-.loop
-	ld a, [hli]
-	cp b
-	jr nz, .loop
-
-	ld a, h
-	ld [wBattleScriptBufferAddress + 1], a
-	ld a, l
-	ld [wBattleScriptBufferAddress], a
+	farcall DoSkipToBattleCommand
 	ret
 
 ; 37ea1
