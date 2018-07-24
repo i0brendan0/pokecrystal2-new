@@ -1438,7 +1438,7 @@ BattleCommand_Stab: ; 346d2
 .SkipType:
 	inc hl
 	inc hl
-	jr .TypesLoop
+	jp .TypesLoop
 
 
 ; 347c8
