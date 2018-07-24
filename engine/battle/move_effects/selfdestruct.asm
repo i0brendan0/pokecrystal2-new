@@ -11,7 +11,7 @@ BattleCommand_Selfdestruct: ; 37380
 	inc hl
 	ld [hli], a
 	ld [hl], a
-	ld a, $1
+	inc a
 	ld [wKickCounter], a
 	call BattleCommand_LowerSub
 	call LoadMoveAnim

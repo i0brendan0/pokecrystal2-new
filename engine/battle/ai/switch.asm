@@ -46,13 +46,6 @@ CheckPlayerMoveTypeMatchups: ; 3484e
 
 .neutral
 	ld e, 2
-	jr .next
-
-.super_effective
-	call .DecreaseScore
-	pop hl
-	jr .done
-
 .next
 	pop hl
 	dec d
@@ -67,6 +60,11 @@ CheckPlayerMoveTypeMatchups: ; 3484e
 	and a
 	jr nz, .done
 	call .IncreaseScore
+	jr .done
+	
+.super_effective
+	call .DecreaseScore
+	pop hl
 	jr .done
 
 .unknown_moves
@@ -159,7 +157,11 @@ CheckPlayerMoveTypeMatchups: ; 3484e
 	jr c, .DecreaseScore ; down
 	cp 100
 	ret c
-	jr .IncreaseScore ; up
+.IncreaseScore: ; 34939
+	ld a, [wEnemyAISwitchScore]
+	inc a
+	ld [wEnemyAISwitchScore], a
+	ret
 
 .doubledown
 	call .DecreaseScore
@@ -168,14 +170,6 @@ CheckPlayerMoveTypeMatchups: ; 3484e
 	dec a
 	ld [wEnemyAISwitchScore], a
 	ret
-; 34939
-
-.IncreaseScore: ; 34939
-	ld a, [wEnemyAISwitchScore]
-	inc a
-	ld [wEnemyAISwitchScore], a
-	ret
-; 34941
 
 CheckAbleToSwitch: ; 34941
 	xor a
@@ -352,8 +346,8 @@ FindEnemyMonsImmuneToLastCounterMove: ; 34a2a
 	ld a, [wOTPartyCount]
 	ld b, a
 	ld c, 1 << (PARTY_LENGTH - 1)
-	ld d, 0
 	xor a
+	ld d, a
 	ld [wEnemyAISwitchScore], a
 
 .loop
@@ -452,7 +446,7 @@ FindEnemyMonsWithASuperEffectiveMove: ; 34aa7
 	ld hl, wOTPartyMon1Moves
 	ld b, 1 << (PARTY_LENGTH - 1)
 	ld d, 0
-	ld e, 0
+	ld e, d
 .loop
 	ld a, b
 	and c
@@ -494,7 +488,7 @@ FindEnemyMonsWithASuperEffectiveMove: ; 34aa7
 	jr c, .nope
 
 	; if super-effective: load 2 and break
-	ld e, 2
+	inc e
 	jr .break3
 
 .nope
@@ -519,7 +513,6 @@ FindEnemyMonsWithASuperEffectiveMove: ; 34aa7
 	ld a, d
 	or b
 	ld d, a
-	jr .next ; such a long jump
 
 .next
 	; next pokemon?

@@ -42,8 +42,7 @@ BattleCommand_BatonPass: ; 379c9
 	ld hl, PassedBattleMonEntrance
 	call CallBattleCore
 
-	call ResetBatonPassStatus
-	ret
+	jp ResetBatonPassStatus
 
 
 .Enemy:
@@ -171,9 +170,9 @@ ResetBatonPassStatus: ; 37ab1
 	; New mon hasn't used a move yet.
 	ld a, BATTLE_VARS_LAST_MOVE
 	call GetBattleVarAddr
-	ld [hl], 0
-
 	xor a
+	ld [hl], a
+
 	ld [wPlayerWrapCount], a
 	ld [wEnemyWrapCount], a
 	ret

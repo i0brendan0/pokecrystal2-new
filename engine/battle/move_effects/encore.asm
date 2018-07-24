@@ -99,7 +99,8 @@ BattleCommand_Encore: ; 35864
 	res SUBSTATUS_ENCORED, [hl]
 	xor a
 	ld [de], a
-	jr .failed
+.failed
+	jp PrintDidntAffect2
 
 .got_enemy_move
 	pop hl
@@ -116,7 +117,5 @@ BattleCommand_Encore: ; 35864
 	ld hl, GotAnEncoreText
 	jp StdBattleTextBox
 
-.failed
-	jp PrintDidntAffect2
 
 ; 35926
