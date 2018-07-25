@@ -1049,23 +1049,23 @@ GoldenrodDeptStoreRoof_Blocks:
 
 ;SECTION "Map Blocks 4", ROMX
 
-SilverCaveMoltresRoom_BlockData:
+SilverCaveMoltresRoom_Blocks:
 	INCBIN "maps/SilverCaveMoltresRoom.blk"
 
-SeafoamIslandB1F_BlockData:
+SeafoamIslandB1F_Blocks:
 	INCBIN "maps/SeafoamIslandB1F.blk"
 
-SafariZone2_BlockData:
+SafariZone2_Blocks:
 	INCBIN "maps/SafariZone2.blk"
 
-SafariZone3_BlockData:
+SafariZone3_Blocks:
 	INCBIN "maps/SafariZone3.blk"
 
-CeruleanCave_BlockData:
+CeruleanCave_Blocks:
 	INCBIN "maps/CeruleanCave.blk"
 
-FarawayIslandOutside_BlockData:
+FarawayIslandOutside_Blocks:
 	INCBIN "maps/FarawayIslandOutside.blk"
 
-FarawayIslandCave_BlockData:
+FarawayIslandCave_Blocks:
 	INCBIN "maps/FarawayIslandCave.blk"
