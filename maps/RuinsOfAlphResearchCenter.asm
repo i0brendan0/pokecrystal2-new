@@ -153,7 +153,7 @@ MapRuinsOfAlphResearchCenterSignpost1Script:
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 	iftrue .SkipChecking
 	checkcode VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN_, .GiveMoreUnown
+	ifequal NUM_UNOWN, .GiveMoreUnown
 ;	ifequal NUM_OLD_UNOWN, .GotAllUnown
 ;	if_greater_than NUM_OLD_UNOWN, .GotAllUnown
 .SkipChecking:
