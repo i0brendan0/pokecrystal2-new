@@ -1,7 +1,7 @@
 const_value set 2
 	const FARAWAY_ISLAND_SAILOR
 
-FarawayIslandOutside_MapScriptHeader::
+FarawayIslandOutside_MapScripts::
 
 .Triggers: db 0
 
@@ -78,7 +78,7 @@ NoLeaveText:
 	line "waiting then."
 	done
 
-FarawayIslandOutside_MapEventHeader:: db 0, 0
+FarawayIslandOutside_MapEvents:: db 0, 0
 
 .Warps: db 1
 	warp_def 17, 14, 1, FARAWAY_ISLAND_CAVE
