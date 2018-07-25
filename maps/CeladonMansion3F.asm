@@ -102,7 +102,7 @@ MapCeladonMansion3FSignpost2Script:
 
 .MissingNoCaught:
 	ld c, MISSINGNO
-	farcall CheckCaughtMonFromFarcall
+	farcall CheckCaughtMonFromFarCall
 	ld a, b
 	ld [wScriptVar], a
 	ret
