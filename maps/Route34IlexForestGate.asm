@@ -46,7 +46,8 @@ TeacherScript_0x62d63:
 	checkevent EVENT_FOREST_IS_RESTLESS
 	iftrue .ForestIsRestless
     checkevent EVENT_BEAT_RED
-    iftrue GetSweetHoney
+    iftrue .GetSweetHoney
+.GoBackToSweetScent
 	checkevent EVENT_GOT_TM12_SWEET_SCENT
 	iftrue .GotSweetScent
 	writetext UnknownText_0x62d9d
@@ -67,9 +68,9 @@ TeacherScript_0x62d63:
 	closetext
 	end
     
-GetSweetHoney:
+.GetSweetHoney:
 	checkevent EVENT_GOT_HONEY
-	iftrue UnknownScript_0x62d7e
+	iftrue .GoBackToSweetScent
 	writetext SweetHoneyText
 	buttonsound
 	verbosegiveitem SWEET_HONEY
