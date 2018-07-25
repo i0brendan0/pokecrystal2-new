@@ -13,7 +13,7 @@ SetSeenMon:: ; 338b
 	ld b, SET_FLAG
 	jr PokedexFlagAction
 ; 3393
-CheckCaughtMonFromFarCall:
+CheckCaughtMonFromFarCall::
 	call CheckCaughtMon
 	ld b, a
 	ret
