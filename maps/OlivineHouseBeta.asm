@@ -14,7 +14,7 @@ OlivineHouseBetaTeacherScript:
     writetext .intro_text
     setevent EVENT_MET_MOVE_RELEARNER
 .met_relearner:
-    special MoveRelearner
+;    special MoveRelearner
     end    
     
 .intro_text:
