@@ -14,7 +14,7 @@ OlivinePort_MapScripts:
 	scene_script .LeaveFastShip ; SCENE_OLIVINEPORT_LEAVE_SHIP
 
 	db 1 ; callbacks
-	dbw MAPCALLBACK_OBJECT, .ShowMapSailor
+	dbw MAPCALLBACK_OBJECTS, .ShowMapSailor
 
 .DummyScene0:
 	end
