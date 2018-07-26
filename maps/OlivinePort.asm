@@ -397,7 +397,7 @@ OlivinePortSailorText:
 	line "allowed in."
 	done
 
-MapSailor:
+Map_Sailor:
 	faceplayer
 	opentext
 	checkitem FARAWAY_MAP
