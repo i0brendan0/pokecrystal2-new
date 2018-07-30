@@ -3537,7 +3537,7 @@ LoadEnemyMonToSwitchTo: ; 3d6ca
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .skip_unown
-	ld hl, wEnemyMonDVs
+	ld hl, wEnemyMonCaughtData
 	predef GetUnownLetter
 	ld a, [wUnownLetter]
 	ld [wFirstUnownSeen], a
@@ -4127,7 +4127,12 @@ SwitchPlayerMon: ; 3db32
 ; 3db5f
 
 SendOutPlayerMon: ; 3db5f
-	ld hl, wBattleMonDVs
+	push bc
+	ld hl, wPartyMon1CaughtData
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	pop bc
 	predef GetUnownLetter
 	hlcoord 1, 5
 	ld b, 7
@@ -6306,14 +6311,20 @@ LoadEnemyMon: ; 3e8eb
 	ld a, [wTempEnemyMonSpecies]
 	cp UNOWN
 	jr nz, .Magikarp
+	
+;set random caught data
+.random_number
+	call BattleRandom
+	and %00011111
+	ld [wEnemyMonCaughtData], a
 
 ; Get letter based on DVs
-	ld hl, wEnemyMonDVs
+	ld hl, wEnemyMonCaughtData
 	predef GetUnownLetter
 ; Can't use any letters that haven't been unlocked
 ; If combined with forced shiny battletype, causes an infinite loop
 	call CheckUnownLetter
-	jr c, .GenerateDVs ; try again
+	jr c, .random_number ; try again
 
 .Magikarp:
 ; These filters are untranslated.
@@ -8175,7 +8186,12 @@ DropPlayerSub: ; 3f447
 	push af
 	ld a, [wBattleMonSpecies]
 	ld [wCurPartySpecies], a
-	ld hl, wBattleMonDVs
+	push bc
+	ld hl, wPartyMon1CaughtData
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	pop bc
 	predef GetUnownLetter
 	ld de, vTiles2 tile $31
 	predef GetMonBackpic
@@ -8214,7 +8230,7 @@ DropEnemySub: ; 3f486
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
-	ld hl, wEnemyMonDVs
+	ld hl, wEnemyMonCatchData
 	predef GetUnownLetter
 	ld de, vTiles2
 	predef GetAnimatedFrontpic
@@ -8411,7 +8427,7 @@ InitEnemyWildmon: ; 3f607
 	ld de, wWildMonPP
 	ld bc, NUM_MOVES
 	call CopyBytes
-	ld hl, wEnemyMonDVs
+	ld hl, wEnemyMonCaughtData
 	predef GetUnownLetter
 	ld a, [wCurPartySpecies]
 	cp UNOWN

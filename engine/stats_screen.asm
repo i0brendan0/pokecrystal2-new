@@ -807,7 +807,7 @@ OTString: ; 4e222
 
 
 StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
-	ld hl, wTempMonDVs
+	ld hl, wTempMonCaughtData
 	predef GetUnownLetter
 	call StatsScreen_GetAnimationParam
 	jr c, .egg

@@ -1094,7 +1094,7 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-	ld hl, wTempMonDVs
+	ld hl, wTempMonCaughtData
 	predef GetUnownLetter
 	call GetBaseData
 	ld de, vTiles2 tile $00
@@ -1207,6 +1207,12 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	call AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
+	ld hl, wPartyMon1CaughtData
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld a, [hl]
+	ld [wTempMonCaughtData], a
 	ld hl, wPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
@@ -1236,6 +1242,12 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	ld a, [hl]
 	ld [wTempMonItem], a
 
+	ld hl, sBoxMon1CaughtData
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld a, [hl]
+	ld [wTempMonCaughtData], a
 	ld hl, sBoxMon1DVs
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
@@ -1725,7 +1737,7 @@ StatsScreenDPad: ; e2f95 (38:6f95)
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-	ld hl, wTempMonDVs
+	ld hl, wTempMonCaughtData
 	predef GetUnownLetter
 	call GetBaseData
 	call BillsPC_CopyMon

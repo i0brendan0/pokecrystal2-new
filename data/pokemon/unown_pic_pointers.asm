@@ -52,3 +52,15 @@ UnownPicPointers::
 	dba_pic UnownYBackpic
 	dba_pic UnownZFrontpic
 	dba_pic UnownZBackpic
+	dba_pic UnownExclamationFrontpic
+	dba_pic UnownExclamationBackpic
+	dba_pic UnownQuestionFrontpic
+	dba_pic UnownQuestionBackpic
+	dba_pic UnownPeriodFrontpic
+	dba_pic UnownPeriodBackpic
+	dba_pic UnownCommaFrontpic
+	dba_pic UnownCommaBackpic
+	dba_pic UnownHyphenFrontpic
+	dba_pic UnownHyphenBackpic
+	dba_pic UnownInterrobangFrontpic
+	dba_pic UnownInterrobangBackpic

@@ -342,14 +342,14 @@ endr
 	ld b, FALSE
 	call CalcMonStats
 
-.registerunowndex
+.registerunowndex ; POSSIBLE BUG REASON
 	ld a, [wMonType]
 	and $f
 	jr nz, .done
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .done
-	ld hl, wPartyMon1DVs
+	ld hl, wPartyMon1CaughtData
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -460,7 +460,7 @@ AddTempmonToParty: ; da96
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .done
-	ld hl, wPartyMon1DVs
+	ld hl, wPartyMon1CaughtData
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -1052,7 +1052,7 @@ SendMonIntoBox: ; de6e
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .not_unown
-	ld hl, sBoxMon1DVs
+	ld hl, sBoxMon1CaughtData
 	predef GetUnownLetter
 	callfar UpdateUnownDex
 

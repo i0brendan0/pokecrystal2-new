@@ -889,7 +889,7 @@ Pokedex_UnownModeEraseCursor: ; 40654 (10:4654)
 
 Pokedex_UnownModePlaceCursor: ; 40658 (10:4658)
 	ld a, [wDexCurrentUnownIndex]
-	ld c, $5a ; diamond cursor
+	ld c, $60 ; diamond cursor
 
 Pokedex_UnownModeUpdateCursorGfx: ; 4065d (10:465d)
 	ld e, a
@@ -1306,21 +1306,21 @@ Pokedex_PlaceSearchResultsTypeStrings: ; 409cf (10:49cf)
 
 Pokedex_DrawUnownModeBG: ; 409f1 (10:49f1)
 	call Pokedex_FillBackgroundColor2
-	hlcoord 2, 1
-	lb bc, 10, 13
+	hlcoord 1, 1
+	lb bc, 11, 15
 	call Pokedex_PlaceBorder
-	hlcoord 2, 14
-	lb bc, 1, 13
+	hlcoord 1, 14
+	lb bc, 1, 15
 	call Pokedex_PlaceBorder
 	hlcoord 2, 15
 	ld [hl], $3d
-	hlcoord 16, 15
+	hlcoord 17, 15
 	ld [hl], $3e
 	hlcoord 6, 5
 	call Pokedex_PlaceFrontpicAtHL
 	ld de, 0
 	ld b, 0
-	ld c, 26
+	ld c, NUM_UNOWN
 .loop
 	ld hl, wUnownDex
 	add hl, de
@@ -1350,32 +1350,38 @@ endr
 UnownModeLetterAndCursorCoords: ; 40a3e
 ; entries correspond to Unown forms
 ;           letter, cursor
-	dwcoord   4,11,   3,11 ; A
-	dwcoord   4,10,   3,10 ; B
-	dwcoord   4, 9,   3, 9 ; C
-	dwcoord   4, 8,   3, 8 ; D
-	dwcoord   4, 7,   3, 7 ; E
-	dwcoord   4, 6,   3, 6 ; F
-	dwcoord   4, 5,   3, 5 ; G
-	dwcoord   4, 4,   3, 4 ; H
-	dwcoord   4, 3,   3, 2 ; I
-	dwcoord   5, 3,   5, 2 ; J
-	dwcoord   6, 3,   6, 2 ; K
-	dwcoord   7, 3,   7, 2 ; L
-	dwcoord   8, 3,   8, 2 ; M
-	dwcoord   9, 3,   9, 2 ; N
-	dwcoord  10, 3,  10, 2 ; O
-	dwcoord  11, 3,  11, 2 ; P
-	dwcoord  12, 3,  12, 2 ; Q
-	dwcoord  13, 3,  13, 2 ; R
-	dwcoord  14, 3,  15, 2 ; S
-	dwcoord  14, 4,  15, 4 ; T
-	dwcoord  14, 5,  15, 5 ; U
-	dwcoord  14, 6,  15, 6 ; V
-	dwcoord  14, 7,  15, 7 ; W
-	dwcoord  14, 8,  15, 8 ; X
-	dwcoord  14, 9,  15, 9 ; Y
-	dwcoord  14,10,  15,10 ; Z
+	dwcoord   3,12,   2,12 ; 1
+	dwcoord   3,11,   2,11 ; 2
+	dwcoord   3,10,   2,10 ; 3
+	dwcoord   3, 9,   2, 9 ; 4
+	dwcoord   3, 8,   2, 8 ; 5
+	dwcoord   3, 7,   2, 7 ; 6
+	dwcoord   3, 6,   2, 6 ; 7
+	dwcoord   3, 5,   2, 5 ; 8
+	dwcoord   3, 4,   2, 4 ; 9
+	dwcoord   3, 3,   2, 2 ; 10
+	dwcoord   4, 3,   4, 2 ; 11
+	dwcoord   5, 3,   5, 2 ; 12
+	dwcoord   6, 3,   6, 2 ; 13
+	dwcoord   7, 3,   7, 2 ; 14
+	dwcoord   8, 3,   8, 2 ; 15
+	dwcoord   9, 3,   9, 2 ; 16
+	dwcoord  10, 3,  10, 2 ; 17
+	dwcoord  11, 3,  11, 2 ; 18
+	dwcoord  12, 3,  12, 2 ; 19
+	dwcoord  13, 3,  13, 2 ; 20
+	dwcoord  14, 3,  14, 2 ; 21
+	dwcoord  15, 3,  16, 2 ; 22
+	dwcoord  15, 4,  16, 4 ; 23
+	dwcoord  15, 5,  16, 5 ; 24
+	dwcoord  15, 6,  16, 6 ; 25
+	dwcoord  15, 7,  16, 7 ; 26
+	dwcoord  15, 8,  16, 8 ; 27
+	dwcoord  15, 9,  16, 9 ; 28
+	dwcoord  15,10,  16,10 ; 29
+	dwcoord  15,11,  16,11 ; 30
+	dwcoord  15,12,  16,12 ; 31
+	dwcoord  15,13,  16,13 ; 32
 
 Pokedex_FillBackgroundColor2: ; 40aa6
 	hlcoord 0, 0
@@ -2501,11 +2507,11 @@ Pokedex_LoadUnownFont: ; 41a2c
 	ld a, BANK(UnownFont)
 	call FarCopyBytes
 	ld hl, sScratch + $188
-	ld bc, 27 tiles
+	ld bc, (NUM_UNOWN + 1) tiles
 	call Pokedex_InvertTiles
 	ld de, sScratch + $188
 	ld hl, vTiles2 tile $40
-	lb bc, BANK(Pokedex_LoadUnownFont), 27
+	lb bc, BANK(Pokedex_LoadUnownFont), NUM_UNOWN + 1
 	call Request2bpp
 	call CloseSRAM
 	ret

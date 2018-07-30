@@ -644,7 +644,12 @@ GetEggFrontpic: ; 17224 (5:7224)
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
-	ld hl, wBattleMonDVs
+	push bc
+	ld hl, wPartyMon1CaughtData
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	pop bc
 	predef GetUnownLetter
 	pop de
 	predef_jump GetMonFrontpic
@@ -654,7 +659,12 @@ GetHatchlingFrontpic: ; 1723c (5:723c)
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
-	ld hl, wBattleMonDVs
+	push bc
+	ld hl, wPartyMon1CaughtData
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	pop bc
 	predef GetUnownLetter
 	pop de
 	predef_jump GetAnimatedFrontpic

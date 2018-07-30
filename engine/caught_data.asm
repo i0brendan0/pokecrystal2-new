@@ -167,6 +167,15 @@ SetCaughtData: ; 4db49
 	ld hl, wPartyMon1CaughtLevel
 	call GetPartyLocation
 SetBoxmonOrEggmonCaughtData: ; 4db53
+	ld a, [CurSpecies]
+	cp UNOWN
+	jr nz, .not_unown
+	
+	ld a, [EnemyMonCaughtData]
+	ld [hl], a
+	inc hl
+	jr .skip
+.not_unown:
 	ld a, [wTimeOfDay]
 	inc a
 	rrca
@@ -175,6 +184,7 @@ SetBoxmonOrEggmonCaughtData: ; 4db53
 	ld a, [wCurPartyLevel]
 	or b
 	ld [hli], a
+.skip:
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]

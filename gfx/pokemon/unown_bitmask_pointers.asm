@@ -25,3 +25,9 @@ UnownBitmasksPointers:
 	dw UnownXBitmasks
 	dw UnownYBitmasks
 	dw UnownZBitmasks
+	dw UnownExclamationBitmasks
+	dw UnownQuestionBitmasks
+	dw UnownPeriodBitmasks
+	dw UnownCommaBitmasks
+	dw UnownHyphenBitmasks
+	dw UnownInterrobangBitmasks

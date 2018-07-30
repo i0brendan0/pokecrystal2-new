@@ -311,4 +311,11 @@ NUM_POKEMON EQU const_value + -1
 	const UNOWN_X ; 24
 	const UNOWN_Y ; 25
 	const UNOWN_Z ; 26
-NUM_UNOWN EQU const_value + -1 ; 26
+NUM_OLD_UNOWN EQU const_value + -1
+	const UNOWN_EX ; 27
+	const UNOWN_QU ; 28
+	const UNOWN_PE ; 29
+	const UNOWN_CO ; 30
+	const UNOWN_HY ; 31
+	const UNOWN_INT ; 32
+NUM_UNOWN EQU const_value + -1

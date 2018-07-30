@@ -927,7 +927,12 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 
 	ld a, [wTempBattleMonSpecies] ; TempBattleMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
-	ld hl, wBattleMonDVs ; BattleMonDVs
+	push bc
+	ld hl, wPartyMon1CaughtData
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	pop bc
 	predef GetUnownLetter
 	ld de, vTiles0 tile $00
 	predef GetMonFrontpic
@@ -936,7 +941,7 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 .player
 	ld a, [wTempEnemyMonSpecies] ; TempEnemyMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
-	ld hl, wEnemyMonDVs ; EnemyMonDVs
+	ld hl, wEnemyMonCaughtData
 	predef GetUnownLetter
 	ld de, vTiles0 tile $00
 	predef GetMonBackpic
@@ -1154,14 +1159,19 @@ BattleAnimCmd_BeatUp: ; cc776 (33:4776)
 	and a
 	jr z, .player
 
-	ld hl, wBattleMonDVs
+	push bc
+	ld hl, wPartyMon1CaughtData
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wCurPartyMon]
+	call AddNTimes
+	pop bc
 	predef GetUnownLetter
 	ld de, vTiles2 tile $00
 	predef GetMonFrontpic
 	jr .done
 
 .player
-	ld hl, wEnemyMonDVs
+	ld hl, wEnemyMonCaughtData
 	predef GetUnownLetter
 	ld de, vTiles2 tile $31
 	predef GetMonBackpic

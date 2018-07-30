@@ -1,6 +1,6 @@
 GetTrademonFrontpic: ; 4d7fd
 	ld a, [wOTTrademonSpecies]
-	ld hl, wOTTrademonDVs
+	ld hl, wOTTrademonCaughtData
 	ld de, vTiles2
 	push de
 	push af

@@ -310,7 +310,7 @@ EvolveAfterBattle_MasterLoop
 	cp UNOWN
 	jr nz, .skip_unown
 
-	ld hl, wTempMonDVs
+	ld hl, wTempMonCaughtData
 	predef GetUnownLetter
 	callfar UpdateUnownDex
 
