@@ -509,5 +509,6 @@ PokemonPicPointers::
 	dba_pic CelebiBackpic
 	dba_pic MissingNoFrontpic
 	dba_pic MissingNoBackpic
+	dba_pic DelibirdFrontpic
+	dba_pic DelibirdBackpic
 	dba_pic EggPic
-	dbw -1, -1 ; unused

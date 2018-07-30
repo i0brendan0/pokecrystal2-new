@@ -253,4 +253,5 @@ MonMenuIcons: ; 8eac4
 	db ICON_HO_OH       ; HO_OH
 	db ICON_HUMANSHAPE  ; CELEBI
 	db ICON_MISSINGNO
+	db ICON_MONSTER     ; GIDGEON
 ; 8ebbf

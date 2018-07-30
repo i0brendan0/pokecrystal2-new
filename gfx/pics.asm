@@ -735,6 +735,8 @@ SECTION "Pics 19", ROMX
 TeddiursaFrontpic:   INCBIN "gfx/pokemon/teddiursa/front.animated.2bpp.lz"
 MissingNoFrontpic:   INCBIN "gfx/pokemon/missingno/front.animated.2bpp.lz"
 MissingNoBackpic:    INCBIN "gfx/pokemon/missingno/back.2bpp.lz"
+GidgeonFrontpic:     INCBIN "gfx/pokemon/gidgeon/front.animated.2bpp.lz"
+GidgeonBackpic:      INCBIN "gfx/pokemon/gidgeon/back.2bpp.lz"
 ;UnownExclamationFrontpic: INCBIN "gfx/pokemon/unown_exclamation/front.animated.2bpp.lz"
 ;UnownExclamationBackpic:  INCBIN "gfx/pokemon/unown_exclamation/back.2bpp.lz"
 ;UnownQuestionFrontpic:    INCBIN "gfx/pokemon/unown_question/front.animated.2bpp.lz"

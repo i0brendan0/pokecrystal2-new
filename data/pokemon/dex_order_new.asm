@@ -190,6 +190,7 @@ NewPokedexOrder: ; 0x40d60
 	db SEADRA
 	db KINGDRA
 	db GLIGAR
+	db GIDGEON
 	db DELIBIRD
 	db SWINUB
 	db PILOSWINE

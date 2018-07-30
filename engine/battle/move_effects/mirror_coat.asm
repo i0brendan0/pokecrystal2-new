@@ -3,7 +3,6 @@ BattleCommand_MirrorCoat: ; 37c95
 
 	ld a, 1
 	ld [wAttackMissed], a
-
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	call GetBattleVar
 	and a
@@ -40,7 +39,7 @@ BattleCommand_MirrorCoat: ; 37c95
 	ld hl, wCurDamage
 	ld a, [hli]
 	or [hl]
-	ret z
+	jr z, .failed
 
 	ld a, [hl]
 	add a
@@ -57,5 +56,10 @@ BattleCommand_MirrorCoat: ; 37c95
 	xor a
 	ld [wAttackMissed], a
 	ret
-
+	
+.failed
+	ld a, 1
+	ld [wEffectFailed], a
+	and a
+	ret
 ; 37ce6

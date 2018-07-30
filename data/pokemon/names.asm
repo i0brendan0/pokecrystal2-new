@@ -251,7 +251,7 @@ PokemonNames::
 	db "HO-OH@@@@@"
 	db "CELEBI@@@@"
 	db "MISSINGNO."
+	db "GIDGEON@@@"
 	db "EGG@@@@@@@"
-	db "????? 254@"
 	db "????? 255@"
 	db "????? 256@"

@@ -252,4 +252,5 @@ PokedexDataPointerTable: ; 0x44378
 	dw HoOhPokedexEntry
 	dw CelebiPokedexEntry
 	dw MissingNoPokedexEntry
+	dw GidgeonPokedexEntry
 ; 0x4456e

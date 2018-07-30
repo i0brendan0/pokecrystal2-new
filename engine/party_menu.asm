@@ -261,10 +261,10 @@ PlacePartyMonLevel: ; 50176
 	ld a, "<LV>"
 	ld [hli], a
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
-	; jr .okay
+	jr .okay
 .ThreeDigits:
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
-; .okay
+.okay
 	call PrintNum
 
 .next
@@ -417,13 +417,17 @@ PlacePartyMonEvoStoneCompatibility: ; 5022f
 	ld l, a
 	ld de, wStringBuffer1
 	ld a, BANK(EvosAttacks)
-	ld bc, 10
+	ld bc, wStringBuffer2 - wStringBuffer1
 	call FarCopyBytes
 	ld hl, wStringBuffer1
 .loop2
 	ld a, [hli]
 	and a
 	jr z, .nope
+	cp EVOLVE_STAT
+	jr nz, .not_four_bytes
+	inc hl
+.not_four_bytes
 	inc hl
 	inc hl
 	cp EVOLVE_ITEM

@@ -2187,6 +2187,8 @@ BattleCommand_FailureText: ; 35023
 	jr z, .multihit
 	cp EFFECT_POISON_MULTI_HIT
 	jr z, .multihit
+	cp EFFECT_BEAT_UP
+	jr z, .multihit
 	jp EndMoveEffect
 
 .multihit
@@ -2628,6 +2630,17 @@ DittoMetalPowder: ; 352b1
 .done
 	scf
 	rr c
+
+	ld a, HIGH(MAX_STAT_VALUE)
+	cp b
+	jr c, .cap
+	ld a, LOW(MAX_STAT_VALUE)
+	cp c
+	ret nc
+
+.cap
+	ld b, HIGH(MAX_STAT_VALUE)
+	ld c, LOW(MAX_STAT_VALUE)
 	ret
 
 ; 352dc
@@ -2910,6 +2923,17 @@ SpeciesItemBoost: ; 353d1
 ; Double the stat
 	sla l
 	rl h
+
+	ld a, HIGH(MAX_STAT_VALUE)
+	cp h
+	jr c, .cap
+	ld a, LOW(MAX_STAT_VALUE)
+	cp l
+	ret nc
+
+.cap
+	ld h, HIGH(MAX_STAT_VALUE)
+	ld l, LOW(MAX_STAT_VALUE)
 	ret
 
 ; 353f6
@@ -3318,7 +3342,7 @@ BattleCommand_ConstantDamage: ; 35726
 	ld a, BATTLE_VARS_MOVE_POWER
 	call GetBattleVar
 	ld b, a
-	ld a, $0 ;might keep zero flag
+	xor a
 	jr .got_power
 
 .psywave
@@ -3333,7 +3357,7 @@ BattleCommand_ConstantDamage: ; 35726
 	cp b
 	jr nc, .psywave_loop
 	ld b, a
-	ld a, 0 ;might keep zero flag
+	xor a
 	jr .got_power
 
 .super_fang
@@ -3354,7 +3378,7 @@ BattleCommand_ConstantDamage: ; 35726
 	and a
 	jr nz, .got_power
 	or b
-	ld a, 0 ;might keep zero flag
+	ld a, 0 ; keep zero flag
 	jr nz, .got_power
 	ld b, 1
 .got_power
@@ -3829,6 +3853,7 @@ BattleCommand_SleepTarget: ; 35e5c
 	ret c
 
 .dont_fail
+CheckHiddenOpponent:
 	xor a
 	ret
 
@@ -5512,8 +5537,7 @@ BattleCommand_EndLoop: ; 369b6
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
-	call BattleCommanda8
-	jp EndMoveEffect
+	ret
 
 .not_triple_kick
 	call BattleRandom
@@ -6953,7 +6977,6 @@ BattleCommand_DoubleMinimizeDamage: ; 37ce6
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
-CheckHiddenOpponent:
 	ret
 
 ; 37d02

@@ -512,16 +512,11 @@ INCLUDE "gfx/pokemon/celebi/normal.pal"
 INCLUDE "gfx/pokemon/celebi/shiny.pal"
 INCLUDE "gfx/pokemon/missingno/normal.pal"
 INCLUDE "gfx/pokemon/missingno/shiny.pal"
+INCLUDE "gfx/pokemon/gidgeon/normal.pal"
+INCLUDE "gfx/pokemon/gidgeon/shiny.pal"
 
 INCLUDE "gfx/pokemon/egg/normal.pal"
 INCLUDE "gfx/pokemon/egg/shiny.pal"
-
-; 254
-	RGB 30, 26, 11
-	RGB 23, 16, 00
-; 254 shiny
-	RGB 30, 26, 11
-	RGB 23, 16, 00
 
 ; 255
 	RGB 23, 23, 23

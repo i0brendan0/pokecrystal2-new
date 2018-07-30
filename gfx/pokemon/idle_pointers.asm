@@ -251,3 +251,4 @@ AnimationIdlePointers:
 	dw HoOhAnimationIdle
 	dw CelebiAnimationIdle
 	dw MissingNoAnimationIdle
+	dw GidgeonAnimationIdle

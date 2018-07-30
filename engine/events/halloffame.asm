@@ -376,7 +376,7 @@ _HallOfFamePC: ; 86650
 	pop hl
 	call DisplayHOFMon
 	ld a, [wHallOfFameTempWinCount]
-	cp 200 + 1
+	cp 200
 	jr c, .print_num_hof
 	ld de, .HOFMaster
 	hlcoord 1, 2

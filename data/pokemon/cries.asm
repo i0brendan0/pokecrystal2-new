@@ -257,7 +257,7 @@ PokemonCries:: ; f2787
 	mon_cry CRY_AIPOM,       $000,  $180 ; HO_OH
 	mon_cry CRY_ENTEI,       $14a,  $111 ; CELEBI
 	mon_cry CRY_METAPOD,    -$200,  $200 ; MISSING_NO
-	mon_cry CRY_NIDORAN_M,      0,     0 ; 253
+	mon_cry CRY_TEDDIURSA,   $020,  $060 ; GIDGEON
 	mon_cry CRY_NIDORAN_M,      0,     0 ; 254
 	mon_cry CRY_NIDORAN_M,      0,     0 ; 255
 ; f2d81

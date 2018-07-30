@@ -3369,3 +3369,14 @@ CelebiEvosAttacks:
 	db 40, BATON_PASS
 	db 50, PERISH_SONG
 	db 0 ; no more level-up moves
+	
+MissingnoEvosAttacks:
+	db 0
+	db 1, TACKLE
+	db 0
+	
+GidgeonEvosAttacks:
+	db EVOLVE_HAPPINESS, TR_ANYTIME, GIDGEON
+	db 0 ; no more evolutions
+	db 1, PRESENT
+	db 0 ; no more level-up moves

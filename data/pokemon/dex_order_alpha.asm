@@ -68,6 +68,7 @@ AlphabeticalPokedexOrder: ; 0x40c65
 	db GASTLY
 	db GENGAR
 	db GEODUDE
+	db GIDGEON
 	db GIRAFARIG
 	db GLIGAR
 	db GLOOM
