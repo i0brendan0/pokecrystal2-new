@@ -812,7 +812,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 42, GOLBAT
 	db 42, GOLBAT
 
-	map SAFARI_ZONE_BETA
+	map_id SAFARI_ZONE_BETA
 	db 5 percent, 5 percent, 5 percent
 ;	morn
 	db 5, BULBASAUR
@@ -839,7 +839,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 5, CHIKORITA
 	db 5, CHIKORITA
 	
-	map SAFARI_ZONE_2
+	map_id SAFARI_ZONE_2
 	db 5 percent, 5 percent, 5 percent
 ;	morn
 	db 5, CHARMANDER
@@ -866,7 +866,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 5, CYNDAQUIL
 	db 5, CYNDAQUIL
 	
-	map SAFARI_ZONE_3
+	map_id SAFARI_ZONE_3
 	db 5 percent, 5 percent, 5 percent
 ;	morn
 	db 5, SQUIRTLE
@@ -893,7 +893,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 5, TOTODILE
 	db 5, TOTODILE
 	
-	map CERULEAN_CAVE
+	map_id CERULEAN_CAVE
 	db 10 percent, 10 percent, 10 percent
 ;	morn
 	db 50, GOLBAT
@@ -920,7 +920,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 50, MAGNETON
 	db 50, DITTO
 	
-	map SEAFOAM_ISLAND_B1_F
+	map_id SEAFOAM_ISLAND_B1_F
 	db 10 percent, 10 percent, 10 percent
 ;	morn
 	db 37, GOLBAT
@@ -947,7 +947,7 @@ KantoGrassWildMons: ; 0x2b274
 	db 36, SNEASEL
 	db 38, SNEASEL
 
-	map CELADON_CITY
+	map_id CELADON_CITY
 	db 2 percent, 2 percent, 2 percent
 ;	morn
 	db 5, EEVEE

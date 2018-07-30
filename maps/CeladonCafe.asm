@@ -69,7 +69,7 @@ CeladonCafe_MapScripts:
     ld a, [wRematchLeaders]
     swap a
     and 7
-    ld [ScriptVar], a
+    ld [wScriptVar], a
     ret
     
 

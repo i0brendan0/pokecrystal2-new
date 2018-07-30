@@ -14,7 +14,7 @@ OlivinePort_MapScripts:
 	scene_script .LeaveFastShip ; SCENE_OLIVINEPORT_LEAVE_SHIP
 
 	db 1 ; callbacks
-	dbw MAPCALLBACK_OBJECT, .ShowMapSailor
+	dbw MAPCALLBACK_OBJECTS, .ShowMapSailor
 
 .DummyScene0:
 	end
@@ -397,7 +397,7 @@ OlivinePortSailorText:
 	line "allowed in."
 	done
 
-MapSailor:
+Map_Sailor:
 	faceplayer
 	opentext
 	checkitem FARAWAY_MAP
@@ -508,4 +508,4 @@ OlivinePort_MapEvents:
 	object_event 13, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FishingGuruScript_0x74a0c, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	object_event  4, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x74a17, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	object_event 11, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CooltrainerFScript_0x74a22, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
-	person_event SPRITE_SAILOR, 16, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Map_Sailor, EVENT_MAP_SAILOR
+	person_event SPRITE_SAILOR, 16, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Map_Sailor, EVENT_OLIVINE_PORTMAP_SAILOR

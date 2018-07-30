@@ -9,12 +9,15 @@ SetSeenAndCaughtMon:: ; 3380
 ; 338b
 
 SetSeenMon:: ; 338b
-	ld c, a
 	ld hl, wPokedexSeen
 	ld b, SET_FLAG
 	jr PokedexFlagAction
 ; 3393
-
+CheckCaughtMonFromFarCall::
+	call CheckCaughtMon
+	ld b, a
+	ret
+	
 CheckCaughtMon:: ; 3393
 	ld c, a
 	ld hl, wPokedexCaught

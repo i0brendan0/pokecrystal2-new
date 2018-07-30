@@ -35,9 +35,7 @@ BattleCommand_BeatUp: ; 35461
 	ld a, [wd002]
 	ld c, a
 	ld a, [wCurBattleMon]
-	; BUG: this can desynchronize link battles
-	; Change "cp [hl]" to "cp c" to fix
-	cp [hl]
+	cp c
 	ld hl, wBattleMonStatus
 	jr z, .active_mon
 	ld a, MON_STATUS
@@ -47,7 +45,7 @@ BattleCommand_BeatUp: ; 35461
 	and a
 	jp nz, .beatup_fail
 
-	ld a, $1
+	inc a
 	ld [wBeatUpHitAtLeastOnce], a
 	ld hl, BeatUpAttackText
 	call StdBattleTextBox
@@ -95,7 +93,7 @@ BattleCommand_BeatUp: ; 35461
 .enemy_continue
 	ld a, [wBattleMode]
 	dec a
-	jr z, .wild
+	jp z, .wild
 
 	ld a, [wLinkMode]
 	and a
@@ -105,9 +103,9 @@ BattleCommand_BeatUp: ; 35461
 	and a
 	jr nz, .link_or_tower
 
+	ld b, a
 	ld a, [wd002]
 	ld c, a
-	ld b, 0
 	ld hl, wOTPartySpecies
 	add hl, bc
 	ld a, [hl]
@@ -142,18 +140,8 @@ BattleCommand_BeatUp: ; 35461
 	and a
 	jr nz, .beatup_fail
 
-	ld a, $1
+	inc a
 	ld [wBeatUpHitAtLeastOnce], a
-	jr .finish_beatup
-
-.wild
-	ld a, [wEnemyMonSpecies]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ld hl, BeatUpAttackText
-	call StdBattleTextBox
-	jp EnemyAttackDamage
-
 .finish_beatup
 	ld hl, BeatUpAttackText
 	call StdBattleTextBox
@@ -180,6 +168,15 @@ BattleCommand_BeatUp: ; 35461
 	ld a, [wEnemyMoveStructPower]
 	ld d, a
 	ret
+
+.wild
+	ld a, [wEnemyMonSpecies]
+	ld [wNamedObjectIndexBuffer], a
+	call GetPokemonName
+	ld hl, BeatUpAttackText
+	call StdBattleTextBox
+	jp EnemyAttackDamage
+
 
 ; 355b0
 

@@ -155,6 +155,10 @@ SECTION "Effect Commands", ROMX
 
 INCLUDE "engine/battle/effect_commands.asm"
 
+SECTION "Effect Commands 2", ROMX
+
+INCLUDE "engine/battle/effect_commands2.asm"
+
 
 SECTION "Enemy Trainers", ROMX
 
@@ -618,3 +622,7 @@ INCLUDE "engine/events/odd_egg.asm"
 SECTION "Mobile Stadium 2", ROMX
 
 INCBIN "mobile/stadium/stadium2_2.bin"
+
+;SECTION "Move Relearner", ROMX
+
+;INCBIN "engine/event/move_relearner.asm"

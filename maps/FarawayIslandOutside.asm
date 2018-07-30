@@ -1,7 +1,7 @@
 const_value set 2
 	const FARAWAY_ISLAND_SAILOR
 
-FarawayIslandOutside_MapScriptHeader::
+FarawayIslandOutside_MapScripts::
 
 .Triggers: db 0
 
@@ -10,7 +10,7 @@ FarawayIslandOutside_MapScriptHeader::
 Check_Home:
 	spriteface PLAYER, LEFT
 	spriteface FARAWAY_ISLAND_SAILOR, RIGHT
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	jump DoHomeScript
 
 MapSailorFWI:
@@ -32,7 +32,7 @@ DoHomeScript:
 	writetext FightMewText
 	waitbutton
 	closetext
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .GoBack
 	end
 
@@ -40,13 +40,14 @@ DoHomeScript:
 	writetext NoLeaveText
 	waitbutton
 	closetext
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .GoBack
 	end
 	
 .GoBack:
 	applymovement PLAYER, GoBackMovement
 	spriteface FARAWAY_ISLAND_SAILOR, UP
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	end
 	
 GoBackMovement:
@@ -78,7 +79,7 @@ NoLeaveText:
 	line "waiting then."
 	done
 
-FarawayIslandOutside_MapEventHeader:: db 0, 0
+FarawayIslandOutside_MapEvents:: db 0, 0
 
 .Warps: db 1
 	warp_def 17, 14, 1, FARAWAY_ISLAND_CAVE

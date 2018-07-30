@@ -30,6 +30,7 @@
 	const ROUTE_38          ; 19
 	const ROUTE_39          ; 1a
 	const OLIVINE_CITY      ; 1b
+	const FARAWAY_ISLAND
 	const LIGHTHOUSE        ; 1c
 	const BATTLE_TOWER      ; 1d
 	const ROUTE_40          ; 1e
@@ -60,6 +61,7 @@ KANTO_LANDMARK EQU const_value
 	const MT_MOON           ; 35
 	const ROUTE_4           ; 36
 	const CERULEAN_CITY     ; 37
+	const CERULEAN_CAVE
 	const ROUTE_24          ; 38
 	const ROUTE_25          ; 39
 	const ROUTE_5           ; 3a

@@ -75,11 +75,14 @@ HiddenPowerDamage: ; fbced
 	ld b, 2
 	call Divide
 	ld a, [hRemainder]
+	cp UNUSED_TYPES
+	jr c, .done
 
 ; Skip Unused types
-	add SPECIAL - UNUSED_TYPES + 2
+	add SPECIAL - UNUSED_TYPES
 
 ; Overwrite the current move type.
+.done
 	push af
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr

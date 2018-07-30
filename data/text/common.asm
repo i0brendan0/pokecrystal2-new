@@ -17,4 +17,4 @@ INCLUDE "data/text/common_3.asm"
 
 SECTION "Text 4", ROMX
 
-INCLUDE "data/text/common_3.asm"
+INCLUDE "data/text/common_4.asm"

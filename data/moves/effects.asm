@@ -2072,3 +2072,24 @@ DefenseCurl:
 	statupmessage
 	statupfailtext
 	endmove
+	
+Mythify:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	mythify
+	endmove

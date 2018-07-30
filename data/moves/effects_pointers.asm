@@ -158,3 +158,4 @@ MoveEffectsPointers: ; 271f4
 	dw Fly
 	dw DefenseCurl
 	dw NormalHit
+	dw Mythify

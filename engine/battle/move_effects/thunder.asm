@@ -10,11 +10,5 @@ BattleCommand_ThunderAccuracy: ; 37d94
 	cp WEATHER_SUN
 	ret nz
 	ld [hl], 50 percent + 1
-	ret
-
 .rain
-	; Redundant with CheckHit guranteeing hit
-	ld [hl], 100 percent
 	ret
-
-; 37daa

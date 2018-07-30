@@ -101,9 +101,10 @@ MapCeladonMansion3FSignpost2Script:
 	end
 
 .MissingNoCaught:
-	ld a, MISSINGNO
-	farcall CheckCaughtMon
-	ld [ScriptVar], a
+	ld c, MISSINGNO
+	farcall CheckCaughtMonFromFarCall
+	ld a, b
+	ld [wScriptVar], a
 	ret
 
 .SeenMissingNo:

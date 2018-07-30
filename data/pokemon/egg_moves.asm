@@ -25,8 +25,6 @@ INCLUDE "data/pokemon/egg_move_pointers.asm"
 ;                              123456789ABCD;XXX
 EggMoves:: ; CURRENT MOVE -	db THIEF        ;168
 
-EggMoves::
-
 BulbasaurEggMoves:
 	db RAZOR_WIND	;013
 	db SWORDS_DANCE	;014

@@ -11,7 +11,7 @@ RGBLINK := rgblink
 
 roms := pokecrystal2.gbc
 
-crystal2_obj := \
+crystal_obj := \
 audio.o \
 home.o \
 main.o \
@@ -30,16 +30,16 @@ lib/mobile/main.o
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all crystal2 clean compare tools
+.PHONY: all crystal clean compare tools
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
 
-all: crystal2
+all: crystal
 crystal: pokecrystal2.gbc
 
 clean:
-	rm -f $(roms) $(crystal2_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
 	$(MAKE) clean -C tools/
 
 tools:
@@ -67,10 +67,10 @@ $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 endif
 
 
-pokecrystal.gbc: $(crystal_obj) pokecrystal.link
-	$(RGBLINK) -n pokecrystal.sym -m pokecrystal.map -l pokecrystal.link -o $@ $(crystal_obj)
+pokecrystal2.gbc: $(crystal_obj) pokecrystal.link
+	$(RGBLINK) -n pokecrystal2.sym -m pokecrystal2.map -l pokecrystal.link -o $@ $(crystal_obj)
 	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
-	tools/sort_symfile.sh pokecrystal.sym
+	tools/sort_symfile.sh pokecrystal2.sym
 
 
 # For files that the compressor can't match, there will be a .lz file suffixed with the md5 hash of the correct uncompressed file.

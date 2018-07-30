@@ -106,7 +106,6 @@ ROMX $24
 	"bank24"
 ROMX $25
 	"Maps"
-	"Events"
 ROMX $26
 	"Map Scripts 11"
 ROMX $27
@@ -290,7 +289,9 @@ ROMX $74
 	"Pokedex Entries 193-251"
 ROMX $75
 	"Text 4"
-;ROMX $76
+ROMX $76
+	"Events"
+	"Effect Commands 2"
 ROMX $77
 	"bank77"
 	"Tileset Data 7"
@@ -299,8 +300,8 @@ ROMX $78
 	"Tileset Data 8"
 ROMX $79
 	"Egg Moves"
-ROMX $7a
-	"Move Relearner"
+;ROMX $7a
+;	"Move Relearner"
 ROMX $7b
 	"Battle Tower Text"
 ROMX $7c

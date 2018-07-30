@@ -66,7 +66,7 @@ OlivineCafe_MapScripts:
 .find_shown_leader:
     ld a, [wRematchLeaders]
     and 7
-    ld [ScriptVar], a
+    ld [wScriptVar], a
     ret
 
 SailorScript_0x9c8c1:

@@ -6,5 +6,6 @@ RecklessMoves: ; 393e2
 	db EFFECT_RAMPAGE
 	db EFFECT_MULTI_HIT
 	db EFFECT_DOUBLE_HIT
+	db EFFECT_MYTHIFY
 	db -1 ; end
 ; 393e7
