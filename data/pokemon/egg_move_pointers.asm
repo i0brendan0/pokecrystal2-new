@@ -228,7 +228,7 @@ EggMovePointers:: ; 0x23b11
 	dw SkarmoryEggMoves
 	dw HoundourEggMoves
 	dw HoundourEggMoves
-	dw SeadraEggMoves
+	dw HorseaEggMoves
 	dw PhanpyEggMoves
 	dw PhanpyEggMoves
 	dw PorygonEggMoves
