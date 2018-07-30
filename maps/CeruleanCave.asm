@@ -46,7 +46,7 @@ CeruleanCave_MapEvents:
 	db 0 ; coord events
 
 	db 1 ; bg events
-	signpost 19, 19, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
+	signpost 19, 19, BGEVENT_ITEM, CeruleanCityHiddenBerserkGene
 
 	db 1 ; object events
 	person_event SPRITE_CHARMANDER, 19, 19, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PINK, PERSONTYPE_SCRIPT, 0, Mewtwo, EVENT_LEGENDARY_MEWTWO
