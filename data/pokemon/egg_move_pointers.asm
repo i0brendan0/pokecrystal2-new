@@ -248,7 +248,7 @@ EggMovePointers:: ; 0x23b11
 	dw LarvitarEggMoves
 	dw LarvitarEggMoves
 	dw LugiaEggMoves
-	dw HoOhEggMoves
+	dw HoohEggMoves
 	dw CelebiEggMoves
 	dw MissingnoEggMoves
 ; 0x23d07
