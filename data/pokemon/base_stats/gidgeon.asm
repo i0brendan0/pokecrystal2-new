@@ -1,4 +1,4 @@
-	db GIGDEON ; 225
+	db GIDGEON ; 225
 
 	db  35,  40,  35,  55,  50,  30
 	;   hp  atk  def  spd  sat  sdf
