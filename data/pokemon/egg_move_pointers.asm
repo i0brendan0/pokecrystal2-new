@@ -250,5 +250,5 @@ EggMovePointers:: ; 0x23b11
 	dw LugiaEggMoves
 	dw HoOhEggMoves
 	dw CelebiEggMoves
-	dw MissingNoEggMoves
+	dw MissingnoEggMoves
 ; 0x23d07
