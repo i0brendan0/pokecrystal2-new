@@ -135,10 +135,10 @@ ResetRematchLeaders:
     and %01110111
     ld [wRematchLeaders], a
     ld de, EVENT_BEAT_JOHTO_LEADER
-    ld b, CLEAR_FLAG
+    ld b, RESET_FLAG
     call EventFlagAction
     ld de, EVENT_BEAT_KANTO_LEADER
-    ld b, CLEAR_FLAG
+    ld b, RESET_FLAG
     call EventFlagAction
     ret
 
