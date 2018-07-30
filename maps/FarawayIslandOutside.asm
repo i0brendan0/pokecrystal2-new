@@ -10,7 +10,7 @@ FarawayIslandOutside_MapScripts::
 Check_Home:
 	spriteface PLAYER, LEFT
 	spriteface FARAWAY_ISLAND_SAILOR, RIGHT
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	jump DoHomeScript
 
 MapSailorFWI:
@@ -32,7 +32,7 @@ DoHomeScript:
 	writetext FightMewText
 	waitbutton
 	closetext
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .GoBack
 	end
 
@@ -40,13 +40,14 @@ DoHomeScript:
 	writetext NoLeaveText
 	waitbutton
 	closetext
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .GoBack
 	end
 	
 .GoBack:
 	applymovement PLAYER, GoBackMovement
 	spriteface FARAWAY_ISLAND_SAILOR, UP
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	end
 	
 GoBackMovement:
