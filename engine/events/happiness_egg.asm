@@ -87,7 +87,7 @@ ChangeHappiness: ; 71c2
 	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld b, [hl]
-	call GetItemHeldEffect
+	farcall GetItemHeldEffect
 	pop hl
 	ld a, b
 	cp HELD_FRIENDSHIP_BOOST
@@ -173,7 +173,9 @@ StepHappiness:: ; 725a
 .bell_loop
 	push bc
 	ld b, [hl]
-	call GetItemHeldEffect
+	push hl
+	farcall GetItemHeldEffect
+	pop hl
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc

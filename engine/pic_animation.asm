@@ -664,6 +664,9 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	add [hl]
 	pop hl
 	ld [hl], a
+	cp $7f
+	ret c
+	inc [hl]
 	ret
 ; d03cd
 
