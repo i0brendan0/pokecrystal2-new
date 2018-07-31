@@ -162,6 +162,9 @@ _ResetWRAM: ; 5bae
 
 	ld hl, wNumBalls
 	call .InitList
+	
+	ld hl, wNumHolding
+	call .InitList
 
 	ld hl, wPCItems
 	call .InitList

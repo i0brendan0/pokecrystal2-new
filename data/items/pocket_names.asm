@@ -4,8 +4,10 @@ ItemPocketNames:
 	dw .Key
 	dw .Ball
 	dw .TM
+	dw .Holding
 
-.Item: db "ITEM POCKET@"
-.Key:  db "KEY POCKET@"
-.Ball: db "BALL POCKET@"
-.TM:   db "TM POCKET@"
+.Item:    db "ITEM POCKET@"
+.Key:     db "KEY POCKET@"
+.Ball:    db "BALL POCKET@"
+.TM:      db "TM POCKET@"
+.Holding: db "HELD ITEMS@"

@@ -353,7 +353,7 @@ EvolveAfterBattle_MasterLoop
 ; 42414
 
 LearnEvolutionMove:
-	ld a, [wTempSpecies]
+	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	dec a
 	ld c, a
@@ -386,7 +386,7 @@ LearnEvolutionMove:
 	call CopyName1
 	predef LearnMove
 	ld a, [wCurPartySpecies]
-	ld [wTempSpecies], a
+	ld [wd265], a
 
 .has_move
 	pop hl

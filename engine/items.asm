@@ -16,6 +16,7 @@ _ReceiveItem:: ; d1d5
 	dw .KeyItem
 	dw .Ball
 	dw .TMHM
+	dw .Holding
 
 .Item: ; d1f1
 	ld h, d
@@ -29,6 +30,10 @@ _ReceiveItem:: ; d1d5
 
 .Ball: ; d1fb
 	ld hl, wNumBalls
+	jp PutItemInPocket
+	
+.Holding:
+	ld hl, wNumHolding
 	jp PutItemInPocket
 
 .TMHM: ; d201
@@ -57,9 +62,14 @@ _TossItem:: ; d20d
 	dw .KeyItem
 	dw .Ball
 	dw .TMHM
+	dw .Holding
 
 .Ball: ; d228
 	ld hl, wNumBalls
+	jp RemoveItemFromPocket
+	
+.Holding:
+	ld hl, wNumHolding
 	jp RemoveItemFromPocket
 
 .TMHM: ; d22e
@@ -100,9 +110,14 @@ _CheckItem:: ; d244
 	dw .KeyItem
 	dw .Ball
 	dw .TMHM
+	dw .Holding
 
 .Ball: ; d25f
 	ld hl, wNumBalls
+	jp CheckTheItem
+	
+.Holding:
+	ld hl, wNumHolding
 	jp CheckTheItem
 
 .TMHM: ; d265
@@ -152,6 +167,15 @@ GetPocketCapacity: ; d283
 	ret z
 
 .not_pc
+	ld c, MAX_HOLDING
+	ld a, e
+	cp LOW(wHolding)
+	jr nz, .not_holding
+	ld a, d
+	cp HIGH(wHolding)
+	ret z
+
+.not_holding
 	ld c, MAX_BALLS
 	ret
 

@@ -38,6 +38,7 @@ CheckRegisteredItem: ; 13345
 	dw .CheckBall
 	dw .CheckKeyItem
 	dw .CheckTMHM
+	dw .CheckHolding
 
 .CheckItem:
 	ld hl, wNumItems
@@ -66,6 +67,7 @@ CheckRegisteredItem: ; 13345
 
 .CheckBall:
 	ld hl, wNumBalls
+.StandardCheck:
 	call .CheckRegisteredNo
 	jr nc, .NoRegisteredItem
 	inc hl
@@ -77,6 +79,10 @@ CheckRegisteredItem: ; 13345
 	jr c, .NoRegisteredItem
 	ret
 
+.CheckHolding:
+	ld hl, wNumHolding
+	jr .StandardCheck
+	
 .CheckTMHM:
 	jr .NoRegisteredItem
 

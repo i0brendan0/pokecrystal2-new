@@ -1834,6 +1834,7 @@ wItemsPocketCursor::    ds 1
 wKeyItemsPocketCursor:: ds 1
 wBallsPocketCursor::    ds 1
 wTMHMPocketCursor::     ds 1
+wHoldingPocketCursor::  ds 1
 
 wPCItemsScrollPosition::        ds 1
 wPartyMenuScrollPosition::      ds 1 ; unused
@@ -1841,6 +1842,7 @@ wItemsPocketScrollPosition::    ds 1
 wKeyItemsPocketScrollPosition:: ds 1
 wBallsPocketScrollPosition::    ds 1
 wTMHMPocketScrollPosition::     ds 1
+wHoldingPocketScrollPosition::  ds 1
 
 wSwitchMon::
 wSwitchItem::
@@ -2214,6 +2216,7 @@ wDudeNumItems:: ds 1
 wDudeItems:: ds 2 * 4
 wDudeItemsEnd:: ds 1
 
+wDudeNumHolding:: 
 wDudeNumKeyItems:: ds 1 ; d292
 wDudeKeyItems:: ds 18
 wDudeKeyItemsEnd:: ds 1
@@ -2458,6 +2461,10 @@ wKeyItemsEnd::
 wNumBalls:: ds 1 ; d8d7
 wBalls:: ds MAX_BALLS * 2 + 1 ; d8d8
 wBallsEnd::
+
+wNumHolding:: ds 1
+wHolding:: ds MAX_HOLDING * 2 + 1
+wHoldingEnd::
 
 wPCItems:: ds MAX_PC_ITEMS * 2 + 1 ; d8f1
 wPCItemsEnd::
