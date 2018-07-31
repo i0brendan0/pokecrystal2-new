@@ -89,7 +89,7 @@ _GetFrontpic: ; 510a5
 	ld b, a
 	push bc
 	call GetFrontpicPointer
-	ld a, BANK(wDecompressEnemyFrontpic)
+	ld a, BANK(wDecompressScratch)
 	ld [rSVBK], a
 	ld a, b
 	ld de, wDecompressScratch
