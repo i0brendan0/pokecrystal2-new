@@ -509,6 +509,6 @@ PokemonPicPointers::
 	dba CelebiBackpic
 	dba MissingNoFrontpic
 	dba MissingNoBackpic
-	dba DelibirdFrontpic
-	dba DelibirdBackpic
+	dba GidgeonFrontpic
+	dba GidgeonBackpic
 	dba EggPic

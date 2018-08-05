@@ -3,7 +3,7 @@
 	db  95,  95,  85,  55, 125,  75
 	;   hp  atk  def  spd  sat  sdf
 
-	db GRASS, PSYCHIC ; type
+	db GRASS, MYSTERY_T ; type
 	db 45 ; catch rate
 	db 212 ; base exp
 	db NO_ITEM, NO_ITEM ; items

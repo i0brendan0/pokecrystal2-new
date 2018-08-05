@@ -3,9 +3,9 @@
 	db  55,  65,  45,  85,  65,  45
 	;   hp  atk  def  spd  sat  sdf
 
+	db ICE, BIRD ; type
 	db 45 ; catch rate
 	db 183 ; base exp
-	db ICE, BIRD ; type
 	db NO_ITEM, NO_ITEM ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1

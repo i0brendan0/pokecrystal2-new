@@ -3,7 +3,7 @@
 	db  106, 155,  17,  44,  44, 114
 	;   hp   atk  def  spd  sat  sdf
 
-	db CURSE_T, CURSE_T
+	db DARK, CHAOS_T
 	db 45 ; catch rate
 	db 100 ; base exp
 	db NO_ITEM, NO_ITEM ; items

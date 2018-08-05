@@ -696,7 +696,7 @@ OakSpeech: ; 0x5f99
 	call RotateThreePalettesRight
 	call ClearTileMap
 
-	ld a, WOOPER
+	ld a, GIDGEON
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData

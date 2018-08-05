@@ -25,6 +25,9 @@ List of major changes
 * **There is now a dark type boost after beating Karen for the first time.** This means you can lose after Karen and still receive the bonus, you just have to beat her once. - This has not been extensively tested yet.
 * **Add rematches for all Pokemon Gym Leaders.** Johto leaders are located at the Olivine Cafe. Kanto leaders are located at the Celadon Cafe. - This has not been extensively tested yet.
 * Add a Move Relearner. - This has not been extensively tested yet.
+* 2 new pokemon. Gidgeon - a fakemon baby Delibird. ??? - ???
+* New item pocket that holds all the Type Boost Items.
+* Pokemon now have evolution moves.
 
 List of minor changes
 * Moves are updated to the latest Gen stats with a couple changing type.

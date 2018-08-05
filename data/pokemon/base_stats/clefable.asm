@@ -3,7 +3,7 @@
 	db  95,  70,  73,  60,  95,  90
 	;   hp  atk  def  spd  sat  sdf
 
-	db NORMAL, NORMAL ; type
+	db FAIRY_T, LIGHT_T ; type
 	db 25 ; catch rate
 	db 129 ; base exp
 	db MYSTERYBERRY, MOON_STONE ; items
