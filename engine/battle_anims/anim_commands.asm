@@ -229,24 +229,9 @@ ClearActorHud: ; cc207
 	hlcoord 9, 7
 	lb bc, 5, 11
 	call ClearBox
-	ret
 ; cc220
 
 Unreferenced_Functioncc220: ; cc220
-	xor a
-	ld [hBGMapMode], a
-	ld a, LOW(vBGMap0 tile $28)
-	ld [hBGMapAddress], a
-	ld a, HIGH(vBGMap0 tile $28)
-	ld [hBGMapAddress + 1], a
-	call WaitBGMap2
-	ld a, $60
-	ld [hWY], a
-	xor a ; LOW(vBGMap0)
-	ld [hBGMapAddress], a
-	ld a, HIGH(vBGMap0)
-	ld [hBGMapAddress + 1], a
-	call BattleAnimDelayFrame
 	ret
 ; cc23d
 

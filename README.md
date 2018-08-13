@@ -86,6 +86,8 @@ List of things I want to do but might not be able to
 
 List of current bugs
 * The check Unown caught code does not seem to work with this new system.
+* Mystery type is currently unsearchable in the Pokedex.
+* Footprints are broken.
 
 **If you find a bug with a change that I've added or something that isn't known about, please open an issue and provide as much information as possible.**
 

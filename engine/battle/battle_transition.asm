@@ -816,13 +816,6 @@ ENDM
 	pop bc
 	dec b
 	jr nz, .row
-	ret
-; 8c7c9 (23:47c9)
 
 Unreferenced_Function8c7c9:
-	ld a, $1
-	ld [hBGMapMode], a
-	call WaitBGMap
-	xor a
-	ld [hBGMapMode], a
 	ret

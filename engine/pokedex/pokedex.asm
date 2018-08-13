@@ -1631,6 +1631,7 @@ Pokedex_OrderMonsByMode: ; 40bdc
 
 .NewMode: ; 40bf6 (10:4bf6)
 	ld de, NewPokedexOrder
+.do_dex
 	ld hl, wPokedexOrder
 	ld c, NUM_POKEMON
 .loopnew
@@ -1643,16 +1644,8 @@ Pokedex_OrderMonsByMode: ; 40bdc
 	ret
 
 .OldMode: ; 40c08 (10:4c08)
-	ld hl, wPokedexOrder
-	ld a, $1
-	ld c, NUM_POKEMON
-.loopold
-	ld [hli], a
-	inc a
-	dec c
-	jr nz, .loopold
-	call .FindLastSeen
-	ret
+	ld de, OldPokedexOrder
+	jr .do_dex
 
 .FindLastSeen: ; 40c18 (10:4c18)
 	ld hl, wPokedexOrder + NUM_POKEMON - 1
@@ -1711,6 +1704,8 @@ Pokedex_ABCMode: ; 40c30
 INCLUDE "data/pokemon/dex_order_alpha.asm"
 
 INCLUDE "data/pokemon/dex_order_new.asm"
+
+INCLUDE "data/pokemon/dex_order_old.asm"
 
 
 Pokedex_DisplayModeDescription: ; 40e5b

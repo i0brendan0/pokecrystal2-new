@@ -1,5 +1,6 @@
 LoadOverworldMonIcon: ; 8e82b
 	ld a, e
+	push af
 	call ReadMonMenuIcon
 	ld l, a
 	ld h, 0
@@ -9,8 +10,8 @@ LoadOverworldMonIcon: ; 8e82b
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	ld b, BANK(Icons)
-	ld c, 8
+	pop af
+	call GetIconBank
 	ret
 ; 8e83f
 
@@ -73,7 +74,7 @@ LoadMenuMonIcon: ; 8e83f
 	jr .got_tile
 .not_mail
 	ld a, $5
-	; jr .got_tile
+	jr .got_tile
 
 .no_item
 	ld a, $4
@@ -347,12 +348,20 @@ endr
 	ld d, [hl]
 	pop hl
 
-	lb bc, BANK(Icons), 8
+	Call GetIconBank
 	call GetGFXUnlessMobile
 
 	pop hl
 	ret
 ; 8ea3f
+
+GetIconBank:
+	ld a, [wCurIcon]
+	cp ICON_TAUROS
+	lb bc, BANK("Mon Icons 1"), 8
+	ret c
+	ld b, BANK("Mon Icons 2")
+	ret
 
 GetGFXUnlessMobile: ; 8ea3f
 	ld a, [wLinkMode]

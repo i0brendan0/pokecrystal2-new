@@ -11,7 +11,6 @@ SometimesFleeMons: ; 3c59a
 	db DRATINI
 	db DRAGONAIR
 	db TOGETIC
-	db UMBREON
 	db UNOWN
 	db SNUBBULL
 	db HERACROSS

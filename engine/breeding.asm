@@ -984,11 +984,5 @@ DayCareMonCompatibilityText: ; 1746c
 ; 0x174b5
 
 Unreferenced_DayCareMonPrintEmptyString: ; 174b5
-	ld hl, .string
 	ret
-; 174b9
-
-.string ; 174b9
-	db "@"
-; 174ba
 

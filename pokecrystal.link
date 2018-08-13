@@ -283,8 +283,9 @@ ROMX $72
 	"Miscellaneous Text"
 ROMX $73
 	"Pokedex Entries 129-192"
-ROMX $74
 	"Pokedex Entries 193-251"
+ROMX $74
+	"Mon Icons 1"
 ROMX $75
 	"Text 4"
 ROMX $76
@@ -298,7 +299,8 @@ ROMX $78
 	"Tileset Data 8"
 ROMX $79
 	"Egg Moves"
-;ROMX $7a
+ROMX $7a
+	"Mon Icons 2"
 ;	"Move Relearner"
 ROMX $7b
 	"Battle Tower Text"

@@ -66,8 +66,8 @@ PokemonCenterPC: ; 1559a
 	db -1
 
 	; before Bill, after pokedex
-	db  3
-	db  5, 0, 2, 4 ; bill's, player's, oak's, turn off
+	db  4
+	db  5, 0, 2, 4 ; someone's, player's, oak's, turn off
 	db -1
 
 	; before Hall Of Fame

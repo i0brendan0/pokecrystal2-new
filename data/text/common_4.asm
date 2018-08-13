@@ -95,3 +95,19 @@ SomeonesPCText::
 	line "System opened."
 	prompt
 
+HeldItemsPocketText::
+	text "<PLAYER> put the"
+	line "@"
+	text_from_ram wStringBuffer1
+	text " in"
+	cont "the @"
+	text_from_ram wStringBuffer3
+	cont "POCKET."
+	prompt
+	
+HeldItemsFullText::
+	text "The @"
+	text_from_ram wStringBuffer3
+	text_start
+	line "POCKET is full…"
+	prompt
